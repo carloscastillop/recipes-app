@@ -1,4 +1,4 @@
-# Mini Shop
+# Recipes app
 
 ## Available Scripts
 
