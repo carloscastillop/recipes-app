@@ -1,17 +1,27 @@
 import React from "react";
 import styles from "./RecipeCard.module.scss";
 
-const RecipeCard = () => {
+const RecipeCard = (props) => {
     return (
         <div className={`${styles.card} ${styles.RecipeCard} ${styles.mb5}`}>
-            <img src='https://via.placeholder.com/640x480?text=RECIPE' className={styles.imgFluid}/>
+            <img
+                src={`https://spoonacular.com/recipeImages/${props.recipe.id}-312x231.jpg`}
+                className={styles.imgFluid}
+                alt={props.recipe.title}
+            />
             <div className={styles.cardBody}>
                 <h5 className={styles.cardTitle}>
-                    Recipe title
+                    {props.recipe.title}
                 </h5>
-                <a href="#" className={`${styles.btn} ${styles.btnPrimary}`}>
+                <p>{props.recipe.id}</p>
+                <button
+                    className={`${styles.btn} ${styles.btnPrimary}`}
+                    onClick={e => {
+                        props.show();
+                    }}
+                >
                     View
-                </a>
+                </button>
             </div>
         </div>
     );

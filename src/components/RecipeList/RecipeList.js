@@ -3,22 +3,32 @@ import styles from './RecipesList.module.scss';
 import RecipeCard from "./RecipeCard/RecipeCard";
 
 const recipeList = (props) => {
-    const recipes = [];
-    for (let i = 0; i < 10; i++) {
-        recipes.push(
-            <div className={styles.col6}>
-                <RecipeCard/>
-            </div>)
+    let recipes = null;
+    if(props.recipes){
+        recipes = props.recipes.map((recipe, index)=>{
+            return (
+                <div className={styles.col6} key={`recipe-container-${index}`}>
+                    <RecipeCard
+                        key={`recipe-${index}`}
+                        recipe={recipe}
+                        show={props.show}
+                    />
+                </div>
+            );
+        });
     }
+
     return (
         <div className={styles.container}>
             <div className={styles.row}>
                 {recipes}
             </div>
             <div className={`${styles.textCenter} ${styles.my3}`}>
-                <a href="#" className={`${styles.btn} ${styles.btnPrimary}`}>
+                <button
+                    className={`${styles.btn} ${styles.btnPrimary}`}
+                >
                     Load more
-                </a>
+                </button>
             </div>
         </div>
     );
