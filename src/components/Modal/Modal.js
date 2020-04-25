@@ -8,7 +8,10 @@ const Modal = (props) => {
     return (
         <React.Fragment>
             <div className={`${styles.modal} ${styles.show}`}>
-                <div className={`${styles.modalDialog} ${styles.modalDialogScrollable}`} role="document">
+                <div
+                    className={`${styles.modalDialog} ${styles.modalDialogScrollable} ${styles.shadow}`}
+                    role="document"
+                >
                     <div className={styles.modalContent}>
                         <div className={styles.modalHeader}>
                             <h5 className={styles.modalTitle}>
@@ -45,7 +48,7 @@ const Modal = (props) => {
                 </div>
             </div>
             <div
-                className={`${styles.modalBackdrop} ${styles.fade} ${styles.show}`}
+                className={`${styles.modalBackdrop} ${styles.white} ${styles.fade} ${styles.show}`}
             ></div>
         </React.Fragment>
     );

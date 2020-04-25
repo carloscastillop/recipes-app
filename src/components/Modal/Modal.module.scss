@@ -3,3 +3,10 @@
   height: 100vh;
   overflow-y: hidden;
 }
+
+.modalBackdrop.white {
+  background-color: white;
+}
+.modalBackdrop.white.show {
+  opacity: 1;
+}
