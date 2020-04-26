@@ -2030,7 +2030,7 @@ pre code {
   border: 0;
 }
 
-.form-control {
+.formControl {
   display: block;
   width: 100%;
   height: calc(1.5em + 0.75rem + 2px);
@@ -2047,22 +2047,22 @@ pre code {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .form-control {
+  .formControl {
     transition: none;
   }
 }
 
-.form-control::-ms-expand {
+.formControl::-ms-expand {
   background-color: transparent;
   border: 0;
 }
 
-.form-control:-moz-focusring {
+.formControl:-moz-focusring {
   color: transparent;
   text-shadow: 0 0 0 #495057;
 }
 
-.form-control:focus {
+.formControl:focus {
   color: #495057;
   background-color: #fff;
   border-color: #80bdff;
@@ -2070,43 +2070,43 @@ pre code {
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
-.form-control::-webkit-input-placeholder {
+.formControl::-webkit-input-placeholder {
   color: #6c757d;
   opacity: 1;
 }
 
-.form-control::-moz-placeholder {
+.formControl::-moz-placeholder {
   color: #6c757d;
   opacity: 1;
 }
 
-.form-control:-ms-input-placeholder {
+.formControl:-ms-input-placeholder {
   color: #6c757d;
   opacity: 1;
 }
 
-.form-control::-ms-input-placeholder {
+.formControl::-ms-input-placeholder {
   color: #6c757d;
   opacity: 1;
 }
 
-.form-control::placeholder {
+.formControl::placeholder {
   color: #6c757d;
   opacity: 1;
 }
 
-.form-control:disabled, .form-control[readonly] {
+.formControl:disabled, .formControl[readonly] {
   background-color: #e9ecef;
   opacity: 1;
 }
 
-select.form-control:focus::-ms-value {
+select.formControl:focus::-ms-value {
   color: #495057;
   background-color: #fff;
 }
 
-.form-control-file,
-.form-control-range {
+.formControl-file,
+.formControl-range {
   display: block;
   width: 100%;
 }
@@ -2133,7 +2133,7 @@ select.form-control:focus::-ms-value {
   line-height: 1.5;
 }
 
-.form-control-plaintext {
+.formControlPlaintext {
   display: block;
   width: 100%;
   padding: 0.375rem 0;
@@ -2146,12 +2146,12 @@ select.form-control:focus::-ms-value {
   border-width: 1px 0;
 }
 
-.form-control-plaintext.form-control-sm, .form-control-plaintext.form-control-lg {
+.formControlPlaintext.formControl-sm, .formControlPlaintext.formControl-lg {
   padding-right: 0;
   padding-left: 0;
 }
 
-.form-control-sm {
+.formControl-sm {
   height: calc(1.5em + 0.5rem + 2px);
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
@@ -2159,7 +2159,7 @@ select.form-control:focus::-ms-value {
   border-radius: 0.2rem;
 }
 
-.form-control-lg {
+.formControl-lg {
   height: calc(1.5em + 1rem + 2px);
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
@@ -2167,15 +2167,15 @@ select.form-control:focus::-ms-value {
   border-radius: 0.3rem;
 }
 
-select.form-control[size], select.form-control[multiple] {
+select.formControl[size], select.formControl[multiple] {
   height: auto;
 }
 
-textarea.form-control {
+textarea.formControl {
   height: auto;
 }
 
-.form-group {
+.formGroup {
   margin-bottom: 1rem;
 }
 
@@ -2199,28 +2199,28 @@ textarea.form-control {
   padding-left: 5px;
 }
 
-.form-check {
+.formCheck {
   position: relative;
   display: block;
   padding-left: 1.25rem;
 }
 
-.form-check-input {
+.formCheckInput {
   position: absolute;
   margin-top: 0.3rem;
   margin-left: -1.25rem;
 }
 
-.form-check-input[disabled] ~ .form-check-label,
-.form-check-input:disabled ~ .form-check-label {
+.formCheckInput[disabled] ~ .formCheck-label,
+.formCheckInput:disabled ~ .formCheck-label {
   color: #6c757d;
 }
 
-.form-check-label {
+.formCheck-label {
   margin-bottom: 0;
 }
 
-.form-check-inline {
+.formCheck-inline {
   display: -ms-inline-flexbox;
   display: inline-flex;
   -ms-flex-align: center;
@@ -2229,7 +2229,7 @@ textarea.form-control {
   margin-right: 0.75rem;
 }
 
-.form-check-inline .form-check-input {
+.formCheck-inline .formCheckInput {
   position: static;
   margin-top: 0;
   margin-right: 0.3125rem;
@@ -2266,7 +2266,7 @@ textarea.form-control {
   display: block;
 }
 
-.was-validated .form-control:valid, .form-control.is-valid {
+.was-validated .formControl:valid, .formControl.is-valid {
   border-color: #28a745;
   padding-right: calc(1.5em + 0.75rem);
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
@@ -2275,55 +2275,55 @@ textarea.form-control {
   background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
 }
 
-.was-validated .form-control:valid:focus, .form-control.is-valid:focus {
+.was-validated .formControl:valid:focus, .formControl.is-valid:focus {
   border-color: #28a745;
   box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
 }
 
-.was-validated textarea.form-control:valid, textarea.form-control.is-valid {
+.was-validated textarea.formControl:valid, textarea.formControl.is-valid {
   padding-right: calc(1.5em + 0.75rem);
   background-position: top calc(0.375em + 0.1875rem) right calc(0.375em + 0.1875rem);
 }
 
-.was-validated .custom-select:valid, .custom-select.is-valid {
+.was-validated .customSelect:valid, .customSelect.is-valid {
   border-color: #28a745;
   padding-right: calc(0.75em + 2.3125rem);
   background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 0.75rem center/8px 10px, url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e") #fff no-repeat center right 1.75rem/calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
 }
 
-.was-validated .custom-select:valid:focus, .custom-select.is-valid:focus {
+.was-validated .customSelect:valid:focus, .customSelect.is-valid:focus {
   border-color: #28a745;
   box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
 }
 
-.was-validated .form-check-input:valid ~ .form-check-label, .form-check-input.is-valid ~ .form-check-label {
+.was-validated .formCheckInput:valid ~ .formCheck-label, .formCheckInput.is-valid ~ .formCheck-label {
   color: #28a745;
 }
 
-.was-validated .form-check-input:valid ~ .valid-feedback,
-.was-validated .form-check-input:valid ~ .valid-tooltip, .form-check-input.is-valid ~ .valid-feedback,
-.form-check-input.is-valid ~ .valid-tooltip {
+.was-validated .formCheckInput:valid ~ .valid-feedback,
+.was-validated .formCheckInput:valid ~ .valid-tooltip, .formCheckInput.is-valid ~ .valid-feedback,
+.formCheckInput.is-valid ~ .valid-tooltip {
   display: block;
 }
 
-.was-validated .custom-control-input:valid ~ .custom-control-label, .custom-control-input.is-valid ~ .custom-control-label {
+.was-validated .customControlInput:valid ~ .customControlLabel, .customControlInput.is-valid ~ .customControlLabel {
   color: #28a745;
 }
 
-.was-validated .custom-control-input:valid ~ .custom-control-label::before, .custom-control-input.is-valid ~ .custom-control-label::before {
+.was-validated .customControlInput:valid ~ .customControlLabel::before, .customControlInput.is-valid ~ .customControlLabel::before {
   border-color: #28a745;
 }
 
-.was-validated .custom-control-input:valid:checked ~ .custom-control-label::before, .custom-control-input.is-valid:checked ~ .custom-control-label::before {
+.was-validated .customControlInput:valid:checked ~ .customControlLabel::before, .customControlInput.is-valid:checked ~ .customControlLabel::before {
   border-color: #34ce57;
   background-color: #34ce57;
 }
 
-.was-validated .custom-control-input:valid:focus ~ .custom-control-label::before, .custom-control-input.is-valid:focus ~ .custom-control-label::before {
+.was-validated .customControlInput:valid:focus ~ .customControlLabel::before, .customControlInput.is-valid:focus ~ .customControlLabel::before {
   box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
 }
 
-.was-validated .custom-control-input:valid:focus:not(:checked) ~ .custom-control-label::before, .custom-control-input.is-valid:focus:not(:checked) ~ .custom-control-label::before {
+.was-validated .customControlInput:valid:focus:not(:checked) ~ .customControlLabel::before, .customControlInput.is-valid:focus:not(:checked) ~ .customControlLabel::before {
   border-color: #28a745;
 }
 
@@ -2366,7 +2366,7 @@ textarea.form-control {
   display: block;
 }
 
-.was-validated .form-control:invalid, .form-control.is-invalid {
+.was-validated .formControl:invalid, .formControl.is-invalid {
   border-color: #dc3545;
   padding-right: calc(1.5em + 0.75rem);
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
@@ -2375,55 +2375,55 @@ textarea.form-control {
   background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
 }
 
-.was-validated .form-control:invalid:focus, .form-control.is-invalid:focus {
+.was-validated .formControl:invalid:focus, .formControl.is-invalid:focus {
   border-color: #dc3545;
   box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
 }
 
-.was-validated textarea.form-control:invalid, textarea.form-control.is-invalid {
+.was-validated textarea.formControl:invalid, textarea.formControl.is-invalid {
   padding-right: calc(1.5em + 0.75rem);
   background-position: top calc(0.375em + 0.1875rem) right calc(0.375em + 0.1875rem);
 }
 
-.was-validated .custom-select:invalid, .custom-select.is-invalid {
+.was-validated .customSelect:invalid, .customSelect.is-invalid {
   border-color: #dc3545;
   padding-right: calc(0.75em + 2.3125rem);
   background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 0.75rem center/8px 10px, url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e") #fff no-repeat center right 1.75rem/calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
 }
 
-.was-validated .custom-select:invalid:focus, .custom-select.is-invalid:focus {
+.was-validated .customSelect:invalid:focus, .customSelect.is-invalid:focus {
   border-color: #dc3545;
   box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
 }
 
-.was-validated .form-check-input:invalid ~ .form-check-label, .form-check-input.is-invalid ~ .form-check-label {
+.was-validated .formCheckInput:invalid ~ .formCheck-label, .formCheckInput.is-invalid ~ .formCheck-label {
   color: #dc3545;
 }
 
-.was-validated .form-check-input:invalid ~ .invalid-feedback,
-.was-validated .form-check-input:invalid ~ .invalid-tooltip, .form-check-input.is-invalid ~ .invalid-feedback,
-.form-check-input.is-invalid ~ .invalid-tooltip {
+.was-validated .formCheckInput:invalid ~ .invalid-feedback,
+.was-validated .formCheckInput:invalid ~ .invalid-tooltip, .formCheckInput.is-invalid ~ .invalid-feedback,
+.formCheckInput.is-invalid ~ .invalid-tooltip {
   display: block;
 }
 
-.was-validated .custom-control-input:invalid ~ .custom-control-label, .custom-control-input.is-invalid ~ .custom-control-label {
+.was-validated .customControlInput:invalid ~ .customControlLabel, .customControlInput.is-invalid ~ .customControlLabel {
   color: #dc3545;
 }
 
-.was-validated .custom-control-input:invalid ~ .custom-control-label::before, .custom-control-input.is-invalid ~ .custom-control-label::before {
+.was-validated .customControlInput:invalid ~ .customControlLabel::before, .customControlInput.is-invalid ~ .customControlLabel::before {
   border-color: #dc3545;
 }
 
-.was-validated .custom-control-input:invalid:checked ~ .custom-control-label::before, .custom-control-input.is-invalid:checked ~ .custom-control-label::before {
+.was-validated .customControlInput:invalid:checked ~ .customControlLabel::before, .customControlInput.is-invalid:checked ~ .customControlLabel::before {
   border-color: #e4606d;
   background-color: #e4606d;
 }
 
-.was-validated .custom-control-input:invalid:focus ~ .custom-control-label::before, .custom-control-input.is-invalid:focus ~ .custom-control-label::before {
+.was-validated .customControlInput:invalid:focus ~ .customControlLabel::before, .customControlInput.is-invalid:focus ~ .customControlLabel::before {
   box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
 }
 
-.was-validated .custom-control-input:invalid:focus:not(:checked) ~ .custom-control-label::before, .custom-control-input.is-invalid:focus:not(:checked) ~ .custom-control-label::before {
+.was-validated .customControlInput:invalid:focus:not(:checked) ~ .customControlLabel::before, .customControlInput.is-invalid:focus:not(:checked) ~ .customControlLabel::before {
   border-color: #dc3545;
 }
 
@@ -2436,7 +2436,7 @@ textarea.form-control {
   box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
 }
 
-.form-inline {
+.formInline {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-flow: row wrap;
@@ -2445,12 +2445,12 @@ textarea.form-control {
   align-items: center;
 }
 
-.form-inline .form-check {
+.formInline .formCheck {
   width: 100%;
 }
 
 @media (min-width: 576px) {
-  .form-inline label {
+  .formInline label {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-align: center;
@@ -2459,7 +2459,7 @@ textarea.form-control {
     justify-content: center;
     margin-bottom: 0;
   }
-  .form-inline .form-group {
+  .formInline .formGroup {
     display: -ms-flexbox;
     display: flex;
     -ms-flex: 0 0 auto;
@@ -2470,19 +2470,19 @@ textarea.form-control {
     align-items: center;
     margin-bottom: 0;
   }
-  .form-inline .form-control {
+  .formInline .formControl {
     display: inline-block;
     width: auto;
     vertical-align: middle;
   }
-  .form-inline .form-control-plaintext {
+  .formInline .formControlPlaintext {
     display: inline-block;
   }
-  .form-inline .input-group,
-  .form-inline .custom-select {
+  .formInline .inputGroup,
+  .formInline .customSelect {
     width: auto;
   }
-  .form-inline .form-check {
+  .formInline .formCheck {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-align: center;
@@ -2492,7 +2492,7 @@ textarea.form-control {
     width: auto;
     padding-left: 0;
   }
-  .form-inline .form-check-input {
+  .formInline .formCheckInput {
     position: relative;
     -ms-flex-negative: 0;
     flex-shrink: 0;
@@ -2500,13 +2500,13 @@ textarea.form-control {
     margin-right: 0.25rem;
     margin-left: 0;
   }
-  .form-inline .custom-control {
+  .formInline .customControl {
     -ms-flex-align: center;
     align-items: center;
     -ms-flex-pack: center;
     justify-content: center;
   }
-  .form-inline .custom-control-label {
+  .formInline .customControlLabel {
     margin-bottom: 0;
   }
 }
@@ -3473,7 +3473,7 @@ input[type="button"].btnBlock {
   justify-content: flex-start;
 }
 
-.btn-toolbar .input-group {
+.btn-toolbar .inputGroup {
   width: auto;
 }
 
@@ -3564,7 +3564,7 @@ input[type="button"].btnBlock {
   pointer-events: none;
 }
 
-.input-group {
+.inputGroup {
   position: relative;
   display: -ms-flexbox;
   display: flex;
@@ -3575,10 +3575,10 @@ input[type="button"].btnBlock {
   width: 100%;
 }
 
-.input-group > .form-control,
-.input-group > .form-control-plaintext,
-.input-group > .custom-select,
-.input-group > .custom-file {
+.inputGroup > .formControl,
+.inputGroup > .formControlPlaintext,
+.inputGroup > .customSelect,
+.inputGroup > .custom-file {
   position: relative;
   -ms-flex: 1 1 0%;
   flex: 1 1 0%;
@@ -3586,98 +3586,98 @@ input[type="button"].btnBlock {
   margin-bottom: 0;
 }
 
-.input-group > .form-control + .form-control,
-.input-group > .form-control + .custom-select,
-.input-group > .form-control + .custom-file,
-.input-group > .form-control-plaintext + .form-control,
-.input-group > .form-control-plaintext + .custom-select,
-.input-group > .form-control-plaintext + .custom-file,
-.input-group > .custom-select + .form-control,
-.input-group > .custom-select + .custom-select,
-.input-group > .custom-select + .custom-file,
-.input-group > .custom-file + .form-control,
-.input-group > .custom-file + .custom-select,
-.input-group > .custom-file + .custom-file {
+.inputGroup > .formControl + .formControl,
+.inputGroup > .formControl + .customSelect,
+.inputGroup > .formControl + .custom-file,
+.inputGroup > .formControlPlaintext + .formControl,
+.inputGroup > .formControlPlaintext + .customSelect,
+.inputGroup > .formControlPlaintext + .custom-file,
+.inputGroup > .customSelect + .formControl,
+.inputGroup > .customSelect + .customSelect,
+.inputGroup > .customSelect + .custom-file,
+.inputGroup > .custom-file + .formControl,
+.inputGroup > .custom-file + .customSelect,
+.inputGroup > .custom-file + .custom-file {
   margin-left: -1px;
 }
 
-.input-group > .form-control:focus,
-.input-group > .custom-select:focus,
-.input-group > .custom-file .custom-file-input:focus ~ .custom-file-label {
+.inputGroup > .formControl:focus,
+.inputGroup > .customSelect:focus,
+.inputGroup > .custom-file .custom-file-input:focus ~ .custom-file-label {
   z-index: 3;
 }
 
-.input-group > .custom-file .custom-file-input:focus {
+.inputGroup > .custom-file .custom-file-input:focus {
   z-index: 4;
 }
 
-.input-group > .form-control:not(:last-child),
-.input-group > .custom-select:not(:last-child) {
+.inputGroup > .formControl:not(:last-child),
+.inputGroup > .customSelect:not(:last-child) {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 
-.input-group > .form-control:not(:first-child),
-.input-group > .custom-select:not(:first-child) {
+.inputGroup > .formControl:not(:first-child),
+.inputGroup > .customSelect:not(:first-child) {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-.input-group > .custom-file {
+.inputGroup > .custom-file {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: center;
   align-items: center;
 }
 
-.input-group > .custom-file:not(:last-child) .custom-file-label,
-.input-group > .custom-file:not(:last-child) .custom-file-label::after {
+.inputGroup > .custom-file:not(:last-child) .custom-file-label,
+.inputGroup > .custom-file:not(:last-child) .custom-file-label::after {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 
-.input-group > .custom-file:not(:first-child) .custom-file-label {
+.inputGroup > .custom-file:not(:first-child) .custom-file-label {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-.input-group-prepend,
-.input-group-append {
+.inputGroup-prepend,
+.inputGroupAppend {
   display: -ms-flexbox;
   display: flex;
 }
 
-.input-group-prepend .btn,
-.input-group-append .btn {
+.inputGroup-prepend .btn,
+.inputGroupAppend .btn {
   position: relative;
   z-index: 2;
 }
 
-.input-group-prepend .btn:focus,
-.input-group-append .btn:focus {
+.inputGroup-prepend .btn:focus,
+.inputGroupAppend .btn:focus {
   z-index: 3;
 }
 
-.input-group-prepend .btn + .btn,
-.input-group-prepend .btn + .input-group-text,
-.input-group-prepend .input-group-text + .input-group-text,
-.input-group-prepend .input-group-text + .btn,
-.input-group-append .btn + .btn,
-.input-group-append .btn + .input-group-text,
-.input-group-append .input-group-text + .input-group-text,
-.input-group-append .input-group-text + .btn {
+.inputGroup-prepend .btn + .btn,
+.inputGroup-prepend .btn + .inputGroup-text,
+.inputGroup-prepend .inputGroup-text + .inputGroup-text,
+.inputGroup-prepend .inputGroup-text + .btn,
+.inputGroupAppend .btn + .btn,
+.inputGroupAppend .btn + .inputGroup-text,
+.inputGroupAppend .inputGroup-text + .inputGroup-text,
+.inputGroupAppend .inputGroup-text + .btn {
   margin-left: -1px;
 }
 
-.input-group-prepend {
+.inputGroup-prepend {
   margin-right: -1px;
 }
 
-.input-group-append {
+.inputGroupAppend {
   margin-left: -1px;
 }
 
-.input-group-text {
+.inputGroup-text {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: center;
@@ -3695,84 +3695,84 @@ input[type="button"].btnBlock {
   border-radius: 0.25rem;
 }
 
-.input-group-text input[type="radio"],
-.input-group-text input[type="checkbox"] {
+.inputGroup-text input[type="radio"],
+.inputGroup-text input[type="checkbox"] {
   margin-top: 0;
 }
 
-.input-group-lg > .form-control:not(textarea),
-.input-group-lg > .custom-select {
+.inputGroup-lg > .formControl:not(textarea),
+.inputGroup-lg > .customSelect {
   height: calc(1.5em + 1rem + 2px);
 }
 
-.input-group-lg > .form-control,
-.input-group-lg > .custom-select,
-.input-group-lg > .input-group-prepend > .input-group-text,
-.input-group-lg > .input-group-append > .input-group-text,
-.input-group-lg > .input-group-prepend > .btn,
-.input-group-lg > .input-group-append > .btn {
+.inputGroup-lg > .formControl,
+.inputGroup-lg > .customSelect,
+.inputGroup-lg > .inputGroup-prepend > .inputGroup-text,
+.inputGroup-lg > .inputGroupAppend > .inputGroup-text,
+.inputGroup-lg > .inputGroup-prepend > .btn,
+.inputGroup-lg > .inputGroupAppend > .btn {
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
   line-height: 1.5;
   border-radius: 0.3rem;
 }
 
-.input-group-sm > .form-control:not(textarea),
-.input-group-sm > .custom-select {
+.inputGroup-sm > .formControl:not(textarea),
+.inputGroup-sm > .customSelect {
   height: calc(1.5em + 0.5rem + 2px);
 }
 
-.input-group-sm > .form-control,
-.input-group-sm > .custom-select,
-.input-group-sm > .input-group-prepend > .input-group-text,
-.input-group-sm > .input-group-append > .input-group-text,
-.input-group-sm > .input-group-prepend > .btn,
-.input-group-sm > .input-group-append > .btn {
+.inputGroup-sm > .formControl,
+.inputGroup-sm > .customSelect,
+.inputGroup-sm > .inputGroup-prepend > .inputGroup-text,
+.inputGroup-sm > .inputGroupAppend > .inputGroup-text,
+.inputGroup-sm > .inputGroup-prepend > .btn,
+.inputGroup-sm > .inputGroupAppend > .btn {
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
   line-height: 1.5;
   border-radius: 0.2rem;
 }
 
-.input-group-lg > .custom-select,
-.input-group-sm > .custom-select {
+.inputGroup-lg > .customSelect,
+.inputGroup-sm > .customSelect {
   padding-right: 1.75rem;
 }
 
-.input-group > .input-group-prepend > .btn,
-.input-group > .input-group-prepend > .input-group-text,
-.input-group > .input-group-append:not(:last-child) > .btn,
-.input-group > .input-group-append:not(:last-child) > .input-group-text,
-.input-group > .input-group-append:last-child > .btn:not(:last-child):not(.dropdown-toggle),
-.input-group > .input-group-append:last-child > .input-group-text:not(:last-child) {
+.inputGroup > .inputGroup-prepend > .btn,
+.inputGroup > .inputGroup-prepend > .inputGroup-text,
+.inputGroup > .inputGroupAppend:not(:last-child) > .btn,
+.inputGroup > .inputGroupAppend:not(:last-child) > .inputGroup-text,
+.inputGroup > .inputGroupAppend:last-child > .btn:not(:last-child):not(.dropdown-toggle),
+.inputGroup > .inputGroupAppend:last-child > .inputGroup-text:not(:last-child) {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 
-.input-group > .input-group-append > .btn,
-.input-group > .input-group-append > .input-group-text,
-.input-group > .input-group-prepend:not(:first-child) > .btn,
-.input-group > .input-group-prepend:not(:first-child) > .input-group-text,
-.input-group > .input-group-prepend:first-child > .btn:not(:first-child),
-.input-group > .input-group-prepend:first-child > .input-group-text:not(:first-child) {
+.inputGroup > .inputGroupAppend > .btn,
+.inputGroup > .inputGroupAppend > .inputGroup-text,
+.inputGroup > .inputGroup-prepend:not(:first-child) > .btn,
+.inputGroup > .inputGroup-prepend:not(:first-child) > .inputGroup-text,
+.inputGroup > .inputGroup-prepend:first-child > .btn:not(:first-child),
+.inputGroup > .inputGroup-prepend:first-child > .inputGroup-text:not(:first-child) {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-.custom-control {
+.customControl {
   position: relative;
   display: block;
   min-height: 1.5rem;
   padding-left: 1.5rem;
 }
 
-.custom-control-inline {
+.customControl-inline {
   display: -ms-inline-flexbox;
   display: inline-flex;
   margin-right: 1rem;
 }
 
-.custom-control-input {
+.customControlInput {
   position: absolute;
   left: 0;
   z-index: -1;
@@ -3781,41 +3781,41 @@ input[type="button"].btnBlock {
   opacity: 0;
 }
 
-.custom-control-input:checked ~ .custom-control-label::before {
+.customControlInput:checked ~ .customControlLabel::before {
   color: #fff;
   border-color: #007bff;
   background-color: #007bff;
 }
 
-.custom-control-input:focus ~ .custom-control-label::before {
+.customControlInput:focus ~ .customControlLabel::before {
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
-.custom-control-input:focus:not(:checked) ~ .custom-control-label::before {
+.customControlInput:focus:not(:checked) ~ .customControlLabel::before {
   border-color: #80bdff;
 }
 
-.custom-control-input:not(:disabled):active ~ .custom-control-label::before {
+.customControlInput:not(:disabled):active ~ .customControlLabel::before {
   color: #fff;
   background-color: #b3d7ff;
   border-color: #b3d7ff;
 }
 
-.custom-control-input[disabled] ~ .custom-control-label, .custom-control-input:disabled ~ .custom-control-label {
+.customControlInput[disabled] ~ .customControlLabel, .customControlInput:disabled ~ .customControlLabel {
   color: #6c757d;
 }
 
-.custom-control-input[disabled] ~ .custom-control-label::before, .custom-control-input:disabled ~ .custom-control-label::before {
+.customControlInput[disabled] ~ .customControlLabel::before, .customControlInput:disabled ~ .customControlLabel::before {
   background-color: #e9ecef;
 }
 
-.custom-control-label {
+.customControlLabel {
   position: relative;
   margin-bottom: 0;
   vertical-align: top;
 }
 
-.custom-control-label::before {
+.customControlLabel::before {
   position: absolute;
   top: 0.25rem;
   left: -1.5rem;
@@ -3828,7 +3828,7 @@ input[type="button"].btnBlock {
   border: #adb5bd solid 1px;
 }
 
-.custom-control-label::after {
+.customControlLabel::after {
   position: absolute;
   top: 0.25rem;
   left: -1.5rem;
@@ -3839,55 +3839,55 @@ input[type="button"].btnBlock {
   background: no-repeat 50% / 50% 50%;
 }
 
-.custom-checkbox .custom-control-label::before {
+.custom-checkbox .customControlLabel::before {
   border-radius: 0.25rem;
 }
 
-.custom-checkbox .custom-control-input:checked ~ .custom-control-label::after {
+.custom-checkbox .customControlInput:checked ~ .customControlLabel::after {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26l2.974 2.99L8 2.193z'/%3e%3c/svg%3e");
 }
 
-.custom-checkbox .custom-control-input:indeterminate ~ .custom-control-label::before {
+.custom-checkbox .customControlInput:indeterminate ~ .customControlLabel::before {
   border-color: #007bff;
   background-color: #007bff;
 }
 
-.custom-checkbox .custom-control-input:indeterminate ~ .custom-control-label::after {
+.custom-checkbox .customControlInput:indeterminate ~ .customControlLabel::after {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3e%3cpath stroke='%23fff' d='M0 2h4'/%3e%3c/svg%3e");
 }
 
-.custom-checkbox .custom-control-input:disabled:checked ~ .custom-control-label::before {
+.custom-checkbox .customControlInput:disabled:checked ~ .customControlLabel::before {
   background-color: rgba(0, 123, 255, 0.5);
 }
 
-.custom-checkbox .custom-control-input:disabled:indeterminate ~ .custom-control-label::before {
+.custom-checkbox .customControlInput:disabled:indeterminate ~ .customControlLabel::before {
   background-color: rgba(0, 123, 255, 0.5);
 }
 
-.custom-radio .custom-control-label::before {
+.custom-radio .customControlLabel::before {
   border-radius: 50%;
 }
 
-.custom-radio .custom-control-input:checked ~ .custom-control-label::after {
+.custom-radio .customControlInput:checked ~ .customControlLabel::after {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
 }
 
-.custom-radio .custom-control-input:disabled:checked ~ .custom-control-label::before {
+.custom-radio .customControlInput:disabled:checked ~ .customControlLabel::before {
   background-color: rgba(0, 123, 255, 0.5);
 }
 
-.custom-switch {
+.customSwitch {
   padding-left: 2.25rem;
 }
 
-.custom-switch .custom-control-label::before {
+.customSwitch .customControlLabel::before {
   left: -2.25rem;
   width: 1.75rem;
   pointer-events: all;
   border-radius: 0.5rem;
 }
 
-.custom-switch .custom-control-label::after {
+.customSwitch .customControlLabel::after {
   top: calc(0.25rem + 2px);
   left: calc(-2.25rem + 2px);
   width: calc(1rem - 4px);
@@ -3900,22 +3900,22 @@ input[type="button"].btnBlock {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .custom-switch .custom-control-label::after {
+  .customSwitch .customControlLabel::after {
     transition: none;
   }
 }
 
-.custom-switch .custom-control-input:checked ~ .custom-control-label::after {
+.customSwitch .customControlInput:checked ~ .customControlLabel::after {
   background-color: #fff;
   -webkit-transform: translateX(0.75rem);
   transform: translateX(0.75rem);
 }
 
-.custom-switch .custom-control-input:disabled:checked ~ .custom-control-label::before {
+.customSwitch .customControlInput:disabled:checked ~ .customControlLabel::before {
   background-color: rgba(0, 123, 255, 0.5);
 }
 
-.custom-select {
+.customSelect {
   display: inline-block;
   width: 100%;
   height: calc(1.5em + 0.75rem + 2px);
@@ -3933,38 +3933,38 @@ input[type="button"].btnBlock {
   appearance: none;
 }
 
-.custom-select:focus {
+.customSelect:focus {
   border-color: #80bdff;
   outline: 0;
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
-.custom-select:focus::-ms-value {
+.customSelect:focus::-ms-value {
   color: #495057;
   background-color: #fff;
 }
 
-.custom-select[multiple], .custom-select[size]:not([size="1"]) {
+.customSelect[multiple], .customSelect[size]:not([size="1"]) {
   height: auto;
   padding-right: 0.75rem;
   background-image: none;
 }
 
-.custom-select:disabled {
+.customSelect:disabled {
   color: #6c757d;
   background-color: #e9ecef;
 }
 
-.custom-select::-ms-expand {
+.customSelect::-ms-expand {
   display: none;
 }
 
-.custom-select:-moz-focusring {
+.customSelect:-moz-focusring {
   color: transparent;
   text-shadow: 0 0 0 #495057;
 }
 
-.custom-select-sm {
+.customSelect-sm {
   height: calc(1.5em + 0.5rem + 2px);
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
@@ -3972,7 +3972,7 @@ input[type="button"].btnBlock {
   font-size: 0.875rem;
 }
 
-.custom-select-lg {
+.customSelect-lg {
   height: calc(1.5em + 1rem + 2px);
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -4211,16 +4211,16 @@ input[type="button"].btnBlock {
   background-color: #adb5bd;
 }
 
-.custom-control-label::before,
+.customControlLabel::before,
 .custom-file-label,
-.custom-select {
+.customSelect {
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .custom-control-label::before,
+  .customControlLabel::before,
   .custom-file-label,
-  .custom-select {
+  .customSelect {
     transition: none;
   }
 }

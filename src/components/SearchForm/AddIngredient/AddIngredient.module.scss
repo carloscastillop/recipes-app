@@ -1,0 +1,27 @@
+@import "../../../styles/global-styles.module.scss";
+
+.addIngredient {
+
+  .addIngredientClose {
+    padding: 1rem 1rem;
+    margin: -1rem -1rem -1rem auto;
+    padding: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 50%;
+    position: absolute;
+    right: 3px;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    padding-top: 0px;
+    color: #666;
+    background-color: white;
+    opacity: 1;
+
+    &:hover {
+      cursor: pointer;
+      color: #000;
+      background-color: white;
+    }
+  }
+}

@@ -1,4 +1,10 @@
 @import "../../styles/global-styles.module.scss";
 
 .SearchForm {
+  .ingredientBadge {
+    padding: 6px 15px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }

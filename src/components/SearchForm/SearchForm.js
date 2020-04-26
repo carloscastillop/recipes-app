@@ -1,5 +1,6 @@
 import React from "react";
 import styles from './SearchForm.module.scss';
+import AddIngredient from './AddIngredient/AddIngredient';
 
 const searchForm = (props) => {
 
@@ -13,7 +14,7 @@ const searchForm = (props) => {
         ingredients = notSelected.map((ingredient, index) => {
             return (
                 <span
-                    className={`${styles.badge} ${styles.badgePill} ${styles.badgeSecondary} ${styles.mr1}`}
+                    className={`${styles.ingredientBadge} ${styles.badge} ${styles.badgePill} ${styles.badgeSecondary} ${styles.mr1}`}
                     key={`filter-ingredient-${ingredient.name}-${index}`}
                     onClick={e => {
                         props.toogle(ingredient.id);
@@ -26,7 +27,7 @@ const searchForm = (props) => {
         selectedIngredients = selected.map((ingredient, index) => {
             return (
                 <span
-                    className={`${styles.badge} ${styles.badgePill} ${styles.badgePrimary} ${styles.mr1}`}
+                    className={`${styles.ingredientBadge} ${styles.badge} ${styles.badgePill} ${styles.badgePrimary} ${styles.mr1}`}
                     key={`filter-ingredient-${ingredient.name}-${index}`}
                     onClick={e => {
                         props.toogle(ingredient.id);
@@ -37,7 +38,7 @@ const searchForm = (props) => {
             );
         });
     }
-    if(selectedIngredients.length > 0){
+    if (selectedIngredients.length > 0) {
         disabledSearchBtn = false;
     }
     return (
@@ -47,19 +48,28 @@ const searchForm = (props) => {
                     <div className={styles.cardBody}>
                         <h3>Recipe finder</h3>
                         <p>Search by main ingredients in my kitchen</p>
-                        <div className={styles.mb2}>
+                        <div className={styles.mb3}>
                             {selectedIngredients}
                         </div>
-                        <div className={styles.mb2}>
+                        <div className={styles.mb3}>
                             {ingredients}
                         </div>
-                        <div className={styles.mb1}>
-                            <button
-                                type="button"
-                                className={`${styles.btn} ${styles.btnOutlineSecondary} ${styles.btnSm}`}
-                            >
-                                <i className="fas fa-plus"></i> Add ingredient
-                            </button>
+
+                        <AddIngredient />
+
+                        {/*Switch Example*/}
+                        <div>
+                            <div className={`${styles.customControl} ${styles.customSwitch}`}>
+                                <input
+                                    type="checkbox"
+                                    className={styles.customControlInput}
+                                    id="customSwitch1"/>
+                                <label
+                                    className={styles.customControlLabel}
+                                    htmlFor="customSwitch1"
+                                >Toggle this
+                                    switch element</label>
+                            </div>
                         </div>
                     </div>
                     <div className={`${styles.cardFooter} ${styles.textCenter} ${styles.bgWhite}`}>
