@@ -41,11 +41,13 @@ const AddIngredient = (props) => {
                         </button>
                         <div className={`${styles.inputGroup}`}>
                             <input
+                                id="addIngredientInput"
                                 type="text"
                                 className={styles.formControl}
                                 placeholder="Add an ingredient"
                                 aria-label="Add an ingredient"
                                 aria-describedby="button-addon2"
+                                autoFocus
                             />
                             <div className={styles.inputGroupAppend}>
                                 <button
