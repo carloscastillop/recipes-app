@@ -55,7 +55,12 @@ const searchForm = (props) => {
                             {ingredients}
                         </div>
 
-                        <AddIngredient />
+                        <AddIngredient
+                            changed={props.changed}
+                            add={props.add}
+                            ingredientForm={props.ingredientForm}
+                            clear={props.clear}
+                        />
 
                         {/*Switch Example*/}
                         <div>

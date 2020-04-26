@@ -12,17 +12,27 @@ const App = () => {
     const [ingredientsState, setIngredientsState] = useState({
         //INGREDIENTS BY DEFAULT
         ingredients: [
-            {'id': 1, 'name': 'eggs', 'selected': false},
-            {'id': 2, 'name': 'meat', 'selected': true},
-            {'id': 3, 'name': 'chicken', 'selected': false},
-            {'id': 4, 'name': 'fish', 'selected': false},
-            {'id': 5, 'name': 'pasta', 'selected': true},
-            {'id': 6, 'name': 'potatoes', 'selected': false},
+            {'id': 1, 'name': 'eggs', 'selected': false, 'erasable': false},
+            {'id': 2, 'name': 'meat', 'selected': true, 'erasable': false},
+            {'id': 3, 'name': 'chicken', 'selected': false, 'erasable': false},
+            {'id': 4, 'name': 'fish', 'selected': false, 'erasable': false},
+            {'id': 5, 'name': 'pasta', 'selected': true, 'erasable': false},
+            {'id': 6, 'name': 'potatoes', 'selected': false, 'erasable': false},
         ]
     });
+
+    const getNewId = () => {
+        let date = new Date();
+        return date.getTime();
+    }
     const ingredientsHandler = (newIngredient) => {
         const ingredients = [...ingredientsState.ingredients];
-        ingredients.push(newIngredient)
+        ingredients.push({
+            'id': getNewId(),
+            'name': newIngredient,
+            'selected': true,
+            'erasable': true
+        })
         setIngredientsState({
             ingredients: ingredients,
         });
@@ -47,7 +57,7 @@ const App = () => {
             })
     }
 
-    const toogleIngredientFilterHadler = (id) => {
+    const toogleIngredientFilterHandler = (id) => {
         const ingredientIndex = ingredientsState.ingredients.findIndex(ingredient => {
             return ingredient.id === id
         });
@@ -60,6 +70,27 @@ const App = () => {
 
         setIngredientsState({
             ingredients: ingredients,
+        });
+    }
+
+    const [ingredientFormState, setIngredientFormStateState] = useState({
+        formIngredient: ''
+    });
+
+    const ingredientFormChangeHandler = (event) => {
+        setIngredientFormStateState({
+            formIngredient: event.target.value
+        });
+    }
+
+    const ingredientFormAddHandler = () => {
+        ingredientsHandler(ingredientFormState.formIngredient);
+        ingredientFormClear();
+    }
+
+    const ingredientFormClear = () => {
+        setIngredientFormStateState({
+            formIngredient: ''
         });
     }
 
@@ -88,9 +119,13 @@ const App = () => {
             <Header/>
             <SearchForm
                 ingredients={ingredientsState.ingredients}
+                ingredientForm={ingredientFormState.formIngredient}
                 selectedFilters={ingredientsHandler}
                 click={getRecipesByIngredientsHandler}
-                toogle={toogleIngredientFilterHadler}
+                toogle={toogleIngredientFilterHandler}
+                changed={ingredientFormChangeHandler.bind(this)}
+                add={ingredientFormAddHandler}
+                clear={ingredientFormClear}
             />
             <RecipeList
                 show={modalHandler}
