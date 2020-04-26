@@ -4,8 +4,9 @@ import RecipeCard from "./RecipeCard/RecipeCard";
 
 const recipeList = (props) => {
     let recipes = null;
-    if(props.recipes){
-        recipes = props.recipes.map((recipe, index)=>{
+    let showMore = false;
+    if (props.recipes.length > 0) {
+        recipes = props.recipes.map((recipe, index) => {
             return (
                 <div className={styles.col6} key={`recipe-container-${index}`}>
                     <RecipeCard
@@ -16,6 +17,16 @@ const recipeList = (props) => {
                 </div>
             );
         });
+
+        showMore = (
+            <div className={`${styles.textCenter} ${styles.my3}`}>
+                <button
+                    className={`${styles.btn} ${styles.btnPrimary}`}
+                >
+                    <i className="fas fa-chevron-down"></i> Load more
+                </button>
+            </div>
+        );
     }
 
     return (
@@ -23,13 +34,7 @@ const recipeList = (props) => {
             <div className={styles.row}>
                 {recipes}
             </div>
-            <div className={`${styles.textCenter} ${styles.my3}`}>
-                <button
-                    className={`${styles.btn} ${styles.btnPrimary}`}
-                >
-                    Load more
-                </button>
-            </div>
+            {showMore}
         </div>
     );
 }
