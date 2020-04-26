@@ -5,6 +5,7 @@ const searchForm = (props) => {
 
     let ingredients = null;
     let selectedIngredients = null;
+    let disabledSearchBtn = true;
 
     if (props.ingredients) {
         const notSelected = props.ingredients.filter(ingredient => !ingredient.selected);
@@ -14,6 +15,9 @@ const searchForm = (props) => {
                 <span
                     className={`${styles.badge} ${styles.badgePill} ${styles.badgeSecondary} ${styles.mr1}`}
                     key={`filter-ingredient-${ingredient.name}-${index}`}
+                    onClick={e => {
+                        props.toogle(ingredient.id);
+                    }}
                 >
                     <i className="fas fa-plus"></i> {ingredient.name}
                 </span>
@@ -24,13 +28,18 @@ const searchForm = (props) => {
                 <span
                     className={`${styles.badge} ${styles.badgePill} ${styles.badgePrimary} ${styles.mr1}`}
                     key={`filter-ingredient-${ingredient.name}-${index}`}
+                    onClick={e => {
+                        props.toogle(ingredient.id);
+                    }}
                 >
-                    <i className="fas fa-plus"></i> {ingredient.name}
+                    <i className="fas fa-minus"></i> {ingredient.name}
                 </span>
             );
         });
     }
-
+    if(selectedIngredients.length > 0){
+        disabledSearchBtn = false;
+    }
     return (
         <div className={`${styles.SearchForm} ${styles.mb3}`}>
             <div className={styles.container}>
@@ -38,7 +47,7 @@ const searchForm = (props) => {
                     <div className={styles.cardBody}>
                         <h3>Recipe finder</h3>
                         <p>Search by main ingredients in my kitchen</p>
-                        <div className={styles.mb1}>
+                        <div className={styles.mb2}>
                             {selectedIngredients}
                         </div>
                         <div className={styles.mb2}>
@@ -60,6 +69,7 @@ const searchForm = (props) => {
                             onClick={e => {
                                 props.click();
                             }}
+                            disabled={disabledSearchBtn}
                         >
                             <i className="far fa-hand-point-down"></i> Get recipes!
                         </button>

@@ -10,13 +10,14 @@ const App = () => {
 
     // Ingredients filters
     const [ingredientsState, setIngredientsState] = useState({
+        //INGREDIENTS BY DEFAULT
         ingredients: [
-            {'name': 'eggs', 'selected': false},
-            {'name': 'meat', 'selected': true},
-            {'name': 'chicken', 'selected': false},
-            {'name': 'fish', 'selected': false},
-            {'name': 'pasta', 'selected': true},
-            {'name': 'potatoes', 'selected': false},
+            {'id': 1, 'name': 'eggs', 'selected': false},
+            {'id': 2, 'name': 'meat', 'selected': true},
+            {'id': 3, 'name': 'chicken', 'selected': false},
+            {'id': 4, 'name': 'fish', 'selected': false},
+            {'id': 5, 'name': 'pasta', 'selected': true},
+            {'id': 6, 'name': 'potatoes', 'selected': false},
         ]
     });
     const ingredientsHandler = (newIngredient) => {
@@ -46,6 +47,22 @@ const App = () => {
             })
     }
 
+    const toogleIngredientFilterHadler = (id) => {
+        const ingredientIndex = ingredientsState.ingredients.findIndex(ingredient => {
+            return ingredient.id === id
+        });
+        const ingredient = {
+            ...ingredientsState.ingredients[ingredientIndex]
+        };
+        ingredient.selected = !ingredient.selected;
+        const ingredients = [...ingredientsState.ingredients];
+        ingredients[ingredientIndex] = ingredient;
+
+        setIngredientsState({
+            ingredients: ingredients,
+        });
+    }
+
     const getRecipesByIngredientsHandler = () => {
         getRecipesByIngredients();
     }
@@ -73,6 +90,7 @@ const App = () => {
                 ingredients={ingredientsState.ingredients}
                 selectedFilters={ingredientsHandler}
                 click={getRecipesByIngredientsHandler}
+                toogle={toogleIngredientFilterHadler}
             />
             <RecipeList
                 show={modalHandler}
