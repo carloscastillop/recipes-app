@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import styles from './App.module.scss';
 import Header from '../components/Header/Header';
@@ -13,13 +13,17 @@ const App = () => {
         //INGREDIENTS BY DEFAULT
         ingredients: [
             {'id': 1, 'name': 'eggs', 'selected': false, 'erasable': false},
-            {'id': 2, 'name': 'meat', 'selected': true, 'erasable': false},
+            {'id': 2, 'name': 'meat', 'selected': false, 'erasable': false},
             {'id': 3, 'name': 'chicken', 'selected': false, 'erasable': false},
             {'id': 4, 'name': 'fish', 'selected': false, 'erasable': false},
-            {'id': 5, 'name': 'pasta', 'selected': true, 'erasable': false},
+            {'id': 5, 'name': 'pasta', 'selected': false, 'erasable': false},
             {'id': 6, 'name': 'potatoes', 'selected': false, 'erasable': false},
         ]
     });
+
+    useEffect(() => {
+        addIngredientsToStates();
+    }, []);
 
     const getNewId = () => {
         let date = new Date();
@@ -27,15 +31,67 @@ const App = () => {
     }
     const ingredientsHandler = (newIngredient) => {
         const ingredients = [...ingredientsState.ingredients];
-        ingredients.push({
+        const newIngredientObj = {
             'id': getNewId(),
             'name': newIngredient,
             'selected': true,
             'erasable': true
-        })
+        };
+        ingredients.push(newIngredientObj);
         setIngredientsState({
             ingredients: ingredients,
         });
+        addIngredientLocalStorage(newIngredientObj);
+    }
+
+    const addIngredientsToStates = () => {
+        const ingredientsStorage = getIngredientsLocalStorage();
+        const ingredients = [...ingredientsState.ingredients];
+        if (ingredientsStorage) {
+            ingredientsStorage.forEach((elem) => {
+                elem.selected = false;
+                ingredients.push(elem);
+            });
+            setIngredientsState({
+                ingredients: ingredients,
+            });
+        }
+    }
+
+    const deleteIngredientsStates = (ingredientId) => {
+        const ingredients = [...ingredientsState.ingredients];
+        const newIngredients = ingredients.filter(
+            ingredient => ingredient.id !== ingredientId
+            );
+        setIngredientsState({
+            ingredients: newIngredients,
+        });
+    }
+
+    const getIngredientsLocalStorage = () => {
+        const ingredients = JSON.parse(localStorage.getItem('myIngredients'));
+        return ingredients;
+    }
+
+    const addIngredientLocalStorage = (ingredient) => {
+        let ingredients = getIngredientsLocalStorage();
+        const ingredientList = [];
+        if (ingredients) {
+            ingredients.forEach((elem) => {
+                ingredientList.push(elem);
+            });
+        }
+        ingredientList.push(ingredient);
+        localStorage.setItem('myIngredients', JSON.stringify(ingredientList));
+    }
+
+    const removeIngredientLocalStorage = (ingredientId) => {
+        let ingredients = getIngredientsLocalStorage();
+        const test = ingredients.filter(
+            ingredient => ingredient.id !== ingredientId
+        );
+        deleteIngredientsStates(ingredientId);
+        localStorage.setItem('myIngredients', JSON.stringify(test));
     }
 
     const getRecipesByIngredients = () => {
@@ -50,7 +106,7 @@ const App = () => {
 
         axios.get(url)
             .then(res => {
-                console.log({'data':res.data.results})
+                console.log({'data': res.data.results})
                 setResultsState({
                     results: res.data.results
                 });
@@ -103,6 +159,22 @@ const App = () => {
         results: []
     });
 
+    //Edit Ingredients
+
+    const [editIngredientsState, setEditIngredientsState] = useState({
+        edit: false
+    });
+
+    const setEditIngredientsStateHandler = () => {
+        setEditIngredientsState({
+            edit: !editIngredientsState.edit
+        })
+    }
+
+    const deleteIngredientsStateHandler = (id) => {
+        removeIngredientLocalStorage(id);
+    }
+
     // Modal
     const [modalState, setModalState] = useState({
         show: false
@@ -126,6 +198,10 @@ const App = () => {
                 changed={ingredientFormChangeHandler.bind(this)}
                 add={ingredientFormAddHandler}
                 clear={ingredientFormClear}
+                remove={removeIngredientLocalStorage}
+                editStatus={editIngredientsState.edit}
+                edit={setEditIngredientsStateHandler}
+                deleteIngredient={deleteIngredientsStateHandler}
             />
             <RecipeList
                 show={modalHandler}

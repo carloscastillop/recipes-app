@@ -543,8 +543,8 @@ pre code {
 
 .container {
   width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: 7px;
+  padding-left: 7px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -575,8 +575,8 @@ pre code {
 
 .container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
   width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: 7px;
+  padding-left: 7px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -610,8 +610,8 @@ pre code {
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
+  margin-right: -7px;
+  margin-left: -7px;
 }
 
 .no-gutters {
@@ -633,8 +633,8 @@ pre code {
 .col-xl-auto {
   position: relative;
   width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: 7px;
+  padding-left: 7px;
 }
 
 .col {
@@ -7873,11 +7873,11 @@ button.bg-dark:focus {
   }
 }
 
-.float-left {
+.floatLeft {
   float: left !important;
 }
 
-.float-right {
+.floatRight {
   float: right !important;
 }
 

@@ -8,19 +8,57 @@ const searchForm = (props) => {
     let selectedIngredients = null;
     let disabledSearchBtn = true;
 
+    //Edit Ingredients BTN
+    let editIngredients = null;
+    if (props.ingredients.filter(ingredient => (ingredient.erasable &&  !ingredient.selected)).length > 0) {
+        editIngredients = (
+            <button
+                className={`${styles.btn} ${styles.btnOutlineSecondary} ${styles.btnSm} ${styles.floatRight}`}
+                onClick={e => {
+                    props.edit()
+                }}
+            >
+                { props.editStatus && <i className="fas fa-check"></i> }
+                { !props.editStatus && <i className="fas fa-pen"></i> }
+
+            </button>
+        );
+    }
+
     if (props.ingredients) {
         const notSelected = props.ingredients.filter(ingredient => !ingredient.selected);
         const selected = props.ingredients.filter(ingredient => ingredient.selected);
         ingredients = notSelected.map((ingredient, index) => {
+            let deleteIngredientEdit = '';
+            if (props.editStatus && ingredient.erasable) {
+                deleteIngredientEdit = styles.deleteIngredientEdit;
+            }
             return (
                 <span
-                    className={`${styles.ingredientBadge} ${styles.badge} ${styles.badgePill} ${styles.badgeSecondary} ${styles.mr1}`}
+                    className={`${deleteIngredientEdit} ${styles.ingredientBadge} ${styles.badge} ${styles.badgePill} ${styles.badgeSecondary} ${styles.mr1} ${styles.mb1}`}
                     key={`filter-ingredient-${ingredient.name}-${index}`}
                     onClick={e => {
-                        props.toogle(ingredient.id);
+                        if (!props.editStatus) {
+                            props.toogle(ingredient.id);
+                        }
                     }}
                 >
-                    <i className="fas fa-plus"></i> {ingredient.name}
+                    {
+                        (!props.editStatus || !ingredient.erasable) &&
+                        <i className={`fas fa-plus ${styles.mr1}`}></i>
+                    }
+                    {ingredient.name}
+                    {
+                        (props.editStatus && ingredient.erasable) &&
+                        <span
+                            className={styles.deleteIngredient}
+                            onClick={e => {
+                                props.deleteIngredient(ingredient.id)
+                            }}
+                        >
+                            <i className="fas fa-times"></i>
+                        </span>
+                    }
                 </span>
             );
         });
@@ -41,6 +79,7 @@ const searchForm = (props) => {
     if (selectedIngredients.length > 0) {
         disabledSearchBtn = false;
     }
+
     return (
         <div className={`${styles.SearchForm} ${styles.mb3}`}>
             <div className={styles.container}>
@@ -52,6 +91,7 @@ const searchForm = (props) => {
                             {selectedIngredients}
                         </div>
                         <div className={styles.mb3}>
+                            {editIngredients}
                             {ingredients}
                         </div>
 
