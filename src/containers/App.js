@@ -91,6 +91,12 @@ const App = () => {
             ingredient => ingredient.id !== ingredientId
         );
         deleteIngredientsStates(ingredientId);
+        console.log({test})
+        if(test.length === 0 ){
+            setEditIngredientsState({
+                edit: false
+            })
+        }
         localStorage.setItem('myIngredients', JSON.stringify(test));
     }
 
