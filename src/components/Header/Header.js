@@ -29,7 +29,7 @@ const header = (props) => {
             </header>
             <div className={`${styles.topHeader} ${styles.textCenter} ${styles.mb3}`}>
                 <img
-                    src='https://via.placeholder.com/800x400?text=A BANNER'
+                    src='https://via.placeholder.com/800x250?text=A BANNER'
                     className={styles.imgFluid}
                     alt='banner'
                 />

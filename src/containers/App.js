@@ -62,7 +62,7 @@ const App = () => {
         const ingredients = [...ingredientsState.ingredients];
         const newIngredients = ingredients.filter(
             ingredient => ingredient.id !== ingredientId
-            );
+        );
         setIngredientsState({
             ingredients: newIngredients,
         });
@@ -91,8 +91,7 @@ const App = () => {
             ingredient => ingredient.id !== ingredientId
         );
         deleteIngredientsStates(ingredientId);
-        console.log({test})
-        if(test.length === 0 ){
+        if (test.length === 0) {
             setEditIngredientsState({
                 edit: false
             })
