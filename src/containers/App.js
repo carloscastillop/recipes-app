@@ -163,6 +163,26 @@ const App = () => {
             });
     }
 
+    //Intolerances
+    const [intolerancesState, setIntolerancesState] = useState({
+        //INGREDIENTS BY DEFAULT
+        intolerances: [
+            { id: 'intolerance-1' ,name: 'Dairy', selected: false},
+            { id: 'intolerance-2' ,name: 'Egg', selected: false},
+            { id: 'intolerance-3' ,name: 'Gluten', selected: false},
+            { id: 'intolerance-4' ,name: 'Grain', selected: false},
+            { id: 'intolerance-5' ,name: 'Peanut', selected: false},
+            { id: 'intolerance-6' ,name: 'Seafood', selected: false},
+            { id: 'intolerance-7' ,name: 'Sesame', selected: false},
+            { id: 'intolerance-8' ,name: 'Shellfish', selected: false},
+            { id: 'intolerance-9' ,name: 'Soy', selected: false},
+            { id: 'intolerance-10' ,name: 'Sulfite', selected: false},
+            { id: 'intolerance-11' ,name: 'Tree Nut', selected: false},
+            { id: 'intolerance-12' ,name: 'Wheat', selected: false},
+        ]
+    });
+
+
     //form
     const toogleIngredientFilterHandler = (id) => {
         const ingredientIndex = ingredientsState.ingredients.findIndex(ingredient => {
@@ -279,6 +299,7 @@ const App = () => {
                 edit={setEditIngredientsStateHandler}
                 deleteIngredient={deleteIngredientsStateHandler}
                 paginator={resultsState.paginator}
+                intolerances={intolerancesState.intolerances}
             />
             <RecipeList
                 show={modalHandler}
