@@ -116,7 +116,10 @@ const App = () => {
         const number = resultsState.paginator.number;
         const offset = resultsState.paginator.offset;
         const apiKey = consts.apiKey;
-        url = `${url}?query=${query.join("+")}&number=${number}&apiKey=${apiKey}&offset=${offset}`
+        const intolerances = intolerancesState.intolerances
+            .filter(intolerance => intolerance.selected)
+            .map(function(intolerance) { return intolerance.name; });;
+url = `${url}?query=${query.join("+")}&intolerances=${intolerances.join("+")}&number=${number}&apiKey=${apiKey}&offset=${offset}`
 
         axios.get(url)
             .then(res => {
@@ -163,9 +166,8 @@ const App = () => {
             });
     }
 
-    //Intolerances
+    //Intolerance's
     const [intolerancesState, setIntolerancesState] = useState({
-        //INGREDIENTS BY DEFAULT
         intolerances: [
             { id: 'intolerance-1' ,name: 'Dairy', selected: false},
             { id: 'intolerance-2' ,name: 'Egg', selected: false},
@@ -181,6 +183,31 @@ const App = () => {
             { id: 'intolerance-12' ,name: 'Wheat', selected: false},
         ]
     });
+
+    const toogleIntoleranceFilterHandler = (id) => {
+        const intoleranceIndex = intolerancesState.intolerances.findIndex(intolerance => {
+            return intolerance.id === id
+        });
+        const intolerance = {
+            ...intolerancesState.intolerances[intoleranceIndex]
+        };
+        const intolerances = [...intolerancesState.intolerances];
+
+        intolerance.selected = !intolerance.selected;
+        intolerances[intoleranceIndex] = intolerance;
+
+        setIntolerancesState({
+            intolerances: intolerances,
+        });
+        clearResults();
+    }
+
+    const intolerancesHandler = (id) => {
+        toogleIntoleranceFilterHandler(id)
+
+
+        //clearResults();
+    }
 
 
     //form
@@ -300,6 +327,7 @@ const App = () => {
                 deleteIngredient={deleteIngredientsStateHandler}
                 paginator={resultsState.paginator}
                 intolerances={intolerancesState.intolerances}
+                intolerancesToogle={intolerancesHandler}
             />
             <RecipeList
                 show={modalHandler}

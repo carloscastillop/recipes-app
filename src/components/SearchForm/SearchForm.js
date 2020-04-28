@@ -108,15 +108,24 @@ const searchForm = (props) => {
 
     const intolerances = props.intolerances.map((intolerance) => {
         return (
-            <div className={styles.colSm6}>
-                <div className={`${styles.customControl} ${styles.customSwitch}`}>
+            <div
+                key={`intolerance-${intolerance.id}`}
+                className={`${styles.col6} ${styles.colSm4} ${styles.colSm4} ${styles.mb2}`}
+            >
+                <div
+                    className={`${styles.customControl} ${styles.customSwitch}`}
+                >
                     <input
                         type="checkbox"
                         className={styles.customControlInput}
-                        id={intolerance.id}/>
+                        id={intolerance.id}
+                    />
                     <label
                         className={styles.customControlLabel}
                         htmlFor={intolerance.id}
+                        onClick={e => {
+                            props.intolerancesToogle(intolerance.id)
+                        }}
                     >
                         {intolerance.name}
                     </label>
