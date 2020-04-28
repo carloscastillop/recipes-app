@@ -1,5 +1,7 @@
 import React from "react";
 import styles from './Modal.module.scss';
+import ReactHtmlParser from 'react-html-parser';
+import RecipeLabels from "../RecipeList/RecipeCard/RecipeLabels/RecipeLabels";
 
 const Modal = (props) => {
     if (!props.show) {
@@ -28,6 +30,24 @@ const Modal = (props) => {
 
                         <div className={styles.modalBody}>
                             {props.children}
+                            {
+                                props.isLoading &&
+                                    <div className={`${styles.textCenter} ${styles.my3}`}>
+                                        <i className="fas fa-circle-notch fa-spin fa-2x"></i>
+                                    </div>
+                            }
+                            {
+                                (props.recipe && !props.isLoading)  &&
+                                <div>
+                                    <div className={styles.my3}>
+                                        <RecipeLabels
+                                            readyInMinutes={props.recipe.readyInMinutes}
+                                            servings={props.recipe.servings}
+                                        />
+                                    </div>
+                                    {ReactHtmlParser(props.recipe.instructions)}
+                                </div>
+                            }
                         </div>
 
                         <div className={styles.modalFooter}>

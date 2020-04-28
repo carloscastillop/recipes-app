@@ -9,6 +9,12 @@ import consts from '../constants';
 
 const App = () => {
 
+    // recipe page
+    const [recipeState, setRecipeState] = useState({
+        //INGREDIENTS BY DEFAULT
+        recipe: {},
+        isLoading: false
+    });
     // Ingredients filters
     const [ingredientsState, setIngredientsState] = useState({
         //INGREDIENTS BY DEFAULT
@@ -102,14 +108,14 @@ const App = () => {
     }
 
     const getRecipesByIngredients = (paginate = false) => {
-        let url = consts.url;
+        let url = consts.url+'/recipes/search';
         const selectedIngredients = ingredientsState.ingredients.filter(ingredient => ingredient.selected);
         let query = selectedIngredients.map(ingredient => {
             return ingredient.name;
         })
         const number = resultsState.paginator.number;
         const offset = resultsState.paginator.offset;
-        const apiKey = '2e996ea46fbb4cbc86f9b823ff687725';
+        const apiKey = consts.apiKey;
         url = `${url}?query=${query.join("+")}&number=${number}&apiKey=${apiKey}&offset=${offset}`
 
         axios.get(url)
@@ -120,9 +126,9 @@ const App = () => {
                 const offset = data.offset + 1;
                 let page = null;
                 const pages = Math.ceil(data.totalResults / data.number);
-                if(paginate){
+                if (paginate) {
                     page = [...currentPage, ...newPage]
-                }else{
+                } else {
                     page = [...newPage];
                 }
                 setResultsState({
@@ -137,6 +143,24 @@ const App = () => {
                     }
                 });
             })
+    }
+
+    const getRecipeByd = (id) => {
+        let url = consts.url;
+        const apiKey = consts.apiKey;
+        url = `${url}/recipes/${id}/information?apiKey=${apiKey}`
+        setRecipeState({
+            isLoading: true,
+        });
+        axios.get(url)
+            .then(res => {
+                const data = res.data;
+                console.log(data)
+                setRecipeState({
+                    recipe: data,
+                    isLoading: false
+                });
+            });
     }
 
     //form
@@ -228,13 +252,13 @@ const App = () => {
     // Modal
     const [modalState, setModalState] = useState({
         show: false,
-        content : ('empty')
+        content: ('empty')
     });
 
     const modalHandler = (content = null, option = true) => {
         setModalState({
             show: option,
-            content: (content)? content : modalState.content
+            content: (content) ? content : modalState.content
         });
     }
 
@@ -261,11 +285,14 @@ const App = () => {
                 recipes={resultsState.results}
                 paginator={resultsState.paginator}
                 getMore={getRecipesByIngredients}
+                getRecipe={getRecipeByd}
             />
             <Modal
                 show={modalState.show}
                 close={modalHandler}
                 title={'A recipe'}
+                recipe={recipeState.recipe}
+                isLoading={recipeState.isLoading}
             >
                 {modalState.content}
             </Modal>

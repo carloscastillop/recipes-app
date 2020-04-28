@@ -1,5 +1,7 @@
 import React from "react";
+import RecipeLabels from './RecipeLabels/RecipeLabels'
 import styles from "./RecipeCard.module.scss";
+import 'animate.css';
 
 const RecipeCard = (props) => {
     const recipeName = props.recipe.title;
@@ -11,31 +13,34 @@ const RecipeCard = (props) => {
                 className={styles.imgFluid}
                 alt={props.recipe.title}
             />
-            <h2>{recipeName}</h2>
+            <h2
+                className={`${styles.my3}`}
+            >
+                {recipeName}
+            </h2>
         </div>
     );
+    const getRecipeHandler = (recipe) => {
+        props.getRecipe(recipe.id);
+        props.show(recipeContent, true);
+    }
+
     return (
-        <div className={`${styles.card} ${styles.RecipeCard} ${styles.h100}`}>
+        <div className={`${styles.card} ${styles.RecipeCard} ${styles.h100} animated fadeIn`}>
             <img
                 src={`https://spoonacular.com/recipeImages/${props.recipe.id}-556x370.jpg`}
                 className={styles.cardImgTop}
                 alt={props.recipe.title}
                 onClick={e => {
-                    props.show(recipeContent, true);
+                    getRecipeHandler(props.recipe)
                 }}
             />
             <div className={`${styles.cardBody} ${styles.pb0}`}>
                 <div className={`${styles.mb2}`}>
-                    <span
-                        className={`${styles.badge} ${styles.badgeLight} ${styles.mr1}`}
-                    >
-                        <i className="far fa-clock"></i> {props.recipe.readyInMinutes}
-                    </span>
-                    <span
-                        className={`${styles.badge} ${styles.badgeLight} ${styles.mr1}`}
-                    >
-                        <i className="fas fa-utensils"></i> {props.recipe.servings}
-                    </span>
+                    <RecipeLabels
+                        readyInMinutes={props.recipe.readyInMinutes}
+                        servings={props.recipe.servings}
+                    />
                 </div>
                 <h5 className={`${styles.cardTitle} ${styles.h6}`}>
                     {props.recipe.title}
@@ -45,7 +50,7 @@ const RecipeCard = (props) => {
                 <button
                     className={`${styles.btn} ${styles.btnPrimary}`}
                     onClick={e => {
-                        props.show(recipeContent, true);
+                        getRecipeHandler(props.recipe)
                     }}
                 >
                     View

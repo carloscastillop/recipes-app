@@ -1,5 +1,6 @@
 import React from "react";
 import styles from './SearchForm.module.scss';
+import 'animate.css'
 import AddIngredient from './AddIngredient/AddIngredient';
 
 const searchForm = (props) => {
@@ -7,6 +8,7 @@ const searchForm = (props) => {
     let ingredients = null;
     let selectedIngredients = null;
     let disabledSearchBtn = true;
+    let disabledSearchBtnCss = '';
 
     //Edit Ingredients BTN
     let editIngredients = null;
@@ -78,12 +80,13 @@ const searchForm = (props) => {
     }
     if (selectedIngredients.length > 0) {
         disabledSearchBtn = false;
+        disabledSearchBtnCss = 'animated pulse';
     }
 
     let searchBtn = (
         <button
             type="button"
-            className={`${styles.btn} ${styles.btnOutlinePrimary} ${styles.btnLg}`}
+            className={`${styles.btn} ${styles.btnOutlinePrimary} ${styles.btnLg} ${disabledSearchBtnCss}`}
             onClick={e => {
                 props.click();
             }}
@@ -96,7 +99,7 @@ const searchForm = (props) => {
     if (props.paginator.totalResults > 0) {
         searchBtn = (
             <div className={styles.textCenter}>
-                <h5 className={`${styles.textMuted} ${styles.mb3}`}>
+                <h5 className={`${styles.textMuted} ${styles.my3} animated bounce`}>
                     {props.paginator.totalResults} recipes found!
                 </h5>
             </div>
@@ -131,16 +134,18 @@ const searchForm = (props) => {
                                 <input
                                     type="checkbox"
                                     className={styles.customControlInput}
-                                    id="customSwitch1"/>
+                                    id="glutenFreeSwitch"/>
                                 <label
                                     className={styles.customControlLabel}
-                                    htmlFor="customSwitch1"
-                                >Toggle this
-                                    switch element</label>
+                                    htmlFor="glutenFreeSwitch"
+                                >
+                                    Gluten free <span className={styles.small}>(test)</span>
+                                </label>
                             </div>
                         </div>
                     </div>
-                    <div className={`${styles.cardFooter} ${styles.textCenter} ${styles.bgWhite}`}>
+                    <div
+                        className={`${styles.cardFooter} ${styles.textCenter} ${styles.bgWhite}`}>
                         {searchBtn}
                     </div>
                 </div>

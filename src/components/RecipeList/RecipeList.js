@@ -1,5 +1,6 @@
 import React from "react";
 import styles from './RecipesList.module.scss';
+import 'animate.css';
 import RecipeCard from "./RecipeCard/RecipeCard";
 
 const recipeList = (props) => {
@@ -17,6 +18,7 @@ const recipeList = (props) => {
                         key={`recipe-${recipe.id}`}
                         recipe={recipe}
                         show={props.show}
+                        getRecipe={props.getRecipe}
                     />
                 </div>
             );
@@ -41,7 +43,7 @@ const recipeList = (props) => {
             );
             showMoreBtn = (
                 <button
-                    className={`${styles.btn} ${styles.btnPrimary}`}
+                    className={`${styles.btn} ${styles.btnPrimary} animated bounce`}
                     onClick={e => {
                         props.getMore(true);
                     }}
