@@ -5210,17 +5210,17 @@ a.badge-danger:focus, a.badge-danger.focus {
   box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.5);
 }
 
-.badge-light {
+.badgeLight {
   color: #212529;
   background-color: #f8f9fa;
 }
 
-a.badge-light:hover, a.badge-light:focus {
+a.badgeLight:hover, a.badgeLight:focus {
   color: #212529;
   background-color: #dae0e5;
 }
 
-a.badge-light:focus, a.badge-light.focus {
+a.badgeLight:focus, a.badgeLight.focus {
   outline: 0;
   box-shadow: 0 0 0 0.2rem rgba(248, 249, 250, 0.5);
 }
@@ -6804,7 +6804,7 @@ button.bg-dark:focus {
   border: 0 !important;
 }
 
-.border-top-0 {
+.borderTop0 {
   border-top: 0 !important;
 }
 
@@ -8258,7 +8258,7 @@ button.bg-dark:focus {
   padding-right: 0 !important;
 }
 
-.pb-0,
+.pb0,
 .py0 {
   padding-bottom: 0 !important;
 }
@@ -8282,7 +8282,7 @@ button.bg-dark:focus {
   padding-right: 0.25rem !important;
 }
 
-.pb-1,
+.pb1,
 .py1 {
   padding-bottom: 0.25rem !important;
 }
@@ -8306,7 +8306,7 @@ button.bg-dark:focus {
   padding-right: 0.5rem !important;
 }
 
-.pb-2,
+.pb2,
 .py2 {
   padding-bottom: 0.5rem !important;
 }
@@ -8330,7 +8330,7 @@ button.bg-dark:focus {
   padding-right: 1rem !important;
 }
 
-.pb-3,
+.pb3,
 .py3 {
   padding-bottom: 1rem !important;
 }
@@ -8354,7 +8354,7 @@ button.bg-dark:focus {
   padding-right: 1.5rem !important;
 }
 
-.pb-4,
+.pb4,
 .py4 {
   padding-bottom: 1.5rem !important;
 }
@@ -8378,7 +8378,7 @@ button.bg-dark:focus {
   padding-right: 3rem !important;
 }
 
-.pb-5,
+.pb5,
 .py5 {
   padding-bottom: 3rem !important;
 }
@@ -9916,11 +9916,11 @@ button.bg-dark:focus {
   font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
 }
 
-.text-justify {
+.textJustify {
   text-align: justify !important;
 }
 
-.text-wrap {
+.textWrap {
   white-space: normal !important;
 }
 
@@ -9934,11 +9934,11 @@ button.bg-dark:focus {
   white-space: nowrap;
 }
 
-.text-left {
+.textLeft {
   text-align: left !important;
 }
 
-.text-right {
+.textRight {
   text-align: right !important;
 }
 
@@ -10098,11 +10098,11 @@ a.text-dark:hover, a.text-dark:focus {
   color: #121416 !important;
 }
 
-.text-body {
+.textBody {
   color: #212529 !important;
 }
 
-.text-muted {
+.textMuted {
   color: #6c757d !important;
 }
 

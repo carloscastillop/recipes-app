@@ -5,6 +5,7 @@ import Header from '../components/Header/Header';
 import SearchForm from '../components/SearchForm/SearchForm';
 import RecipeList from '../components/RecipeList/RecipeList';
 import Modal from "../components/Modal/Modal";
+import consts from '../constants';
 
 const App = () => {
 
@@ -99,25 +100,45 @@ const App = () => {
         localStorage.setItem('myIngredients', JSON.stringify(test));
     }
 
-    const getRecipesByIngredients = () => {
-        let url = 'https://api.spoonacular.com/recipes/search';
+    const getRecipesByIngredients = (paginate = false) => {
+        let url = consts.url;
         const selectedIngredients = ingredientsState.ingredients.filter(ingredient => ingredient.selected);
         let query = selectedIngredients.map(ingredient => {
             return ingredient.name;
         })
-        const number = 12;
+        const number = resultsState.paginator.number;
+        const offset = resultsState.paginator.offset;
         const apiKey = '2e996ea46fbb4cbc86f9b823ff687725';
-        url = `${url}?query=${query.join("+")}&number=${number}&apiKey=${apiKey}`
+        url = `${url}?query=${query.join("+")}&number=${number}&apiKey=${apiKey}&offset=${offset}`
 
         axios.get(url)
             .then(res => {
-                console.log({'data': res.data.results})
+                const data = res.data;
+                const newPage = data.results;
+                const currentPage = [...resultsState.results];
+                const offset = data.offset + 1;
+                let page = null;
+                const pages = Math.ceil(data.totalResults / data.number);
+                if(paginate){
+                    page = [...currentPage, ...newPage]
+                }else{
+                    page = [...newPage];
+                }
                 setResultsState({
-                    results: res.data.results
+                    results: page,
+                    paginator: {
+                        offset: offset,
+                        number: data.number,
+                        totalResults: data.totalResults,
+                        page: data.offset + 1,
+                        pages: pages,
+                        displaying: offset * data.number
+                    }
                 });
             })
     }
 
+    //form
     const toogleIngredientFilterHandler = (id) => {
         const ingredientIndex = ingredientsState.ingredients.findIndex(ingredient => {
             return ingredient.id === id
@@ -125,8 +146,9 @@ const App = () => {
         const ingredient = {
             ...ingredientsState.ingredients[ingredientIndex]
         };
-        ingredient.selected = !ingredient.selected;
         const ingredients = [...ingredientsState.ingredients];
+
+        ingredient.selected = !ingredient.selected;
         ingredients[ingredientIndex] = ingredient;
 
         setIngredientsState({
@@ -161,11 +183,18 @@ const App = () => {
 
     // Recipe results
     const [resultsState, setResultsState] = useState({
-        results: []
+        results: [],
+        paginator: {
+            offset: 0,
+            number: consts.pagination.number,
+            totalResults: null,
+            page: null,
+            pages: null,
+            displaying: null
+        }
     });
 
     //Edit Ingredients
-
     const [editIngredientsState, setEditIngredientsState] = useState({
         edit: false
     });
@@ -211,6 +240,8 @@ const App = () => {
             <RecipeList
                 show={modalHandler}
                 recipes={resultsState.results}
+                paginator={resultsState.paginator}
+                getMore={getRecipesByIngredients}
             />
             <Modal
                 show={modalState.show}
