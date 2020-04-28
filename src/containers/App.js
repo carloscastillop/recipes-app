@@ -227,12 +227,14 @@ const App = () => {
 
     // Modal
     const [modalState, setModalState] = useState({
-        show: false
+        show: false,
+        content : ('empty')
     });
 
-    const modalHandler = (option = true) => {
+    const modalHandler = (content = null, option = true) => {
         setModalState({
             show: option,
+            content: (content)? content : modalState.content
         });
     }
 
@@ -252,6 +254,7 @@ const App = () => {
                 editStatus={editIngredientsState.edit}
                 edit={setEditIngredientsStateHandler}
                 deleteIngredient={deleteIngredientsStateHandler}
+                paginator={resultsState.paginator}
             />
             <RecipeList
                 show={modalHandler}
@@ -264,22 +267,7 @@ const App = () => {
                 close={modalHandler}
                 title={'A recipe'}
             >
-                <img
-                    src='https://via.placeholder.com/800x400?text=A BANNER'
-                    className={styles.imgFluid}
-                    alt='banner'
-                />
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam dolor quam, rutrum eget ipsum et,
-                    porttitor molestie elit. Aenean felis velit, blandit vitae bibendum at, mattis eu turpis. Nullam
-                    vitae nisl eget lectus pellentesque varius ut ac eros. Donec a elit hendrerit, volutpat justo vitae,
-                    pellentesque enim. Duis pulvinar sapien odio, quis venenatis sem rhoncus ac. Vestibulum ante ipsum
-                    primis in faucibus orci luctus et ultrices posuere cubilia curae; Proin nec nunc venenatis,
-                    vestibulum eros in, viverra urna. In hac habitasse platea dictumst. Mauris in auctor massa, id
-                    posuere arcu. Quisque rhoncus vehicula nisl, ut facilisis velit vestibulum sollicitudin. Mauris ac
-                    augue commodo, auctor arcu non, sollicitudin risus. Mauris vitae elit ac lectus varius condimentum.
-                    Nulla imperdiet fringilla consectetur. Donec vehicula odio ac porttitor sagittis.
-                </p>
+                {modalState.content}
             </Modal>
         </div>
     );

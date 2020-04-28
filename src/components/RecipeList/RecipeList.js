@@ -70,14 +70,6 @@ const recipeList = (props) => {
 
     return (
         <div className={styles.container}>
-            {
-                props.paginator.totalResults > 0 &&
-                <div className={styles.textCenter}>
-                    <h5 className={`${styles.textMuted} ${styles.mb3}`}>
-                        {props.paginator.totalResults} recipes found!
-                    </h5>
-                </div>
-            }
             <div className={styles.row}>
                 {recipes}
             </div>

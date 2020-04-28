@@ -10,7 +10,7 @@ const searchForm = (props) => {
 
     //Edit Ingredients BTN
     let editIngredients = null;
-    if (props.ingredients.filter(ingredient => (ingredient.erasable &&  !ingredient.selected)).length > 0) {
+    if (props.ingredients.filter(ingredient => (ingredient.erasable && !ingredient.selected)).length > 0) {
         editIngredients = (
             <button
                 className={`${styles.btn} ${styles.btnOutlineSecondary} ${styles.btnSm} ${styles.floatRight}`}
@@ -18,8 +18,8 @@ const searchForm = (props) => {
                     props.edit()
                 }}
             >
-                { props.editStatus && <i className="fas fa-check"></i> }
-                { !props.editStatus && <i className="fas fa-pen"></i> }
+                {props.editStatus && <i className="fas fa-check"></i>}
+                {!props.editStatus && <i className="fas fa-pen"></i>}
 
             </button>
         );
@@ -80,13 +80,36 @@ const searchForm = (props) => {
         disabledSearchBtn = false;
     }
 
+    let searchBtn = (
+        <button
+            type="button"
+            className={`${styles.btn} ${styles.btnOutlinePrimary} ${styles.btnLg}`}
+            onClick={e => {
+                props.click();
+            }}
+            disabled={disabledSearchBtn}
+        >
+            <i className="far fa-hand-point-down"></i> Get recipes!
+        </button>
+    );
+
+    if (props.paginator.totalResults > 0) {
+        searchBtn = (
+            <div className={styles.textCenter}>
+                <h5 className={`${styles.textMuted} ${styles.mb3}`}>
+                    {props.paginator.totalResults} recipes found!
+                </h5>
+            </div>
+        );
+    }
+
     return (
         <div className={`${styles.SearchForm} ${styles.mb3}`}>
             <div className={styles.container}>
                 <div className={styles.card}>
                     <div className={styles.cardBody}>
-                        <h3>Recipe finder</h3>
-                        <p>Search by main ingredients in my kitchen</p>
+                        <h3><i className="fas fa-utensils"></i> My pantry</h3>
+                        <p>Select some ingredients you have to find some recipes ideas.</p>
                         <div className={styles.mb3}>
                             {selectedIngredients}
                         </div>
@@ -118,16 +141,7 @@ const searchForm = (props) => {
                         </div>
                     </div>
                     <div className={`${styles.cardFooter} ${styles.textCenter} ${styles.bgWhite}`}>
-                        <button
-                            type="button"
-                            className={`${styles.btn} ${styles.btnOutlinePrimary} ${styles.btnLg}`}
-                            onClick={e => {
-                                props.click();
-                            }}
-                            disabled={disabledSearchBtn}
-                        >
-                            <i className="far fa-hand-point-down"></i> Get recipes!
-                        </button>
+                        {searchBtn}
                     </div>
                 </div>
             </div>

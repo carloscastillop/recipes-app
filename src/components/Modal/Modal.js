@@ -9,7 +9,7 @@ const Modal = (props) => {
         <React.Fragment>
             <div className={`${styles.modal} ${styles.show}`}>
                 <div
-                    className={`${styles.modalDialog} ${styles.modalDialogScrollable} ${styles.shadow}`}
+                    className={`${styles.modalDialog} ${styles.modalLg} ${styles.modalDialogScrollable} ${styles.shadow}`}
                     role="document"
                 >
                     <div className={styles.modalContent}>
@@ -20,14 +20,16 @@ const Modal = (props) => {
                             <button
                                 type="button"
                                 className={styles.close}
-                                onClick={props.close.bind(this, false)}
+                                onClick={props.close.bind(this, '', false)}
                                 aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
+
                         <div className={styles.modalBody}>
                             {props.children}
                         </div>
+
                         <div className={styles.modalFooter}>
                             <button
                                 type="button"
