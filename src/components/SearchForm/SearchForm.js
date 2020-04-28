@@ -108,7 +108,7 @@ const searchForm = (props) => {
 
     const intolerances = props.intolerances.map((intolerance) => {
         return (
-            <div>
+            <div className={styles.colSm6}>
                 <div className={`${styles.customControl} ${styles.customSwitch}`}>
                     <input
                         type="checkbox"
@@ -118,7 +118,7 @@ const searchForm = (props) => {
                         className={styles.customControlLabel}
                         htmlFor={intolerance.id}
                     >
-                        {intolerance.name} <span className={styles.small}>(test)</span>
+                        {intolerance.name}
                     </label>
                 </div>
             </div>
@@ -148,7 +148,10 @@ const searchForm = (props) => {
                         />
 
                         {/*Switch Example*/}
-                        {intolerances}
+                        <span>Intolerances <span className={styles.small}>(test)</span></span>
+                        <div className={styles.row}>
+                            {intolerances}
+                        </div>
                     </div>
                     <div
                         className={`${styles.cardFooter} ${styles.textCenter} ${styles.bgWhite}`}>
