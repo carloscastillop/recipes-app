@@ -43,6 +43,7 @@ const App = () => {
             ingredients: ingredients,
         });
         addIngredientLocalStorage(newIngredientObj);
+        clearResults();
     }
 
     const addIngredientsToStates = () => {
@@ -154,6 +155,7 @@ const App = () => {
         setIngredientsState({
             ingredients: ingredients,
         });
+        clearResults();
     }
 
     const [ingredientFormState, setIngredientFormStateState] = useState({
@@ -193,6 +195,20 @@ const App = () => {
             displaying: null
         }
     });
+
+    const clearResults = () => {
+        setResultsState({
+            results: [],
+            paginator: {
+                offset: 0,
+                number: consts.pagination.number,
+                totalResults: null,
+                page: null,
+                pages: null,
+                displaying: null
+            }
+        });
+    }
 
     //Edit Ingredients
     const [editIngredientsState, setEditIngredientsState] = useState({

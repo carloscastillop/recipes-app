@@ -28,12 +28,12 @@ const recipeList = (props) => {
                     <i className="fas fa-utensils"></i>
                 </div>
                 <p>
-                    Total of {props.paginator.totalResults} recipes found.
+                    Total of {props.paginator.totalResults} recipes.
                 </p>
             </div>
         );
         let showMoreBtn = '';
-        if(props.paginator.page < props.paginator.pages){
+        if (props.paginator.page < props.paginator.pages) {
             showMoreText = (
                 <p className={`${styles.textMuted} ${styles.small}`}>
                     displaying {props.paginator.displaying} from {props.paginator.totalResults} recipes.
@@ -58,9 +58,26 @@ const recipeList = (props) => {
             </div>
         );
     }
+    if (props.paginator.totalResults === 0) {
+        recipes = (
+            <div className={styles.col}>
+                <p className={`${styles.textCenter}`}>
+                    Sorry no results
+                </p>
+            </div>
+        );
+    }
 
     return (
         <div className={styles.container}>
+            {
+                props.paginator.totalResults > 0 &&
+                <div className={styles.textCenter}>
+                    <h5 className={`${styles.textMuted} ${styles.mb3}`}>
+                        {props.paginator.totalResults} recipes found!
+                    </h5>
+                </div>
+            }
             <div className={styles.row}>
                 {recipes}
             </div>
