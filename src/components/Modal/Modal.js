@@ -43,6 +43,7 @@ const Modal = (props) => {
                                         <RecipeLabels
                                             readyInMinutes={props.recipe.readyInMinutes}
                                             servings={props.recipe.servings}
+                                            cuisines={props.recipe.cuisines}
                                         />
                                     </div>
                                     {ReactHtmlParser(props.recipe.instructions)}
@@ -74,6 +75,6 @@ const Modal = (props) => {
             ></div>
         </React.Fragment>
     );
-}
+};
 
 export default Modal;
