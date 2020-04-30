@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/recipes-app/static/css/main.ed59c481.chunk.css",
-    "main.js": "/recipes-app/static/js/main.45148a9e.chunk.js",
-    "main.js.map": "/recipes-app/static/js/main.45148a9e.chunk.js.map",
+    "main.css": "/recipes-app/static/css/main.c6c45425.chunk.css",
+    "main.js": "/recipes-app/static/js/main.40e5a3d3.chunk.js",
+    "main.js.map": "/recipes-app/static/js/main.40e5a3d3.chunk.js.map",
     "runtime-main.js": "/recipes-app/static/js/runtime-main.3ca22642.js",
     "runtime-main.js.map": "/recipes-app/static/js/runtime-main.3ca22642.js.map",
     "static/css/2.ad458773.chunk.css": "/recipes-app/static/css/2.ad458773.chunk.css",
-    "static/js/2.92d05ce9.chunk.js": "/recipes-app/static/js/2.92d05ce9.chunk.js",
-    "static/js/2.92d05ce9.chunk.js.map": "/recipes-app/static/js/2.92d05ce9.chunk.js.map",
+    "static/js/2.aa882819.chunk.js": "/recipes-app/static/js/2.aa882819.chunk.js",
+    "static/js/2.aa882819.chunk.js.map": "/recipes-app/static/js/2.aa882819.chunk.js.map",
     "index.html": "/recipes-app/index.html",
-    "precache-manifest.97b2b622af673e7fdbb291058e05cba6.js": "/recipes-app/precache-manifest.97b2b622af673e7fdbb291058e05cba6.js",
+    "precache-manifest.cdde045ac0e6775ec2896e902bc599b9.js": "/recipes-app/precache-manifest.cdde045ac0e6775ec2896e902bc599b9.js",
     "service-worker.js": "/recipes-app/service-worker.js",
     "static/css/2.ad458773.chunk.css.map": "/recipes-app/static/css/2.ad458773.chunk.css.map",
-    "static/css/main.ed59c481.chunk.css.map": "/recipes-app/static/css/main.ed59c481.chunk.css.map",
-    "static/js/2.92d05ce9.chunk.js.LICENSE.txt": "/recipes-app/static/js/2.92d05ce9.chunk.js.LICENSE.txt"
+    "static/css/main.c6c45425.chunk.css.map": "/recipes-app/static/css/main.c6c45425.chunk.css.map",
+    "static/js/2.aa882819.chunk.js.LICENSE.txt": "/recipes-app/static/js/2.aa882819.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.3ca22642.js",
     "static/css/2.ad458773.chunk.css",
-    "static/js/2.92d05ce9.chunk.js",
-    "static/css/main.ed59c481.chunk.css",
-    "static/js/main.45148a9e.chunk.js"
+    "static/js/2.aa882819.chunk.js",
+    "static/css/main.c6c45425.chunk.css",
+    "static/js/main.40e5a3d3.chunk.js"
   ]
 }
