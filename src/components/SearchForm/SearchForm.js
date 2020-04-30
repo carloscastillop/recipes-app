@@ -96,11 +96,11 @@ const searchForm = (props) => {
         </button>
     );
 
-    if (props.paginator.totalResults > 0) {
+    if (props.results.results && props.results.paginator.totalResults > 0) {
         searchBtn = (
             <div className={styles.textCenter}>
                 <h5 className={`${styles.textMuted} ${styles.my3} animated bounce`}>
-                    {props.paginator.totalResults} recipes found!
+                    {props.results.paginator.totalResults} recipes found!
                 </h5>
             </div>
         );

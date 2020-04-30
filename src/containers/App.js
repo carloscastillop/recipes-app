@@ -27,6 +27,39 @@ const App = () => {
             {'id': 6, 'name': 'potatoes', 'selected': false, 'erasable': false},
         ]
     });
+    const [resultsState, setResultsState] = useState({
+        results: [],
+        paginator: {
+            offset: 0,
+            number: constants.pagination.number,
+            totalResults: null,
+            page: null,
+            pages: null,
+            displaying: null
+        },
+        isLoading: false
+    });
+
+    const [ingredientFormState, setIngredientFormStateState] = useState({
+        formIngredient: ''
+    });
+
+    const [intolerancesState, setIntolerancesState] = useState({
+        intolerances: [
+            { id: 'intolerance-1' ,name: 'Dairy', selected: false},
+            { id: 'intolerance-2' ,name: 'Egg', selected: false},
+            { id: 'intolerance-3' ,name: 'Gluten', selected: false},
+            { id: 'intolerance-4' ,name: 'Grain', selected: false},
+            { id: 'intolerance-5' ,name: 'Peanut', selected: false},
+            { id: 'intolerance-6' ,name: 'Seafood', selected: false},
+            { id: 'intolerance-7' ,name: 'Sesame', selected: false},
+            { id: 'intolerance-8' ,name: 'Shellfish', selected: false},
+            { id: 'intolerance-9' ,name: 'Soy', selected: false},
+            { id: 'intolerance-10' ,name: 'Sulfite', selected: false},
+            { id: 'intolerance-11' ,name: 'Tree Nut', selected: false},
+            { id: 'intolerance-12' ,name: 'Wheat', selected: false},
+        ]
+    });
 
     useEffect(() => {
         addIngredientsToStates();
@@ -120,6 +153,13 @@ const App = () => {
             .filter(intolerance => intolerance.selected)
             .map(function(intolerance) { return intolerance.name; });;
 url = `${url}?query=${query.join("+")}&intolerances=${intolerances.join("+")}&number=${number}&apiKey=${apiKey}&offset=${offset}`
+        const currentPaginator = resultsState.paginator;
+
+        setResultsState({
+            results: [...resultsState.results],
+            paginator: currentPaginator,
+            isLoading: true
+        });
 
         axios.get(url)
             .then(res => {
@@ -143,7 +183,8 @@ url = `${url}?query=${query.join("+")}&intolerances=${intolerances.join("+")}&nu
                         page: data.offset + 1,
                         pages: pages,
                         displaying: offset * data.number
-                    }
+                    },
+                    isLoading: false
                 });
             })
     }
@@ -167,23 +208,6 @@ url = `${url}?query=${query.join("+")}&intolerances=${intolerances.join("+")}&nu
     }
 
     //Intolerance's
-    const [intolerancesState, setIntolerancesState] = useState({
-        intolerances: [
-            { id: 'intolerance-1' ,name: 'Dairy', selected: false},
-            { id: 'intolerance-2' ,name: 'Egg', selected: false},
-            { id: 'intolerance-3' ,name: 'Gluten', selected: false},
-            { id: 'intolerance-4' ,name: 'Grain', selected: false},
-            { id: 'intolerance-5' ,name: 'Peanut', selected: false},
-            { id: 'intolerance-6' ,name: 'Seafood', selected: false},
-            { id: 'intolerance-7' ,name: 'Sesame', selected: false},
-            { id: 'intolerance-8' ,name: 'Shellfish', selected: false},
-            { id: 'intolerance-9' ,name: 'Soy', selected: false},
-            { id: 'intolerance-10' ,name: 'Sulfite', selected: false},
-            { id: 'intolerance-11' ,name: 'Tree Nut', selected: false},
-            { id: 'intolerance-12' ,name: 'Wheat', selected: false},
-        ]
-    });
-
     const toogleIntoleranceFilterHandler = (id) => {
         const intoleranceIndex = intolerancesState.intolerances.findIndex(intolerance => {
             return intolerance.id === id
@@ -204,8 +228,6 @@ url = `${url}?query=${query.join("+")}&intolerances=${intolerances.join("+")}&nu
 
     const intolerancesHandler = (id) => {
         toogleIntoleranceFilterHandler(id)
-
-
         //clearResults();
     }
 
@@ -229,10 +251,6 @@ url = `${url}?query=${query.join("+")}&intolerances=${intolerances.join("+")}&nu
         clearResults();
     }
 
-    const [ingredientFormState, setIngredientFormStateState] = useState({
-        formIngredient: ''
-    });
-
     const ingredientFormChangeHandler = (event) => {
         setIngredientFormStateState({
             formIngredient: event.target.value
@@ -253,19 +271,6 @@ url = `${url}?query=${query.join("+")}&intolerances=${intolerances.join("+")}&nu
     const getRecipesByIngredientsHandler = () => {
         getRecipesByIngredients();
     }
-
-    // Recipe results
-    const [resultsState, setResultsState] = useState({
-        results: [],
-        paginator: {
-            offset: 0,
-            number: constants.pagination.number,
-            totalResults: null,
-            page: null,
-            pages: null,
-            displaying: null
-        }
-    });
 
     const clearResults = () => {
         setResultsState({
@@ -325,14 +330,13 @@ url = `${url}?query=${query.join("+")}&intolerances=${intolerances.join("+")}&nu
                 editStatus={editIngredientsState.edit}
                 edit={setEditIngredientsStateHandler}
                 deleteIngredient={deleteIngredientsStateHandler}
-                paginator={resultsState.paginator}
+                results={resultsState}
                 intolerances={intolerancesState.intolerances}
                 intolerancesToogle={intolerancesHandler}
             />
             <RecipeList
                 show={modalHandler}
-                recipes={resultsState.results}
-                paginator={resultsState.paginator}
+                recipes={resultsState}
                 getMore={getRecipesByIngredients}
                 getRecipe={getRecipeByd}
             />

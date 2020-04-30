@@ -12,7 +12,7 @@ const RecipeCard = (props) => {
     }
 
     return (
-        <div className={`${styles.card} ${styles.RecipeCard} ${styles.h100} animated fadeIn`}>
+        <div className={`${styles.card} ${styles.RecipeCard} ${styles.h100}`}>
             <img
                 src={`${constants.urlImages}/recipeImages/${props.recipe.id}-556x370.jpg`}
                 className={styles.cardImgTop}
@@ -29,6 +29,7 @@ const RecipeCard = (props) => {
                         servings={props.recipe.servings}
                     />
                 </div>
+                <p>counter: {props.counter}</p>
                 <h5 className={`${styles.cardTitle} ${styles.h6}`}>
                     {props.recipe.title}
                 </h5>
