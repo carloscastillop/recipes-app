@@ -4,7 +4,7 @@ import styles from './App.module.scss';
 import Header from '../components/Header/Header';
 import SearchForm from '../components/SearchForm/SearchForm';
 import RecipeList from '../components/RecipeList/RecipeList';
-import Modal from "../components/Modal/Modal";
+import ModalRecipe from "../components/ModalRecipe/ModalRecipe";
 import consts from '../constants';
 
 const App = () => {
@@ -336,15 +336,14 @@ url = `${url}?query=${query.join("+")}&intolerances=${intolerances.join("+")}&nu
                 getMore={getRecipesByIngredients}
                 getRecipe={getRecipeByd}
             />
-            <Modal
+            <ModalRecipe
                 show={modalState.show}
                 close={modalHandler}
                 title={'A recipe'}
                 recipe={recipeState.recipe}
                 isLoading={recipeState.isLoading}
-            >
-                {modalState.content}
-            </Modal>
+            />
+
         </div>
     );
 }

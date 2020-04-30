@@ -4,25 +4,10 @@ import styles from "./RecipeCard.module.scss";
 import 'animate.css';
 
 const RecipeCard = (props) => {
-    const recipeName = props.recipe.title;
-    const recipeImage = `https://spoonacular.com/recipeImages/${props.recipe.id}-480x360.jpg`;
-    const recipeContent = (
-        <div>
-            <img
-                src={recipeImage}
-                className={styles.imgFluid}
-                alt={props.recipe.title}
-            />
-            <h2
-                className={`${styles.my3}`}
-            >
-                {recipeName}
-            </h2>
-        </div>
-    );
+
     const getRecipeHandler = (recipe) => {
         props.getRecipe(recipe.id);
-        props.show(recipeContent, true);
+        props.show('', true);
     }
 
     return (
