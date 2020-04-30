@@ -22,7 +22,11 @@ const ModalRecipe = (props) => {
     }
     //If recipe is ready and is not loading
     if (props.recipe && !props.isLoading) {
-        recipeContent = <ModalRecipeContent recipe={props.recipe}/>;
+        recipeContent = <ModalRecipeContent
+            recipe={props.recipe}
+            favourite={props.favourite}
+            favourites={props.favourites}
+        />;
     }
     return (
         <React.Fragment>

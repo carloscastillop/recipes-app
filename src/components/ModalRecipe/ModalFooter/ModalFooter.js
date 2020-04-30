@@ -8,13 +8,6 @@ const ModalFooter = (props) => {
                 type="button"
                 className={`${styles.btn} ${styles.btnPrimary} ${styles.btnSm}`}
             >
-                <i className="far fa-heart"></i> Add to favourites
-            </button>
-
-            <button
-                type="button"
-                className={`${styles.btn} ${styles.btnPrimary} ${styles.btnSm}`}
-            >
                 <i className="fas fa-clipboard-list"></i> Add to list
             </button>
         </div>
