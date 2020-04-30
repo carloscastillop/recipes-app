@@ -5,7 +5,7 @@ import Header from '../components/Header/Header';
 import SearchForm from '../components/SearchForm/SearchForm';
 import RecipeList from '../components/RecipeList/RecipeList';
 import ModalRecipe from "../components/ModalRecipe/ModalRecipe";
-import consts from '../constants';
+import constants from '../constants';
 
 const App = () => {
 
@@ -108,14 +108,14 @@ const App = () => {
     }
 
     const getRecipesByIngredients = (paginate = false) => {
-        let url = consts.url+'/recipes/search';
+        let url = constants.url+'/recipes/search';
         const selectedIngredients = ingredientsState.ingredients.filter(ingredient => ingredient.selected);
         let query = selectedIngredients.map(ingredient => {
             return ingredient.name;
         })
         const number = resultsState.paginator.number;
         const offset = resultsState.paginator.offset;
-        const apiKey = consts.apiKey;
+        const apiKey = constants.apiKey;
         const intolerances = intolerancesState.intolerances
             .filter(intolerance => intolerance.selected)
             .map(function(intolerance) { return intolerance.name; });;
@@ -149,8 +149,8 @@ url = `${url}?query=${query.join("+")}&intolerances=${intolerances.join("+")}&nu
     }
 
     const getRecipeByd = (id) => {
-        let url = consts.url;
-        const apiKey = consts.apiKey;
+        let url = constants.url;
+        const apiKey = constants.apiKey;
         url = `${url}/recipes/${id}/information?apiKey=${apiKey}`
         setRecipeState({
             isLoading: true,
@@ -259,7 +259,7 @@ url = `${url}?query=${query.join("+")}&intolerances=${intolerances.join("+")}&nu
         results: [],
         paginator: {
             offset: 0,
-            number: consts.pagination.number,
+            number: constants.pagination.number,
             totalResults: null,
             page: null,
             pages: null,
@@ -272,7 +272,7 @@ url = `${url}?query=${query.join("+")}&intolerances=${intolerances.join("+")}&nu
             results: [],
             paginator: {
                 offset: 0,
-                number: consts.pagination.number,
+                number: constants.pagination.number,
                 totalResults: null,
                 page: null,
                 pages: null,

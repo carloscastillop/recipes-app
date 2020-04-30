@@ -2,6 +2,7 @@ import React from "react";
 import RecipeLabels from './RecipeLabels/RecipeLabels'
 import styles from "./RecipeCard.module.scss";
 import 'animate.css';
+import constants from "../../../constants";
 
 const RecipeCard = (props) => {
 
@@ -13,9 +14,10 @@ const RecipeCard = (props) => {
     return (
         <div className={`${styles.card} ${styles.RecipeCard} ${styles.h100} animated fadeIn`}>
             <img
-                src={`https://spoonacular.com/recipeImages/${props.recipe.id}-556x370.jpg`}
+                src={`${constants.urlImages}/recipeImages/${props.recipe.id}-556x370.jpg`}
                 className={styles.cardImgTop}
                 alt={props.recipe.title}
+                title={props.recipe.title}
                 onClick={e => {
                     getRecipeHandler(props.recipe)
                 }}

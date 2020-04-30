@@ -2,4 +2,9 @@
 
 .RecipeCard {
   border: solid 1px white;
+  .cardImgTop {
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }
