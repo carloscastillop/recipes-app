@@ -7,6 +7,30 @@
 .modalBackdrop.white {
   background-color: white;
 }
+
 .modalBackdrop.white.show {
   opacity: 1;
+}
+
+.stripe {
+  color: white;
+  background: repeating-linear-gradient(
+                  45deg,
+                  #ffffff,
+                  #ffffff 10px,
+                  #f2f2f2 10px,
+                  #f2f2f2 20px
+  );
+}
+
+.modal {
+  .modalContent {
+    border: solid 1px #fdfdfd;
+    .modalHeader {
+      border-bottom: solid 1px #fbfbfb;
+    }
+    .modalFooter {
+      border-top: solid 1px #fbfbfb;
+    }
+  }
 }

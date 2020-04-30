@@ -29,7 +29,6 @@ const RecipeCard = (props) => {
                         servings={props.recipe.servings}
                     />
                 </div>
-                <p>counter: {props.counter}</p>
                 <h5 className={`${styles.cardTitle} ${styles.h6}`}>
                     {props.recipe.title}
                 </h5>

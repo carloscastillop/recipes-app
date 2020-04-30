@@ -41,7 +41,7 @@ const ModalRecipe = (props) => {
                     </div>
                 </div>
             </div>
-            <div className={`${styles.modalBackdrop} ${styles.white} ${styles.fade} ${styles.show}`}></div>
+            <div className={`${styles.modalBackdrop} ${styles.white} ${styles.fade} ${styles.show} ${styles.stripe}`}></div>
         </React.Fragment>
     );
 }

@@ -22,7 +22,10 @@ const ModalRecipeContent = (props) => {
                         servings={props.recipe.servings}
                     />
                 </div>
-                {ReactHtmlParser(props.recipe.instructions)}
+                {
+                    props.recipe.instructions &&
+                    ReactHtmlParser(props.recipe.instructions)
+                }
             </div>
         </React.Fragment>
     );
