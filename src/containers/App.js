@@ -6,6 +6,7 @@ import SearchForm from '../components/SearchForm/SearchForm';
 import RecipeList from '../components/RecipeList/RecipeList';
 import ModalRecipe from "../components/ModalRecipe/ModalRecipe";
 import constants from '../constants';
+import 'animate.css';
 
 const App = () => {
 
@@ -37,7 +38,8 @@ const App = () => {
             pages: null,
             displaying: null
         },
-        isLoading: false
+        isLoading: false,
+        inMaintenance: false
     });
 
     const [ingredientFormState, setIngredientFormStateState] = useState({
@@ -76,24 +78,35 @@ const App = () => {
 
     const toogleFavouriteHandler = (recipe) => {
         const recipes = favouritesState.recipes;
+
         const found = recipes.find(r => r.id === recipe.id);
         let newRecipes = null;
-        if(!found){
+        if (!found) {
             recipes.push(recipe);
             newRecipes = recipes;
-        }else{
-            newRecipes = recipes.filter(function(r) {
+        } else {
+            newRecipes = recipes.filter(function (r) {
                 return r.id !== recipe.id;
             });
         }
 
         setFavouritesState({
             recipes: newRecipes
-        })
+        });
+
+        localStorage.setItem('myFavourites', JSON.stringify(newRecipes));
+    }
+
+    const getFavouritesLocalStorage = () => {
+        const recipes = JSON.parse(localStorage.getItem('myFavourites'));
+        return (recipes) ? recipes : [];
     }
 
     useEffect(() => {
         addIngredientsToStates();
+        setFavouritesState({
+            recipes: getFavouritesLocalStorage()
+        });
     }, []);
 
 
@@ -200,6 +213,7 @@ const App = () => {
                 const offset = data.offset + 1;
                 let page = null;
                 const pages = Math.ceil(data.totalResults / data.number);
+
                 if (paginate) {
                     page = [...currentPage, ...newPage]
                 } else {
@@ -217,7 +231,12 @@ const App = () => {
                     },
                     isLoading: false
                 });
-            })
+            }).catch(e => {
+            console.log({e})
+            setResultsState({
+                inMaintenance: true
+            });
+        })
     }
 
     const getRecipeByd = (id) => {
@@ -343,39 +362,58 @@ const App = () => {
 
     return (
         <div className={styles.App}>
-            <Header/>
-            <SearchForm
-                ingredients={ingredientsState.ingredients}
-                ingredientForm={ingredientFormState.formIngredient}
-                selectedFilters={ingredientsHandler}
-                click={getRecipesByIngredientsHandler}
-                toogle={toogleIngredientFilterHandler}
-                changed={ingredientFormChangeHandler.bind(this)}
-                add={ingredientFormAddHandler}
-                clear={ingredientFormClear}
-                remove={removeIngredientLocalStorage}
-                editStatus={editIngredientsState.edit}
-                edit={setEditIngredientsStateHandler}
-                deleteIngredient={deleteIngredientsStateHandler}
-                results={resultsState}
-                intolerances={intolerancesState.intolerances}
-                intolerancesToogle={intolerancesHandler}
-            />
-            <RecipeList
-                show={modalHandler}
-                recipes={resultsState}
-                getMore={getRecipesByIngredients}
-                getRecipe={getRecipeByd}
-            />
-            <ModalRecipe
-                show={modalState.show}
-                close={modalHandler}
-                title={'A recipe'}
-                recipe={recipeState.recipe}
-                isLoading={recipeState.isLoading}
-                favourite={toogleFavouriteHandler}
+            <Header
                 favourites={favouritesState.recipes}
             />
+            {
+                resultsState.inMaintenance &&
+                <div className={styles.container}>
+                    <div className={`${styles.jumbotron} animated fadeInUp`}>
+                        <h1 className={styles.display4}>We sorry!</h1>
+                        <p className={styles.lead}>
+                            We are on maintenance, please come back tomorrow.
+                        </p>
+                    </div>
+                </div>
+            }
+            {
+                !resultsState.inMaintenance &&
+                <React.Fragment>
+                    <SearchForm
+                        ingredients={ingredientsState.ingredients}
+                        ingredientForm={ingredientFormState.formIngredient}
+                        selectedFilters={ingredientsHandler}
+                        click={getRecipesByIngredientsHandler}
+                        toogle={toogleIngredientFilterHandler}
+                        changed={ingredientFormChangeHandler.bind(this)}
+                        add={ingredientFormAddHandler}
+                        clear={ingredientFormClear}
+                        remove={removeIngredientLocalStorage}
+                        editStatus={editIngredientsState.edit}
+                        edit={setEditIngredientsStateHandler}
+                        deleteIngredient={deleteIngredientsStateHandler}
+                        results={resultsState}
+                        intolerances={intolerancesState.intolerances}
+                        intolerancesToogle={intolerancesHandler}
+                    />
+                    <RecipeList
+                        show={modalHandler}
+                        recipes={resultsState}
+                        getMore={getRecipesByIngredients}
+                        getRecipe={getRecipeByd}
+                    />
+                    <ModalRecipe
+                        show={modalState.show}
+                        close={modalHandler}
+                        title={'A recipe'}
+                        recipe={recipeState.recipe}
+                        isLoading={recipeState.isLoading}
+                        favourite={toogleFavouriteHandler}
+                        favourites={favouritesState.recipes}
+                    />
+                </React.Fragment>
+            }
+
 
         </div>
     );

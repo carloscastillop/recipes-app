@@ -2,12 +2,13 @@ import React from "react";
 import styles from "../ModalRecipe.module.scss";
 import RecipeLabels from "../../RecipeList/RecipeCard/RecipeLabels/RecipeLabels";
 import ReactHtmlParser from "react-html-parser";
+import 'animate.css';
 
 const ModalRecipeContent = (props) => {
     let favourite = (
         <i className={`far fa-heart fa-2x ${styles.heartOff}`}></i>
     );
-    if(props.favourites.find(r => r.id === props.recipe.id)){
+    if(props.favourites && props.favourites.find(r => r.id === props.recipe.id)){
         favourite = (
             <i className={`fas fa-heart fa-2x ${styles.heartOn}`}></i>
         );
@@ -18,20 +19,13 @@ const ModalRecipeContent = (props) => {
                 <div className={`${styles.bgLight} ${styles.textCenter} ${styles.mb4}`}>
                     <img
                         src={`https://spoonacular.com/recipeImages/${props.recipe.id}-480x360.jpg`}
-                        className={styles.imgFluid}
+                        className={`${styles.imgFluid} ${styles.rounded}`}
                         alt={props.recipe.title}
                     />
                 </div>
-                <h2 className={styles.h4}>{props.recipe.title}</h2>
-                <button
-                    type="button"
-                    className={`${styles.btn} ${styles.btnLink} ${styles.btnSm}`}
-                    onClick={e => {
-                        props.favourite(props.recipe)
-                    }}
-                >
-                    {favourite}
-                </button>
+                <h2 className={`${styles.h4} animated fadeInUp`}>
+                    {props.recipe.title}
+                </h2>
                 <div className={`${styles.mb3} ${styles.mt1}`}>
                     <RecipeLabels
                         readyInMinutes={props.recipe.readyInMinutes}
