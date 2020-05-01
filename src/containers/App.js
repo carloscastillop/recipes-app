@@ -412,7 +412,7 @@ const App = () => {
     }
 
     return (
-        <Router>
+        <Router basename='/recipes-app/'>
             <div className={styles.App}>
                 <Header
                     favourites={favouritesState.recipes}

@@ -37,7 +37,7 @@ const searchForm = (props) => {
             }
             return (
                 <span
-                    className={`${deleteIngredientEdit} ${styles.ingredientBadge} ${styles.badge} ${styles.badgePill} ${styles.badgeSecondary} ${styles.mr1} ${styles.mb1}`}
+                    className={`${deleteIngredientEdit} ${styles.ingredientBadge} ${styles.badge} ${styles.badgePill} ${styles.badgeSecondary} ${styles.mr1} ${styles.mb2} ${styles.mbMdSm1}`}
                     key={`filter-ingredient-${ingredient.name}-${index}`}
                     onClick={e => {
                         if (!props.editStatus) {
@@ -120,7 +120,7 @@ const searchForm = (props) => {
         return (
             <div
                 key={`intolerance-${intolerance.id}`}
-                className={`${styles.col6} ${styles.colSm4} ${styles.colSm4} ${styles.mb2}`}
+                className={`${styles.col6} ${styles.colSm4} ${styles.colSm4} ${styles.mb3} ${styles.mbMdSm2}`}
             >
                 <div
                     className={`${styles.customControl} ${styles.customSwitch}`}
