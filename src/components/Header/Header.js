@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Header.module.scss";
 import {Link} from "react-router-dom";
 import banner from "../../assets/banner.jpg";
+import LazyLoad from 'react-lazyload';
 
 const header = (props) => {
     const favouritesCounter = (props.favourites) ? props.favourites.length : 0;
@@ -38,11 +39,15 @@ const header = (props) => {
                 </nav>
             </header>
             <div className={`${styles.topHeader} ${styles.textCenter} ${styles.mb3}`}>
+                <LazyLoad
+                    height={250}
+                >
                 <img
                     src={banner}
                     className={styles.imgFluid}
                     alt='banner'
                 />
+                </LazyLoad>
             </div>
         </React.Fragment>
     );
