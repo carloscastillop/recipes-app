@@ -40,6 +40,12 @@ const App = () => {
             {'id': 4, 'name': 'fish', 'selected': false, 'erasable': false},
             {'id': 5, 'name': 'pasta', 'selected': false, 'erasable': false},
             {'id': 6, 'name': 'potatoes', 'selected': false, 'erasable': false},
+            {'id': 7, 'name': 'rice', 'selected': false, 'erasable': false},
+            {'id': 8, 'name': 'flour', 'selected': false, 'erasable': false},
+            {'id': 9, 'name': 'garlic', 'selected': false, 'erasable': false},
+            {'id': 10, 'name': 'onions', 'selected': false, 'erasable': false},
+            {'id': 11, 'name': 'tomatoes', 'selected': false, 'erasable': false},
+            {'id': 12, 'name': 'beans', 'selected': false, 'erasable': false},
         ]
     });
     const [resultsState, setResultsState] = useState({

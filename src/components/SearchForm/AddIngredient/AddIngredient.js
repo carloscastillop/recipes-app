@@ -84,7 +84,7 @@ const AddIngredient = (props) => {
     }
 
     return (
-        <div className={`${styles.addIngredient} ${styles.mb3}`}>
+        <div className={`${styles.addIngredient} ${styles.mb4}`}>
             {ingredientForm}
         </div>
     );

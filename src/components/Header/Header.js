@@ -16,7 +16,7 @@ const header = (props) => {
                     <div className={`${styles.container}`}>
                         <Link to="/">
                             <span className={styles.navbarBrand}>
-                                <i className={`fas fa-utensils ${styles.logo}`}></i> Recipes app
+                                <i className={`fas fa-utensils ${styles.logo} ${styles.mr2}`}></i> Recipes app
                             </span>
                         </Link>
                         <div>

@@ -157,7 +157,7 @@ const searchForm = (props) => {
                         <div className={styles.mb3}>
                             {selectedIngredients}
                         </div>
-                        <div className={styles.mb3}>
+                        <div className={styles.mb1}>
                             {editIngredients}
                             {ingredients}
                         </div>
@@ -170,9 +170,15 @@ const searchForm = (props) => {
                         />
 
                         {/*Switch Example*/}
-                        <span>Intolerances <span className={styles.small}>(test)</span></span>
-                        <div className={styles.row}>
-                            {intolerances}
+                        <div className={`${styles.card} ${styles.shadowSm} animated fadeInUp`}>
+                            <div className={styles.cardBody}>
+                                <h5 className={`${styles.mb3} ${styles.h6}`}>
+                                    <i className="fas fa-exclamation-triangle"></i> Intolerances
+                                </h5>
+                                <div className={styles.row}>
+                                    {intolerances}
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div
