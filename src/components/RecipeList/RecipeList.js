@@ -47,27 +47,16 @@ const recipeList = (props) => {
                     displaying {props.recipes.paginator.displaying} from {props.recipes.paginator.totalResults} recipes.
                 </p>
             );
-            if(props.recipes.isLoading) {
-                showMoreBtn = (
-                    <div>
-                        <div className={`${styles.textCenter} ${styles.my5}`}>
-                            <i className="fas fa-circle-notch fa-spin fa-2x"></i>
-                        </div>
-                    </div>
-                );
-            }else{
-                showMoreBtn = (
-                    <button
-                        className={`${styles.btn} ${styles.btnPrimary} animated bounce`}
-                        onClick={e => {
-                            props.getMore(true);
-                        }}
-                    >
-                        <i className="fas fa-chevron-down"></i> Load more
-                    </button>
-                );
-            }
-
+            showMoreBtn = (
+                <button
+                    className={`${styles.btn} ${styles.btnPrimary} animated bounce`}
+                    onClick={e => {
+                        props.getMore(true);
+                    }}
+                >
+                    <i className="fas fa-chevron-down"></i> Load more
+                </button>
+            );
         }
 
         showMore = (

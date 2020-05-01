@@ -96,6 +96,16 @@ const searchForm = (props) => {
         </button>
     );
 
+    if(props.results.isLoading) {
+        searchBtn = (
+            <div>
+                <div className={`${styles.textCenter} ${styles.my1}`}>
+                    <i className="fas fa-circle-notch fa-spin fa-2x"></i>
+                </div>
+            </div>
+        );
+    }
+
     if (props.results.results && props.results.paginator.totalResults > 0) {
         searchBtn = (
             <div className={styles.textCenter}>
@@ -137,10 +147,10 @@ const searchForm = (props) => {
     return (
         <div className={`${styles.SearchForm} ${styles.mb3}`}>
             <div className={styles.container}>
-                <div className={styles.card}>
+                <div className={`${styles.card} ${styles.borderWhite} ${styles.shadowSm}`}>
                     <div className={styles.cardBody}>
                         <h3><i className="fas fa-utensils"></i> My pantry</h3>
-                        <p>Select some ingredients you have to find some recipes ideas.</p>
+                        <p>Select some ingredients you have to find some recipe ideas.</p>
                         <div className={styles.mb3}>
                             {selectedIngredients}
                         </div>
