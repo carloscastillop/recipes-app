@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/recipes-app/static/css/main.3ae20b22.chunk.css",
-    "main.js": "/recipes-app/static/js/main.7afea489.chunk.js",
-    "main.js.map": "/recipes-app/static/js/main.7afea489.chunk.js.map",
+    "main.js": "/recipes-app/static/js/main.236c5156.chunk.js",
+    "main.js.map": "/recipes-app/static/js/main.236c5156.chunk.js.map",
     "runtime-main.js": "/recipes-app/static/js/runtime-main.3ca22642.js",
     "runtime-main.js.map": "/recipes-app/static/js/runtime-main.3ca22642.js.map",
     "static/css/2.1bbe55b4.chunk.css": "/recipes-app/static/css/2.1bbe55b4.chunk.css",
-    "static/js/2.4ccf6fae.chunk.js": "/recipes-app/static/js/2.4ccf6fae.chunk.js",
-    "static/js/2.4ccf6fae.chunk.js.map": "/recipes-app/static/js/2.4ccf6fae.chunk.js.map",
+    "static/js/2.aadf469b.chunk.js": "/recipes-app/static/js/2.aadf469b.chunk.js",
+    "static/js/2.aadf469b.chunk.js.map": "/recipes-app/static/js/2.aadf469b.chunk.js.map",
     "index.html": "/recipes-app/index.html",
-    "precache-manifest.d7204820e04297d04b9c90efec96bcb0.js": "/recipes-app/precache-manifest.d7204820e04297d04b9c90efec96bcb0.js",
+    "precache-manifest.f944c59ab315411259b2bd98833bb189.js": "/recipes-app/precache-manifest.f944c59ab315411259b2bd98833bb189.js",
     "service-worker.js": "/recipes-app/service-worker.js",
     "static/css/2.1bbe55b4.chunk.css.map": "/recipes-app/static/css/2.1bbe55b4.chunk.css.map",
     "static/css/main.3ae20b22.chunk.css.map": "/recipes-app/static/css/main.3ae20b22.chunk.css.map",
-    "static/js/2.4ccf6fae.chunk.js.LICENSE.txt": "/recipes-app/static/js/2.4ccf6fae.chunk.js.LICENSE.txt"
+    "static/js/2.aadf469b.chunk.js.LICENSE.txt": "/recipes-app/static/js/2.aadf469b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.3ca22642.js",
     "static/css/2.1bbe55b4.chunk.css",
-    "static/js/2.4ccf6fae.chunk.js",
+    "static/js/2.aadf469b.chunk.js",
     "static/css/main.3ae20b22.chunk.css",
-    "static/js/main.7afea489.chunk.js"
+    "static/js/main.236c5156.chunk.js"
   ]
 }
