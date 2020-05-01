@@ -7,6 +7,7 @@ import RecipeList from '../components/RecipeList/RecipeList';
 import ModalRecipe from "../components/ModalRecipe/ModalRecipe";
 import constants from '../constants';
 import 'animate.css';
+import InMaintenance from "../components/InMaintenance/InMaintenance";
 
 const App = () => {
 
@@ -367,14 +368,7 @@ const App = () => {
             />
             {
                 resultsState.inMaintenance &&
-                <div className={styles.container}>
-                    <div className={`${styles.jumbotron} animated fadeInUp`}>
-                        <h1 className={styles.display4}>We sorry!</h1>
-                        <p className={styles.lead}>
-                            We are on maintenance, please come back tomorrow.
-                        </p>
-                    </div>
-                </div>
+                <InMaintenance />
             }
             {
                 !resultsState.inMaintenance &&
