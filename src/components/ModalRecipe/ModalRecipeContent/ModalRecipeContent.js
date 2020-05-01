@@ -6,14 +6,7 @@ import 'animate.css';
 import LazyLoad from "react-lazyload";
 
 const ModalRecipeContent = (props) => {
-    let favourite = (
-        <i className={`far fa-heart fa-2x ${styles.heartOff}`}></i>
-    );
-    if (props.favourites && props.favourites.find(r => r.id === props.recipe.id)) {
-        favourite = (
-            <i className={`fas fa-heart fa-2x ${styles.heartOn}`}></i>
-        );
-    }
+
     return (
         <React.Fragment>
             <div className={styles.modalBody}>

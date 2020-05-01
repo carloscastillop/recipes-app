@@ -109,9 +109,12 @@ const searchForm = (props) => {
     if (props.results.results && props.results.paginator.totalResults > 0) {
         searchBtn = (
             <div className={styles.textCenter}>
-                <h5 className={`${styles.textMuted} ${styles.my3} animated bounce`}>
+                <h5 className={`${styles.textMuted} ${styles.mt3} ${styles.mb0} animated bounce`}>
                     {props.results.paginator.totalResults} recipes found!
                 </h5>
+                <div className={`animated bounce`}>
+                    <i className="fas fa-chevron-down"></i>
+                </div>
             </div>
         );
     }
@@ -173,6 +176,7 @@ const searchForm = (props) => {
                         </div>
                     </div>
                     <div
+                        id='recipesFound'
                         className={`${styles.cardFooter} ${styles.textCenter} ${styles.bgWhite}`}>
                         {searchBtn}
                     </div>

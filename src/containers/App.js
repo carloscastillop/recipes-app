@@ -16,6 +16,7 @@ import '../styles/alertify.css';
 import InMaintenance from "../components/InMaintenance/InMaintenance";
 import * as alertify from 'alertifyjs';
 import 'alertifyjs/build/css/alertify.min.css';
+import Footer from "../components/Footer/Footer";
 
 alertify.set('notifier', 'position', 'top-center');
 
@@ -282,6 +283,9 @@ const App = () => {
                     },
                     isLoading: false
                 });
+                if (offset === 1) {
+                    handleScrollToElement('recipesFound')
+                }
             }).catch(e => {
             console.log({e})
             setResultsState({
@@ -411,6 +415,15 @@ const App = () => {
         return date.getTime();
     }
 
+    const handleScrollToElement = (myComponent) => {
+        const element = document.getElementById(myComponent);
+        console.log({myComponent})
+        element.scrollIntoView({
+            top: 100,
+            behavior: 'smooth'
+        });
+    }
+
     return (
         <Router basename='/recipes-app/'>
             <div className={styles.App}>
@@ -475,6 +488,7 @@ const App = () => {
                         </div>
                     </Route>
                 </Switch>
+                <Footer/>
                 <ModalRecipe
                     show={modalState.show}
                     close={modalHandler}
