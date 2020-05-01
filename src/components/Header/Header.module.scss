@@ -1,24 +1,38 @@
 @import "../../styles/global-styles.module.scss";
 
 .Header {
-  .logo {
+  .navbarBrand {
     color: $appSecondaryColour;
+
+    &:hover {
+      color: $appPrimaryColour;
+    }
   }
+
+  .logo {
+    color: $appPrimaryColour;
+  }
+
   i {
     font-size: 130%;
   }
+
   .favouritesBtn {
     position: relative;
+
     i {
       color: red;
     }
   }
+
   .chosenBtn {
     position: relative;
+
     i {
       color: $appSecondaryColour;
     }
   }
+
   .badge {
     position: absolute;
     top: 0;
