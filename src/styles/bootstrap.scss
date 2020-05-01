@@ -1,5 +1,6 @@
 //VARIABLES
 $appPrimaryColour: #D291BC;
+$appPrimaryColourHover: #a5668f;
 $appSecondaryColour: #957DAD;
 
 /*!
@@ -2568,8 +2569,8 @@ fieldset:disabled a.btn {
 
 .btnPrimary:hover {
   color: #fff;
-  background-color: #0069d9;
-  border-color: #0062cc;
+  background-color: $appPrimaryColourHover;
+  border-color: $appPrimaryColourHover;
 }
 
 .btnPrimary:focus, .btnPrimary.focus {

@@ -7,12 +7,18 @@ const recipeList = (props) => {
     let recipes = null;
     let showMore = null;
 
-    if(!props.recipes.results){
+    if(!props.recipes){
         return null;
     }
 
-    if (props.recipes.results.length > 0) {
-        recipes = props.recipes.results.map((recipe, index) => {
+    let totalResults = props.recipes.length;
+
+    if(props.paginator.totalResults) {
+        totalResults = props.paginator.totalResults;
+    }
+
+    if (props.recipes.length > 0) {
+        recipes = props.recipes.map((recipe, index) => {
             return (
                 <div
                     className={`${styles.col12} ${styles.colSm6} ${styles.colSm6} ${styles.colLg3} ${styles.mb3} ${styles.test}`}
@@ -35,16 +41,16 @@ const recipeList = (props) => {
                     <i className="fas fa-utensils"></i>
                 </div>
                 <p>
-                    Total of {props.recipes.paginator.totalResults} recipes.
+                    Total of {totalResults} recipes.
                 </p>
             </div>
         );
 
         let showMoreBtn = '';
-        if (props.recipes.paginator.page < props.recipes.paginator.pages) {
+        if (props.paginator.page < props.paginator.pages) {
             showMoreText = (
                 <p className={`${styles.textMuted} ${styles.small}`}>
-                    displaying {props.recipes.paginator.displaying} from {props.recipes.paginator.totalResults} recipes.
+                    displaying {props.paginator.displaying} from {props.paginator.totalResults} recipes.
                 </p>
             );
             showMoreBtn = (
@@ -66,7 +72,7 @@ const recipeList = (props) => {
             </div>
         );
     }
-    if (props.recipes.paginator.totalResults === 0) {
+    if (props.paginator.totalResults === 0) {
         recipes = (
             <div className={styles.col}>
                 <p className={`${styles.textCenter}`}>

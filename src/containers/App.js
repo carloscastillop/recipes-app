@@ -460,7 +460,8 @@ const App = () => {
                                 />
                                 <RecipeList
                                     show={modalHandler}
-                                    recipes={resultsState}
+                                    recipes={resultsState.results}
+                                    paginator={resultsState.paginator}
                                     getMore={getRecipesByIngredients}
                                     getRecipe={getRecipeByd}
                                 />
@@ -471,9 +472,15 @@ const App = () => {
                         <div className={styles.container}>
                             <div className={`${styles.card} ${styles.borderWhite} ${styles.shadowSm}`}>
                                 <div className={styles.cardBody}>
-                                    <h3 className={`animated fadeInUp`}>
-                                        <i className="fas fa-heart"></i> Favourites recipes
+                                    <h3 className={`${styles.mb5} animated fadeInUp`}>
+                                        <i className="fas fa-heart"></i> My favourites recipes
                                     </h3>
+                                    <RecipeList
+                                        show={modalHandler}
+                                        recipes={favouritesState.recipes}
+                                        getRecipe={getRecipeByd}
+                                        paginator={0}
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -482,8 +489,15 @@ const App = () => {
                         <div className={styles.container}>
                             <div className={`${styles.card} ${styles.borderWhite} ${styles.shadowSm}`}>
                                 <div className={styles.cardBody}>
-                                    <h3 className={`animated fadeInUp`}>
-                                        <i className="fas fa-clipboard-list"></i> My chosen recipes for today</h3>
+                                    <h3 className={`${styles.mb5} animated fadeInUp`}>
+                                        <i className="fas fa-clipboard-list"></i> My chosen recipes for today
+                                    </h3>
+                                    <RecipeList
+                                        show={modalHandler}
+                                        recipes={chosenState.recipes}
+                                        getRecipe={getRecipeByd}
+                                        paginator={0}
+                                    />
                                 </div>
                             </div>
                         </div>
