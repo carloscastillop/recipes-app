@@ -17,6 +17,7 @@ import InMaintenance from "../components/InMaintenance/InMaintenance";
 import * as alertify from 'alertifyjs';
 import 'alertifyjs/build/css/alertify.min.css';
 import Footer from "../components/Footer/Footer";
+import ChosenListBtn from '../components/ChosenListBtn/ChosenListBtn'
 
 alertify.set('notifier', 'position', 'top-center');
 
@@ -488,6 +489,9 @@ const App = () => {
                         </div>
                     </Route>
                 </Switch>
+                <ChosenListBtn
+                    chosen={chosenState.recipes}
+                />
                 <Footer/>
                 <ModalRecipe
                     show={modalState.show}

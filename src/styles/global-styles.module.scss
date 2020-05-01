@@ -1,2 +1,8 @@
 @import "./bootstrap.scss";
 //add more relevant classes;
+
+.btnPrimary {
+  color: #fff;
+  background-color: $appPrimaryColour;
+  border-color: $appPrimaryColour;
+}

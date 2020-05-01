@@ -13,11 +13,11 @@ const ModalFooter = (props) => {
     }
 
     let chosen = (
-        <i className={`fas fa-clipboard-list fa-2x ${styles.heartOff}`}></i>
+        <i className={`fas fa-clipboard-list fa-2x ${styles.listOff}`}></i>
     );
     if(props.chosenList && props.recipe && props.chosenList.find(r => r.id === props.recipe.id)){
         chosen = (
-            <i className={`fas fa-clipboard-list fa-2x ${styles.heartOn}`}></i>
+            <i className={`fas fa-clipboard-list fa-2x ${styles.listOn}`}></i>
         );
     }
 

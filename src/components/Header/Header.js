@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Header.module.scss";
 import {Link} from "react-router-dom";
+import banner from "../../assets/banner.jpg";
 
 const header = (props) => {
     const favouritesCounter = (props.favourites) ? props.favourites.length : 0;
@@ -14,18 +15,18 @@ const header = (props) => {
                     <div className={`${styles.container}`}>
                         <Link to="/">
                             <span className="navbar-brand">
-                                <i className="fas fa-utensils"></i> Recipes app
+                                <i className={`fas fa-utensils ${styles.logo}`}></i> Recipes app
                             </span>
                         </Link>
                         <div>
-                            <Link to="/favourites" className={`${styles.btn}`}>
+                            <Link to="/favourites" className={`${styles.btn} ${styles.favouritesBtn}`}>
                                 <i className="fas fa-heart"></i>
                                 <span
                                     className={`${styles.badge} ${styles.badgePill} ${styles.badgePrimary} ${styles.mr1}`}>
                                     {favouritesCounter}
                                 </span>
                             </Link>
-                            <Link to="/chosen" className={`${styles.btn}`}>
+                            <Link to="/chosen" className={`${styles.btn} ${styles.chosenBtn}`}>
                                 <i className="fas fa-clipboard-list"></i>
                                 <span
                                     className={`${styles.badge} ${styles.badgePill} ${styles.badgePrimary} ${styles.mr1}`}>
@@ -38,7 +39,7 @@ const header = (props) => {
             </header>
             <div className={`${styles.topHeader} ${styles.textCenter} ${styles.mb3}`}>
                 <img
-                    src='https://via.placeholder.com/800x250?text=A BANNER'
+                    src={banner}
                     className={styles.imgFluid}
                     alt='banner'
                 />

@@ -1,3 +1,7 @@
+//VARIABLES
+$appPrimaryColour: #D291BC;
+$appSecondaryColour: #957DAD;
+
 /*!
  * Bootstrap v4.4.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
@@ -18,7 +22,7 @@
   --white: #fff;
   --gray: #6c757d;
   --gray-dark: #343a40;
-  --primary: #007bff;
+  --primary: $appPrimaryColour;
   --secondary: #6c757d;
   --success: #28a745;
   --info: #17a2b8;
@@ -153,7 +157,7 @@ sup {
 }
 
 a {
-  color: #007bff;
+  color: $appPrimaryColour;
   text-decoration: none;
   background-color: transparent;
 }
@@ -2558,8 +2562,8 @@ fieldset:disabled a.btn {
 
 .btnPrimary {
   color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: $appPrimaryColour;
+  border-color: $appPrimaryColour;
 }
 
 .btnPrimary:hover {
@@ -2577,8 +2581,8 @@ fieldset:disabled a.btn {
 
 .btnPrimary.disabled, .btnPrimary:disabled {
   color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: $appPrimaryColour;
+  border-color: $appPrimaryColour;
 }
 
 .btnPrimary:not(:disabled):not(.disabled):active, .btnPrimary:not(:disabled):not(.disabled).active,
@@ -2853,14 +2857,14 @@ fieldset:disabled a.btn {
 }
 
 .btnOutlinePrimary {
-  color: #007bff;
-  border-color: #007bff;
+  color: $appPrimaryColour;
+  border-color: $appPrimaryColour;
 }
 
 .btnOutlinePrimary:hover {
   color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: $appPrimaryColour;
+  border-color: $appPrimaryColour;
 }
 
 .btnOutlinePrimary:focus, .btnOutlinePrimary.focus {
@@ -2868,15 +2872,15 @@ fieldset:disabled a.btn {
 }
 
 .btnOutlinePrimary.disabled, .btnOutlinePrimary:disabled {
-  color: #007bff;
+  color: $appPrimaryColour;
   background-color: transparent;
 }
 
 .btnOutlinePrimary:not(:disabled):not(.disabled):active, .btnOutlinePrimary:not(:disabled):not(.disabled).active,
 .show > .btnOutlinePrimary.dropdown-toggle {
   color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: $appPrimaryColour;
+  border-color: $appPrimaryColour;
 }
 
 .btnOutlinePrimary:not(:disabled):not(.disabled):active:focus, .btnOutlinePrimary:not(:disabled):not(.disabled).active:focus,
@@ -3110,7 +3114,7 @@ fieldset:disabled a.btn {
 
 .btn-link {
   font-weight: 400;
-  color: #007bff;
+  color: $appPrimaryColour;
   text-decoration: none;
 }
 
@@ -3409,7 +3413,7 @@ input[type="button"].btnBlock {
 .dropdown-item.active, .dropdown-item:active {
   color: #fff;
   text-decoration: none;
-  background-color: #007bff;
+  background-color: $appPrimaryColour;
 }
 
 .dropdown-item.disabled, .dropdown-item:disabled {
@@ -3783,8 +3787,8 @@ input[type="button"].btnBlock {
 
 .customControlInput:checked ~ .customControlLabel::before {
   color: #fff;
-  border-color: #007bff;
-  background-color: #007bff;
+  border-color: $appPrimaryColour;
+  background-color: $appPrimaryColour;
 }
 
 .customControlInput:focus ~ .customControlLabel::before {
@@ -3848,8 +3852,8 @@ input[type="button"].btnBlock {
 }
 
 .custom-checkbox .customControlInput:indeterminate ~ .customControlLabel::before {
-  border-color: #007bff;
-  background-color: #007bff;
+  border-color: $appPrimaryColour;
+  background-color: $appPrimaryColour;
 }
 
 .custom-checkbox .customControlInput:indeterminate ~ .customControlLabel::after {
@@ -4082,7 +4086,7 @@ input[type="button"].btnBlock {
   width: 1rem;
   height: 1rem;
   margin-top: -0.25rem;
-  background-color: #007bff;
+  background-color: $appPrimaryColour;
   border: 0;
   border-radius: 1rem;
   -webkit-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -4115,7 +4119,7 @@ input[type="button"].btnBlock {
 .custom-range::-moz-range-thumb {
   width: 1rem;
   height: 1rem;
-  background-color: #007bff;
+  background-color: $appPrimaryColour;
   border: 0;
   border-radius: 1rem;
   -moz-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -4151,7 +4155,7 @@ input[type="button"].btnBlock {
   margin-top: 0;
   margin-right: 0.2rem;
   margin-left: 0.2rem;
-  background-color: #007bff;
+  background-color: $appPrimaryColour;
   border: 0;
   border-radius: 1rem;
   -ms-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -4294,7 +4298,7 @@ input[type="button"].btnBlock {
 .nav-pills .navLink.active,
 .nav-pills .show > .navLink {
   color: #fff;
-  background-color: #007bff;
+  background-color: $appPrimaryColour;
 }
 
 .nav-fill .nav-item {
@@ -5005,7 +5009,7 @@ input[type="button"].btnBlock {
   padding: 0.5rem 0.75rem;
   margin-left: -1px;
   line-height: 1.25;
-  color: #007bff;
+  color: $appPrimaryColour;
   background-color: #fff;
   border: 1px solid #dee2e6;
 }
@@ -5038,8 +5042,8 @@ input[type="button"].btnBlock {
 .page-item.active .page-link {
   z-index: 3;
   color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: $appPrimaryColour;
+  border-color: $appPrimaryColour;
 }
 
 .page-item.disabled .page-link {
@@ -5122,7 +5126,7 @@ a.badge:hover, a.badge:focus {
 
 .badgePrimary {
   color: #fff;
-  background-color: #007bff;
+  background-color: $appPrimaryColour;
 }
 
 a.badgePrimary:hover, a.badgePrimary:focus {
@@ -5438,7 +5442,7 @@ a.badge-dark:focus, a.badge-dark.focus {
   color: #fff;
   text-align: center;
   white-space: nowrap;
-  background-color: #007bff;
+  background-color: $appPrimaryColour;
   transition: width 0.6s ease;
 }
 
@@ -5531,8 +5535,8 @@ a.badge-dark:focus, a.badge-dark.focus {
 .listGroupItem.active {
   z-index: 2;
   color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: $appPrimaryColour;
+  border-color: $appPrimaryColour;
 }
 
 .listGroupItem + .listGroupItem {
@@ -6693,7 +6697,7 @@ a.close.disabled {
 }
 
 .bgPrimary {
-  background-color: #007bff !important;
+  background-color: $appPrimaryColour !important;
 }
 
 a.bgPrimary:hover, a.bgPrimary:focus,
@@ -6821,7 +6825,7 @@ button.bg-dark:focus {
 }
 
 .borderPrimary {
-  border-color: #007bff !important;
+  border-color: $appPrimaryColour !important;
 }
 
 .borderSecondary {
@@ -10035,7 +10039,7 @@ button.bg-dark:focus {
 }
 
 .text-primary {
-  color: #007bff !important;
+  color: $appPrimaryColour !important;
 }
 
 a.text-primary:hover, a.text-primary:focus {

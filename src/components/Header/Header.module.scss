@@ -1,7 +1,30 @@
 @import "../../styles/global-styles.module.scss";
 
 .Header {
-
+  .logo {
+    color: $appSecondaryColour;
+  }
+  i {
+    font-size: 130%;
+  }
+  .favouritesBtn {
+    position: relative;
+    i {
+      color: red;
+    }
+  }
+  .chosenBtn {
+    position: relative;
+    i {
+      color: $appSecondaryColour;
+    }
+  }
+  .badge {
+    position: absolute;
+    top: 0;
+    right: -7px;
+    font-size: 60%;
+  }
 }
 
 .topHeader {
