@@ -1,4 +1,9 @@
 import React, {useState, useEffect} from 'react';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route
+} from "react-router-dom";
 import axios from 'axios';
 import styles from './App.module.scss';
 import Header from '../components/Header/Header';
@@ -11,8 +16,8 @@ import '../styles/alertify.css';
 import InMaintenance from "../components/InMaintenance/InMaintenance";
 import * as alertify from 'alertifyjs';
 import 'alertifyjs/build/css/alertify.min.css';
-alertify.set('notifier','position', 'top-center');
 
+alertify.set('notifier', 'position', 'top-center');
 
 
 const App = () => {
@@ -407,57 +412,82 @@ const App = () => {
     }
 
     return (
-        <div className={styles.App}>
-            <Header
-                favourites={favouritesState.recipes}
-                chosen={chosenState.recipes}
-            />
-            {
-                resultsState.inMaintenance &&
-                <InMaintenance />
-            }
-            {
-                !resultsState.inMaintenance &&
-                <React.Fragment>
-                    <SearchForm
-                        ingredients={ingredientsState.ingredients}
-                        ingredientForm={ingredientFormState.formIngredient}
-                        selectedFilters={ingredientsHandler}
-                        click={getRecipesByIngredientsHandler}
-                        toogle={toogleIngredientFilterHandler}
-                        changed={ingredientFormChangeHandler.bind(this)}
-                        add={ingredientFormAddHandler}
-                        clear={ingredientFormClear}
-                        remove={removeIngredientLocalStorage}
-                        editStatus={editIngredientsState.edit}
-                        edit={setEditIngredientsStateHandler}
-                        deleteIngredient={deleteIngredientsStateHandler}
-                        results={resultsState}
-                        intolerances={intolerancesState.intolerances}
-                        intolerancesToogle={intolerancesHandler}
-                    />
-                    <RecipeList
-                        show={modalHandler}
-                        recipes={resultsState}
-                        getMore={getRecipesByIngredients}
-                        getRecipe={getRecipeByd}
-                    />
-                    <ModalRecipe
-                        show={modalState.show}
-                        close={modalHandler}
-                        title={'A recipe'}
-                        recipe={recipeState.recipe}
-                        isLoading={recipeState.isLoading}
-                        favourite={toogleFavouriteHandler}
-                        favourites={favouritesState.recipes}
-                        chosenList={chosenState.recipes}
-                        chosen={toogleChosenHandler}
-                    />
-                </React.Fragment>
-            }
-
-
-        </div>
+        <Router>
+            <div className={styles.App}>
+                <Header
+                    favourites={favouritesState.recipes}
+                    chosen={chosenState.recipes}
+                />
+                <Switch>
+                    <Route exact path="/">
+                        {
+                            resultsState.inMaintenance &&
+                            <InMaintenance/>
+                        }
+                        {
+                            !resultsState.inMaintenance &&
+                            <React.Fragment>
+                                <SearchForm
+                                    ingredients={ingredientsState.ingredients}
+                                    ingredientForm={ingredientFormState.formIngredient}
+                                    selectedFilters={ingredientsHandler}
+                                    click={getRecipesByIngredientsHandler}
+                                    toogle={toogleIngredientFilterHandler}
+                                    changed={ingredientFormChangeHandler.bind(this)}
+                                    add={ingredientFormAddHandler}
+                                    clear={ingredientFormClear}
+                                    remove={removeIngredientLocalStorage}
+                                    editStatus={editIngredientsState.edit}
+                                    edit={setEditIngredientsStateHandler}
+                                    deleteIngredient={deleteIngredientsStateHandler}
+                                    results={resultsState}
+                                    intolerances={intolerancesState.intolerances}
+                                    intolerancesToogle={intolerancesHandler}
+                                />
+                                <RecipeList
+                                    show={modalHandler}
+                                    recipes={resultsState}
+                                    getMore={getRecipesByIngredients}
+                                    getRecipe={getRecipeByd}
+                                />
+                            </React.Fragment>
+                        }
+                    </Route>
+                    <Route path="/favourites">
+                        <div className={styles.container}>
+                            <div className={`${styles.card} ${styles.borderWhite} ${styles.shadowSm}`}>
+                                <div className={styles.cardBody}>
+                                    <h3 className={`animated fadeInUp`}>
+                                        <i className="fas fa-heart"></i> Favourites recipes
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </Route>
+                    <Route path="/chosen">
+                        <div className={styles.container}>
+                            <div className={`${styles.card} ${styles.borderWhite} ${styles.shadowSm}`}>
+                                <div className={styles.cardBody}>
+                                    <h3 className={`animated fadeInUp`}>
+                                        <i className="fas fa-clipboard-list"></i> My chosen recipes for today</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </Route>
+                </Switch>
+                <ModalRecipe
+                    show={modalState.show}
+                    close={modalHandler}
+                    title={'A recipe'}
+                    recipe={recipeState.recipe}
+                    isLoading={recipeState.isLoading}
+                    favourite={toogleFavouriteHandler}
+                    favourites={favouritesState.recipes}
+                    chosenList={chosenState.recipes}
+                    chosen={toogleChosenHandler}
+                />
+            </div>
+        </Router>
     );
 }
 

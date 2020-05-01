@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Header.module.scss";
+import {Link} from "react-router-dom";
 
 const header = (props) => {
     const favouritesCounter = (props.favourites) ? props.favourites.length : 0;
@@ -11,22 +12,26 @@ const header = (props) => {
                     className={`${styles.navbar} ${styles.stickyTop} ${styles.navbarLight} ${styles.bgLight} ${styles.mx0}`}
                 >
                     <div className={`${styles.container}`}>
-                        <span className="navbar-brand">Recipes app</span>
+                        <Link to="/">
+                            <span className="navbar-brand">
+                                <i className="fas fa-utensils"></i> Recipes app
+                            </span>
+                        </Link>
                         <div>
-                            <button className={`${styles.btn}`}>
-                                <i className="far fa-heart"></i>
+                            <Link to="/favourites" className={`${styles.btn}`}>
+                                <i className="fas fa-heart"></i>
                                 <span
                                     className={`${styles.badge} ${styles.badgePill} ${styles.badgePrimary} ${styles.mr1}`}>
                                     {favouritesCounter}
                                 </span>
-                            </button>
-                            <button className={`${styles.btn}`}>
+                            </Link>
+                            <Link to="/chosen" className={`${styles.btn}`}>
                                 <i className="fas fa-clipboard-list"></i>
                                 <span
                                     className={`${styles.badge} ${styles.badgePill} ${styles.badgePrimary} ${styles.mr1}`}>
                                     {chosenCounter}
                                 </span>
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </nav>

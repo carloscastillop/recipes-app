@@ -1,6 +1,5 @@
 import React from "react";
 import styles from './ModalRecipe.module.scss';
-import ModalHeader from './ModalHeader/ModalHeader';
 import ModalFooter from './ModalFooter/ModalFooter';
 import ModalRecipeContent from './ModalRecipeContent/ModalRecipeContent';
 
@@ -21,9 +20,7 @@ const ModalRecipe = (props) => {
         );
     }
     //If recipe is ready and is not loading
-    let recipeTitle = ''
     if (props.recipe && !props.isLoading) {
-        recipeTitle = props.recipe.title;
         recipeContent = <ModalRecipeContent
             recipe={props.recipe}
             favourite={props.favourite}
