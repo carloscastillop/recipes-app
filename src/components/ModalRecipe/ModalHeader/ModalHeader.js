@@ -7,13 +7,6 @@ const ModalHeader = (props) => {
             <h5 className={styles.modalTitle}>
                 {props.title}
             </h5>
-            <button
-                type="button"
-                className={styles.close}
-                onClick={props.close.bind(this, '', false)}
-                aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
         </div>
     );
 }

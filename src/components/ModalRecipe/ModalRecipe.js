@@ -21,8 +21,14 @@ const ModalRecipe = (props) => {
         );
     }
     //If recipe is ready and is not loading
+    let recipeTitle = ''
     if (props.recipe && !props.isLoading) {
-        recipeContent = <ModalRecipeContent recipe={props.recipe}/>;
+        recipeTitle = props.recipe.title;
+        recipeContent = <ModalRecipeContent
+            recipe={props.recipe}
+            favourite={props.favourite}
+            favourites={props.favourites}
+        />;
     }
     return (
         <React.Fragment>
@@ -32,12 +38,20 @@ const ModalRecipe = (props) => {
                     role="document"
                 >
                     <div className={styles.modalContent}>
-                        <ModalHeader
-                            title={'My title'}
-                            close={props.close}
-                        />
+                        {/*<ModalHeader*/}
+                        {/*    title={recipeTitle}*/}
+                        {/*    close={props.close}*/}
+                        {/*    recipe={props.recipe}*/}
+                        {/*    favourites={props.favourites}*/}
+                        {/*    favourite={props.favourite}*/}
+                        {/*/>*/}
                         {recipeContent}
-                        <ModalFooter/>
+                        <ModalFooter
+                            close={props.close}
+                            recipe={props.recipe}
+                            favourites={props.favourites}
+                            favourite={props.favourite}
+                        />
                     </div>
                 </div>
             </div>

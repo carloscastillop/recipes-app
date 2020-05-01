@@ -2,6 +2,8 @@ import React from "react";
 import styles from "./Header.module.scss";
 
 const header = (props) => {
+    const favouritesCounter = (props.favourites) ? props.favourites.length : 0;
+    const listCounter = 0;
     return (
         <React.Fragment>
             <header className={styles.Header}>
@@ -13,14 +15,16 @@ const header = (props) => {
                         <div>
                             <button className={`${styles.btn}`}>
                                 <i className="far fa-heart"></i>
-                                <span className={`${styles.badge} ${styles.badgePill} ${styles.badgePrimary} ${styles.mr1}`}>
-                                    0
+                                <span
+                                    className={`${styles.badge} ${styles.badgePill} ${styles.badgePrimary} ${styles.mr1}`}>
+                                    {favouritesCounter}
                                 </span>
                             </button>
                             <button className={`${styles.btn}`}>
                                 <i className="fas fa-clipboard-list"></i>
-                                <span className={`${styles.badge} ${styles.badgePill} ${styles.badgePrimary} ${styles.mr1}`}>
-                                    0
+                                <span
+                                    className={`${styles.badge} ${styles.badgePill} ${styles.badgePrimary} ${styles.mr1}`}>
+                                    {listCounter}
                                 </span>
                             </button>
                         </div>
