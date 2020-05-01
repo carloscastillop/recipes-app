@@ -3,7 +3,7 @@ import styles from "./Header.module.scss";
 
 const header = (props) => {
     const favouritesCounter = (props.favourites) ? props.favourites.length : 0;
-    const listCounter = 0;
+    const chosenCounter = (props.chosen) ? props.chosen.length : 0;
     return (
         <React.Fragment>
             <header className={styles.Header}>
@@ -24,7 +24,7 @@ const header = (props) => {
                                 <i className="fas fa-clipboard-list"></i>
                                 <span
                                     className={`${styles.badge} ${styles.badgePill} ${styles.badgePrimary} ${styles.mr1}`}>
-                                    {listCounter}
+                                    {chosenCounter}
                                 </span>
                             </button>
                         </div>

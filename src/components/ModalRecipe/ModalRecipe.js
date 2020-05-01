@@ -51,6 +51,8 @@ const ModalRecipe = (props) => {
                             recipe={props.recipe}
                             favourites={props.favourites}
                             favourite={props.favourite}
+                            chosen={props.chosen}
+                            chosenList={props.chosenList}
                         />
                     </div>
                 </div>

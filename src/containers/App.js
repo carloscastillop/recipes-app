@@ -7,7 +7,13 @@ import RecipeList from '../components/RecipeList/RecipeList';
 import ModalRecipe from "../components/ModalRecipe/ModalRecipe";
 import constants from '../constants';
 import 'animate.css';
+import '../styles/alertify.css';
 import InMaintenance from "../components/InMaintenance/InMaintenance";
+import * as alertify from 'alertifyjs';
+import 'alertifyjs/build/css/alertify.min.css';
+alertify.set('notifier','position', 'top-center');
+
+
 
 const App = () => {
 
@@ -68,6 +74,10 @@ const App = () => {
         recipes: [],
     });
 
+    const [chosenState, setChosenState] = useState({
+        recipes: [],
+    });
+
     const [modalState, setModalState] = useState({
         show: false,
         content: ('empty')
@@ -82,13 +92,16 @@ const App = () => {
 
         const found = recipes.find(r => r.id === recipe.id);
         let newRecipes = null;
+        alertify.dismissAll();
         if (!found) {
             recipes.push(recipe);
             newRecipes = recipes;
+            alertify.success('Added to my favourites');
         } else {
             newRecipes = recipes.filter(function (r) {
                 return r.id !== recipe.id;
             });
+            alertify.message('Removed from my favourites');
         }
 
         setFavouritesState({
@@ -103,10 +116,42 @@ const App = () => {
         return (recipes) ? recipes : [];
     }
 
+    const toogleChosenHandler = (recipe) => {
+        const recipes = chosenState.recipes;
+
+        const found = recipes.find(r => r.id === recipe.id);
+        let newRecipes = null;
+        alertify.dismissAll();
+        if (!found) {
+            recipes.push(recipe);
+            newRecipes = recipes;
+            alertify.success('Added to my chosen');
+        } else {
+            newRecipes = recipes.filter(function (r) {
+                return r.id !== recipe.id;
+            });
+            alertify.message('Removed from my chosen');
+        }
+
+        setChosenState({
+            recipes: newRecipes
+        });
+
+        localStorage.setItem('myChosen', JSON.stringify(newRecipes));
+    }
+
+    const getChosenLocalStorage = () => {
+        const recipes = JSON.parse(localStorage.getItem('myChosen'));
+        return (recipes) ? recipes : [];
+    }
+
     useEffect(() => {
         addIngredientsToStates();
         setFavouritesState({
             recipes: getFavouritesLocalStorage()
+        });
+        setChosenState({
+            recipes: getChosenLocalStorage()
         });
     }, []);
 
@@ -365,6 +410,7 @@ const App = () => {
         <div className={styles.App}>
             <Header
                 favourites={favouritesState.recipes}
+                chosen={chosenState.recipes}
             />
             {
                 resultsState.inMaintenance &&
@@ -404,6 +450,8 @@ const App = () => {
                         isLoading={recipeState.isLoading}
                         favourite={toogleFavouriteHandler}
                         favourites={favouritesState.recipes}
+                        chosenList={chosenState.recipes}
+                        chosen={toogleChosenHandler}
                     />
                 </React.Fragment>
             }

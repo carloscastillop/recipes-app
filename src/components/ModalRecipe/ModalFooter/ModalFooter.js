@@ -12,6 +12,15 @@ const ModalFooter = (props) => {
         );
     }
 
+    let chosen = (
+        <i className={`fas fa-clipboard-list fa-2x ${styles.heartOff}`}></i>
+    );
+    if(props.chosenList && props.recipe && props.chosenList.find(r => r.id === props.recipe.id)){
+        chosen = (
+            <i className={`fas fa-clipboard-list fa-2x ${styles.heartOn}`}></i>
+        );
+    }
+
     return (
         <div className={`${styles.modalFooter}`}>
             <div className={`${styles.row} ${styles.w100}`}>
@@ -30,8 +39,11 @@ const ModalFooter = (props) => {
                     <button
                         type="button"
                         className={`${styles.btn} ${styles.btnLink} ${styles.btnSm}`}
+                        onClick={e => {
+                            props.chosen(props.recipe)
+                        }}
                     >
-                        <i className="fas fa-clipboard-list fa-2x"></i>
+                        {chosen}
                     </button>
                 </div>
                 <div className={`${styles.col} ${styles.textCenter}`}>
