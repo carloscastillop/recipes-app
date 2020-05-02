@@ -2,9 +2,29 @@
 
 .RecipeCard {
   border: solid 1px white;
+  border-bottom: solid 1px #e8e8e8;
+
   .cardImgTop {
     &:hover {
       cursor: pointer;
+    }
+  }
+
+  .cardTitle {
+    font-size: 0.8rem;
+  }
+
+
+  .recipeImage {
+    position: relative;
+
+    .bgRecipeLabels {
+      background-color: $appPrimaryColourTrans;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 0px 3px 2px 3px;
     }
   }
 }
@@ -12,6 +32,7 @@
 .loading {
   position: relative;
   overflow: hidden;
+
   &::after {
     content: "";
     display: block;

@@ -464,23 +464,25 @@ const App = () => {
                                     intolerances={intolerancesState.intolerances}
                                     intolerancesToogle={intolerancesHandler}
                                 />
-                                <RecipeList
-                                    show={modalHandler}
-                                    recipes={resultsState.results}
-                                    paginator={resultsState.paginator}
-                                    getMore={getRecipesByIngredients}
-                                    getRecipe={getRecipeByd}
-                                />
+                                <div className={styles.container}>
+                                    <RecipeList
+                                        show={modalHandler}
+                                        recipes={resultsState.results}
+                                        paginator={resultsState.paginator}
+                                        getMore={getRecipesByIngredients}
+                                        getRecipe={getRecipeByd}
+                                    />
+                                </div>
                             </React.Fragment>
                         }
                     </Route>
                     <Route path="/favourites">
                         <div className={styles.container}>
+                            <h3 className={`${styles.my4} animated fadeInUp`}>
+                                <i className="fas fa-heart"></i> My favourites recipes
+                            </h3>
                             <div className={`${styles.card} ${styles.borderWhite} ${styles.shadowSm}`}>
-                                <div className={styles.cardBody}>
-                                    <h3 className={`${styles.mb5} animated fadeInUp`}>
-                                        <i className="fas fa-heart"></i> My favourites recipes
-                                    </h3>
+                                <div>
                                     <RecipeList
                                         show={modalHandler}
                                         recipes={favouritesState.recipes}
@@ -493,11 +495,11 @@ const App = () => {
                     </Route>
                     <Route path="/chosen">
                         <div className={styles.container}>
+                            <h3 className={`${styles.mb4} animated fadeInUp`}>
+                                <i className="fas fa-clipboard-list"></i> My chosen recipes for today
+                            </h3>
                             <div className={`${styles.card} ${styles.borderWhite} ${styles.shadowSm}`}>
-                                <div className={styles.cardBody}>
-                                    <h3 className={`${styles.mb5} animated fadeInUp`}>
-                                        <i className="fas fa-clipboard-list"></i> My chosen recipes for today
-                                    </h3>
+                                <div>
                                     <RecipeList
                                         show={modalHandler}
                                         recipes={chosenState.recipes}

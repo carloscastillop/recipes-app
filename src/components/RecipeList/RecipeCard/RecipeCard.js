@@ -14,41 +14,43 @@ const RecipeCard = (props) => {
 
     return (
         <div className={`${styles.card} ${styles.RecipeCard} ${styles.h100}`}>
-            <LazyLoad
-                height={200}
-                offset={100}
+            <div className={`${styles.recipeImage}`}>
+                <LazyLoad
+                    height={200}
+                    offset={100}
                 >
-                <img
-                    src={`${constants.urlImages}/recipeImages/${props.recipe.id}-556x370.jpg`}
-                    className={styles.cardImgTop}
-                    alt={props.recipe.title}
-                    title={props.recipe.title}
-                    onClick={e => {
-                        getRecipeHandler(props.recipe)
-                    }}
-                />
-            </LazyLoad>
-            <div className={`${styles.cardBody} ${styles.pb0}`}>
-                <div className={`${styles.mb2}`}>
+                    <img
+                        src={`${constants.urlImages}/recipeImages/${props.recipe.id}-556x370.jpg`}
+                        className={styles.cardImgTop}
+                        alt={props.recipe.title}
+                        title={props.recipe.title}
+                        onClick={e => {
+                            getRecipeHandler(props.recipe)
+                        }}
+                    />
+                </LazyLoad>
+                <div className={`${styles.bgRecipeLabels}`}>
                     <RecipeLabels
                         readyInMinutes={props.recipe.readyInMinutes}
                         servings={props.recipe.servings}
                     />
                 </div>
+            </div>
+            <div className={`${styles.cardBody} ${styles.pb0}`}>
                 <h5 className={`${styles.cardTitle} ${styles.h6}`}>
                     {props.recipe.title}
                 </h5>
             </div>
-            <div className={`${styles.cardFooter} ${styles.borderTop0} ${styles.bgWhite}`}>
-                <button
-                    className={`${styles.btn} ${styles.btnPrimary}`}
-                    onClick={e => {
-                        getRecipeHandler(props.recipe)
-                    }}
-                >
-                    View
-                </button>
-            </div>
+            {/*<div className={`${styles.cardFooter} ${styles.borderTop0} ${styles.bgWhite}`}>*/}
+            {/*    <button*/}
+            {/*        className={`${styles.btn} ${styles.btnPrimary}`}*/}
+            {/*        onClick={e => {*/}
+            {/*            getRecipeHandler(props.recipe)*/}
+            {/*        }}*/}
+            {/*    >*/}
+            {/*        View*/}
+            {/*    </button>*/}
+            {/*</div>*/}
         </div>
     );
 }
