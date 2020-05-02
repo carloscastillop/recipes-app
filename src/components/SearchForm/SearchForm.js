@@ -123,7 +123,7 @@ const searchForm = (props) => {
         return (
             <div
                 key={`intolerance-${intolerance.id}`}
-                className={`${styles.col6} ${styles.colSm4} ${styles.colSm4} ${styles.mb3} ${styles.mbMdSm2}`}
+                className={`${styles.col6} ${styles.colSm4} ${styles.colSm4} ${styles.mb2}`}
             >
                 <div
                     className={`${styles.customControl} ${styles.customSwitch}`}

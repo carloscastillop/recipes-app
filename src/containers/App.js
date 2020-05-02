@@ -476,7 +476,7 @@ const App = () => {
                             </React.Fragment>
                         }
                     </Route>
-                    <Route path="/favourites">
+                    <Route exact path="/favourites">
                         <div className={styles.container}>
                             <h3 className={`${styles.my4} animated fadeInUp`}>
                                 <i className="fas fa-heart"></i> My favourites recipes
@@ -493,7 +493,7 @@ const App = () => {
                             </div>
                         </div>
                     </Route>
-                    <Route path="/chosen">
+                    <Route exact path="/chosen">
                         <div className={styles.container}>
                             <h3 className={`${styles.mb4} animated fadeInUp`}>
                                 <i className="fas fa-clipboard-list"></i> My chosen recipes for today
