@@ -9,7 +9,7 @@ const ChosenListBtn = (props) => {
     }
     return (
         <div className={`${styles.ChosenListBtn} ${styles.shadowSm}`}>
-            <Link to="/chosen" className={`${styles.btn}`}>
+            <Link to="/chosen/" className={`${styles.btn}`}>
                 <i className="fas fa-clipboard-list fa-2x"></i>
                 <span
                     className={`${styles.badge} ${styles.badgePill} ${styles.badgePrimary}`}>

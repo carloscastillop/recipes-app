@@ -20,14 +20,14 @@ const header = (props) => {
                             </span>
                         </Link>
                         <div>
-                            <Link to="/favourites" className={`${styles.btn} ${styles.favouritesBtn}`}>
+                            <Link to="/favourites/" className={`${styles.btn} ${styles.favouritesBtn}`}>
                                 <i className="fas fa-heart"></i>
                                 <span
                                     className={`${styles.badge} ${styles.badgePill} ${styles.badgePrimary} ${styles.mr1}`}>
                                     {favouritesCounter}
                                 </span>
                             </Link>
-                            <Link to="/chosen" className={`${styles.btn} ${styles.chosenBtn}`}>
+                            <Link to="/chosen/" className={`${styles.btn} ${styles.chosenBtn}`}>
                                 <i className="fas fa-clipboard-list"></i>
                                 <span
                                     className={`${styles.badge} ${styles.badgePill} ${styles.badgePrimary} ${styles.mr1}`}>
