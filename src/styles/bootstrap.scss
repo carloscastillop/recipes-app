@@ -3797,11 +3797,11 @@ input[type="button"].btnBlock {
 }
 
 .customControlInput:focus ~ .customControlLabel::before {
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  box-shadow: 0 0 0 0.2rem $appPrimaryColourTrans;
 }
 
 .customControlInput:focus:not(:checked) ~ .customControlLabel::before {
-  border-color: #80bdff;
+  border-color: $appPrimaryColourTrans;
 }
 
 .customControlInput:not(:disabled):active ~ .customControlLabel::before {
