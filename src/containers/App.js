@@ -2,7 +2,8 @@ import React, {useState, useEffect} from 'react';
 import {
     BrowserRouter as Router,
     Switch,
-    Route
+    Route,
+    withRouter
 } from "react-router-dom";
 import axios from 'axios';
 import styles from './App.module.scss';
@@ -17,7 +18,8 @@ import InMaintenance from "../components/InMaintenance/InMaintenance";
 import * as alertify from 'alertifyjs';
 import 'alertifyjs/build/css/alertify.min.css';
 import Footer from "../components/Footer/Footer";
-import ChosenListBtn from '../components/ChosenListBtn/ChosenListBtn'
+import ChosenListBtn from '../components/ChosenListBtn/ChosenListBtn';
+import ChosenList from "../components/ChosenList/ChosenList";
 
 alertify.set('notifier', 'position', 'top-center');
 
@@ -30,6 +32,7 @@ const App = () => {
         recipe: {},
         isLoading: false
     });
+
     // Ingredients filters
     const [ingredientsState, setIngredientsState] = useState({
         //INGREDIENTS BY DEFAULT
@@ -167,6 +170,7 @@ const App = () => {
             recipes: getChosenLocalStorage()
         });
     }, []);
+
 
 
     const ingredientsHandler = (newIngredient) => {
@@ -494,21 +498,11 @@ const App = () => {
                         </div>
                     </Route>
                     <Route exact path={`/chosen/`}>
-                        <div className={styles.container}>
-                            <h3 className={`${styles.mb4} animated fadeInUp`}>
-                                <i className="fas fa-clipboard-list"></i> My chosen recipes for today
-                            </h3>
-                            <div className={`${styles.card} ${styles.borderWhite} ${styles.shadowSm}`}>
-                                <div>
-                                    <RecipeList
-                                        show={modalHandler}
-                                        recipes={chosenState.recipes}
-                                        getRecipe={getRecipeByd}
-                                        paginator={0}
-                                    />
-                                </div>
-                            </div>
-                        </div>
+                        <ChosenList
+                            show={modalHandler}
+                            recipes={chosenState.recipes}
+                            getRecipe={getRecipeByd}
+                        />
                     </Route>
                 </Switch>
                 <ChosenListBtn

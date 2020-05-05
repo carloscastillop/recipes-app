@@ -13,7 +13,7 @@ const recipeList = (props) => {
 
     let totalResults = props.recipes.length;
 
-    if(props.paginator.totalResults) {
+    if(props.paginator && props.paginator.totalResults) {
         totalResults = props.paginator.totalResults;
     }
 
@@ -47,7 +47,7 @@ const recipeList = (props) => {
         );
 
         let showMoreBtn = '';
-        if (props.paginator.page < props.paginator.pages) {
+        if (props.paginator && (props.paginator.page < props.paginator.pages)) {
             showMoreText = (
                 <p className={`${styles.textMuted} ${styles.small}`}>
                     displaying {props.paginator.displaying} from {props.paginator.totalResults} recipes.
@@ -72,7 +72,7 @@ const recipeList = (props) => {
             </div>
         );
     }
-    if (props.paginator.totalResults === 0) {
+    if ( props.paginator && props.paginator.totalResults === 0) {
         recipes = (
             <div className={styles.col}>
                 <p className={`${styles.textCenter}`}>

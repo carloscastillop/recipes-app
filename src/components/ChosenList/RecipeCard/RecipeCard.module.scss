@@ -1,0 +1,54 @@
+@import "../../../styles/global-styles.module.scss";
+
+.RecipeCard {
+  &.card {
+    flex: 0 0 auto;
+    margin-right: 7px;
+    height: 100%;
+    width: 240px;
+    @media (min-width: 400px) {
+      width: 260px;
+    }
+  }
+
+  .cardImgTop {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .cardTitleContainer {
+    height: 57px;
+    display: table;
+    .cardTitle {
+      font-size: 0.8rem;
+      margin: 0;
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+  .listGroup{
+    color: #333333;
+    font-size: 13px;
+    .listGroupItem{
+      padding: 7px 10px;
+      background-color: #fff;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+  }
+
+  .recipeImage {
+    position: relative;
+
+    .bgRecipeLabels {
+      background-color: $appPrimaryColourTrans;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 0px 3px 2px 3px;
+    }
+  }
+  .checked {
+    color: #1c7430 !important;
+  }
+}

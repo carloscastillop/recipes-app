@@ -1,0 +1,74 @@
+@import "../../../styles/global-styles.module.scss";
+
+.RecipeCard {
+  &.card {
+    flex: 0 0 auto;
+    margin-right: 7px;
+    width: 145px;
+    height: 100%;
+    border-color: transparent;
+    background-color: transparent;
+    color: #666;
+  }
+
+  .cardImgTop {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .cardTitleContainer {
+    height: 57px;
+    display: table;
+    .cardTitle {
+      font-size: 0.8rem;
+      margin: 0;
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+  .listGroup{
+    font-size: 13px;
+    .listGroupItem{
+      padding: 7px 10px;
+      background-color: transparent;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+  }
+
+  .recipeImage {
+    height: 159px;
+    display: table;
+    padding: $spacer;
+    span {
+      display: table-cell;
+      vertical-align: bottom;
+    }
+  }
+}
+
+.loading {
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    display: block;
+    background-color: #dddfe2;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateX(0);
+    animation: 1.5s loading-placeholder ease-in-out infinite;
+  }
+}
+
+@keyframes loading-placeholder {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}

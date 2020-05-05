@@ -7,6 +7,7 @@ const ChosenListBtn = (props) => {
     if (chosenCounter === 0) {
         return null;
     }
+
     return (
         <div className={`${styles.ChosenListBtn} ${styles.shadowSm}`}>
             <Link to="/chosen/" className={`${styles.btn}`}>

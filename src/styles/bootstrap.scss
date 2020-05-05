@@ -1723,17 +1723,17 @@ pre code {
   padding: 0.3rem;
 }
 
-.table-bordered {
+.tableBordered {
   border: 1px solid #dee2e6;
 }
 
-.table-bordered th,
-.table-bordered td {
+.tableBordered th,
+.tableBordered td {
   border: 1px solid #dee2e6;
 }
 
-.table-bordered thead th,
-.table-bordered thead td {
+.tableBordered thead th,
+.tableBordered thead td {
   border-bottom-width: 2px;
 }
 
@@ -1967,7 +1967,7 @@ pre code {
   border-color: #454d55;
 }
 
-.table-dark.table-bordered {
+.table-dark.tableBordered {
   border: 0;
 }
 
@@ -1981,61 +1981,61 @@ pre code {
 }
 
 @media (max-width: 575.98px) {
-  .table-responsive-sm {
+  .tableResponsiveSm {
     display: block;
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
-  .table-responsive-sm > .table-bordered {
+  .tableResponsiveSm > .tableBordered {
     border: 0;
   }
 }
 
 @media (max-width: 767.98px) {
-  .table-responsive-md {
+  .tableResponsiveMd {
     display: block;
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
-  .table-responsive-md > .table-bordered {
+  .tableResponsiveMd > .tableBordered {
     border: 0;
   }
 }
 
 @media (max-width: 991.98px) {
-  .table-responsive-lg {
+  .tableResponsiveLg {
     display: block;
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
-  .table-responsive-lg > .table-bordered {
+  .tableResponsiveLg > .tableBordered {
     border: 0;
   }
 }
 
 @media (max-width: 1199.98px) {
-  .table-responsive-xl {
+  .tableResponsiveXl {
     display: block;
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
-  .table-responsive-xl > .table-bordered {
+  .tableResponsiveXl > .tableBordered {
     border: 0;
   }
 }
 
-.table-responsive {
+.tableResponsive {
   display: block;
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
 
-.table-responsive > .table-bordered {
+.tableResponsive > .tableBordered {
   border: 0;
 }
 
@@ -5686,17 +5686,17 @@ a.badge-dark:focus, a.badge-dark.focus {
   }
 }
 
-.listGroup-flush .listGroupItem {
+.listGroupFlush .listGroupItem {
   border-right-width: 0;
   border-left-width: 0;
   border-radius: 0;
 }
 
-.listGroup-flush .listGroupItem:first-child {
+.listGroupFlush .listGroupItem:first-child {
   border-top-width: 0;
 }
 
-.listGroup-flush:last-child .listGroupItem:last-child {
+.listGroupFlush:last-child .listGroupItem:last-child {
   border-bottom-width: 0;
 }
 
@@ -10212,8 +10212,8 @@ a.text-dark:hover, a.text-dark:focus {
   .table th {
     background-color: #fff !important;
   }
-  .table-bordered th,
-  .table-bordered td {
+  .tableBordered th,
+  .tableBordered td {
     border: 1px solid #dee2e6 !important;
   }
   .table-dark {

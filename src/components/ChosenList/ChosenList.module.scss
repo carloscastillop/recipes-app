@@ -1,0 +1,23 @@
+@import '../../styles/bootstrap.scss';
+
+.ChosenList {
+  .table {
+    .recipeImg {
+      max-width: 200px;
+      border: solid 1px red;
+    }
+  }
+  .scrollingWrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 20px;
+    width: 100%;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    padding: 5px 25px;
+  }
+
+}
