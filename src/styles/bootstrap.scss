@@ -5276,19 +5276,19 @@ a.badge-dark:focus, a.badge-dark.focus {
   border-radius: 0.25rem;
 }
 
-.alert-heading {
+.alertHeading {
   color: inherit;
 }
 
-.alert-link {
+.alertLink {
   font-weight: 700;
 }
 
-.alert-dismissible {
+.alertDismissible {
   padding-right: 4rem;
 }
 
-.alert-dismissible .close {
+.alertDismissible .close {
   position: absolute;
   top: 0;
   right: 0;
@@ -5296,115 +5296,115 @@ a.badge-dark:focus, a.badge-dark.focus {
   color: inherit;
 }
 
-.alert-primary {
+.alertPrimary {
   color: #004085;
   background-color: #cce5ff;
   border-color: #b8daff;
 }
 
-.alert-primary hr {
+.alertPrimary hr {
   border-top-color: #9fcdff;
 }
 
-.alert-primary .alert-link {
+.alertPrimary .alertLink {
   color: #002752;
 }
 
-.alert-secondary {
+.alertSecondary {
   color: #383d41;
   background-color: #e2e3e5;
   border-color: #d6d8db;
 }
 
-.alert-secondary hr {
+.alertSecondary hr {
   border-top-color: #c8cbcf;
 }
 
-.alert-secondary .alert-link {
+.alertSecondary .alertLink {
   color: #202326;
 }
 
-.alert-success {
+.alertSuccess {
   color: #155724;
   background-color: #d4edda;
   border-color: #c3e6cb;
 }
 
-.alert-success hr {
+.alertSuccess hr {
   border-top-color: #b1dfbb;
 }
 
-.alert-success .alert-link {
+.alertSuccess .alertLink {
   color: #0b2e13;
 }
 
-.alert-info {
+.alertInfo {
   color: #0c5460;
   background-color: #d1ecf1;
   border-color: #bee5eb;
 }
 
-.alert-info hr {
+.alertInfo hr {
   border-top-color: #abdde5;
 }
 
-.alert-info .alert-link {
+.alertInfo .alertLink {
   color: #062c33;
 }
 
-.alert-warning {
+.alertWarning {
   color: #856404;
   background-color: #fff3cd;
   border-color: #ffeeba;
 }
 
-.alert-warning hr {
+.alertWarning hr {
   border-top-color: #ffe8a1;
 }
 
-.alert-warning .alert-link {
+.alertWarning .alertLink {
   color: #533f03;
 }
 
-.alert-danger {
+.alertDanger {
   color: #721c24;
   background-color: #f8d7da;
   border-color: #f5c6cb;
 }
 
-.alert-danger hr {
+.alertDanger hr {
   border-top-color: #f1b0b7;
 }
 
-.alert-danger .alert-link {
+.alertDanger .alertLink {
   color: #491217;
 }
 
-.alert-light {
+.alertLight {
   color: #818182;
   background-color: #fefefe;
   border-color: #fdfdfe;
 }
 
-.alert-light hr {
+.alertLight hr {
   border-top-color: #ececf6;
 }
 
-.alert-light .alert-link {
+.alertLight .alertLink {
   color: #686868;
 }
 
-.alert-dark {
+.alertDark {
   color: #1b1e21;
   background-color: #d6d8d9;
   border-color: #c6c8ca;
 }
 
-.alert-dark hr {
+.alertDark hr {
   border-top-color: #b9bbbe;
 }
 
-.alert-dark .alert-link {
+.alertDark .alertLink {
   color: #040505;
 }
 

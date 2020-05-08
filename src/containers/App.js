@@ -3,7 +3,7 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    withRouter
+    Redirect
 } from "react-router-dom";
 import axios from 'axios';
 import styles from './App.module.scss';
@@ -20,6 +20,7 @@ import 'alertifyjs/build/css/alertify.min.css';
 import Footer from "../components/Footer/Footer";
 import ChosenListBtn from '../components/ChosenListBtn/ChosenListBtn';
 import ChosenList from "../components/ChosenList/ChosenList";
+import RecipePage from "../components/RecipePage/RecipePage";
 
 alertify.set('notifier', 'position', 'top-center');
 
@@ -30,6 +31,7 @@ const App = () => {
     const [recipeState, setRecipeState] = useState({
         //INGREDIENTS BY DEFAULT
         recipe: {},
+        chosenMode: false,
         isLoading: false
     });
 
@@ -172,7 +174,6 @@ const App = () => {
     }, []);
 
 
-
     const ingredientsHandler = (newIngredient) => {
         const ingredients = [...ingredientsState.ingredients];
         const newIngredientObj = {
@@ -305,20 +306,22 @@ const App = () => {
         })
     }
 
-    const getRecipeByd = (id) => {
+    const getRecipeById = (id, chosen = false) => {
+        const chosenMode = (chosen) ? true : false;
         let url = constants.url;
         const apiKey = constants.apiKey;
         url = `${url}/recipes/${id}/information?apiKey=${apiKey}`
         setRecipeState({
             isLoading: true,
+            chosenMode: chosenMode,
         });
         axios.get(url)
             .then(res => {
                 const data = res.data;
-                console.log(data)
                 setRecipeState({
                     recipe: data,
-                    isLoading: false
+                    isLoading: false,
+                    chosenMode: chosenMode,
                 });
             });
     }
@@ -426,6 +429,21 @@ const App = () => {
         return date.getTime();
     }
 
+    const chosenFinalRecipe = (recipe) => {
+        const newRecipes = [];
+        newRecipes.push(recipe)
+        //delete all chosen recipes except this
+        localStorage.setItem('myChosen', JSON.stringify(newRecipes));
+        //update states
+        setChosenState({
+            recipes: newRecipes
+        })
+        // do a selection animation
+        //redirect to recipe page /recipe/:id
+        return <Redirect to={`/recipe/${recipe.id}`}/>
+
+    }
+
     const handleScrollToElement = (myComponent) => {
         const element = document.getElementById(myComponent);
         console.log({myComponent})
@@ -474,7 +492,7 @@ const App = () => {
                                         recipes={resultsState.results}
                                         paginator={resultsState.paginator}
                                         getMore={getRecipesByIngredients}
-                                        getRecipe={getRecipeByd}
+                                        getRecipe={getRecipeById}
                                     />
                                 </div>
                             </React.Fragment>
@@ -490,7 +508,7 @@ const App = () => {
                                     <RecipeList
                                         show={modalHandler}
                                         recipes={favouritesState.recipes}
-                                        getRecipe={getRecipeByd}
+                                        getRecipe={getRecipeById}
                                         paginator={0}
                                     />
                                 </div>
@@ -501,9 +519,17 @@ const App = () => {
                         <ChosenList
                             show={modalHandler}
                             recipes={chosenState.recipes}
-                            getRecipe={getRecipeByd}
+                            getRecipe={getRecipeById}
                         />
                     </Route>
+                    <Route
+                        path={`/recipe/:recipeId`}
+                        exact
+                        render={(props) => (
+                            <RecipePage {...props} />
+                        )}
+                    />
+
                 </Switch>
                 <ChosenListBtn
                     chosen={chosenState.recipes}
@@ -519,6 +545,8 @@ const App = () => {
                     favourites={favouritesState.recipes}
                     chosenList={chosenState.recipes}
                     chosen={toogleChosenHandler}
+                    chosenMode={recipeState.chosenMode}
+                    chosenFinalRecipe={chosenFinalRecipe}
                 />
             </div>
         </Router>

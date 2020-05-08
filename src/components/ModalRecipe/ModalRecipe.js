@@ -2,6 +2,7 @@ import React from "react";
 import styles from './ModalRecipe.module.scss';
 import ModalFooter from './ModalFooter/ModalFooter';
 import ModalRecipeContent from './ModalRecipeContent/ModalRecipeContent';
+import Loading from "../Loading/Loading";
 
 const ModalRecipe = (props) => {
     if (!props.show) {
@@ -12,11 +13,7 @@ const ModalRecipe = (props) => {
     //If recipe is not ready or is still loading
     if (!props.recipe || props.isLoading) {
         recipeContent = (
-            <div>
-                <div className={`${styles.textCenter} ${styles.my5}`}>
-                    <i className="fas fa-circle-notch fa-spin fa-2x"></i>
-                </div>
-            </div>
+            <Loading />
         );
     }
     //If recipe is ready and is not loading
@@ -31,17 +28,10 @@ const ModalRecipe = (props) => {
         <React.Fragment>
             <div className={`${styles.modal} ${styles.show}`}>
                 <div
-                    className={`${styles.modalDialog} ${styles.modalLg} ${styles.modalDialogScrollable} ${styles.shadow}`}
+                    className={`${styles.modalDialog} ${styles.modalXl} ${styles.modalDialogScrollable} ${styles.shadow}`}
                     role="document"
                 >
                     <div className={styles.modalContent}>
-                        {/*<ModalHeader*/}
-                        {/*    title={recipeTitle}*/}
-                        {/*    close={props.close}*/}
-                        {/*    recipe={props.recipe}*/}
-                        {/*    favourites={props.favourites}*/}
-                        {/*    favourite={props.favourite}*/}
-                        {/*/>*/}
                         {recipeContent}
                         <ModalFooter
                             close={props.close}
@@ -50,6 +40,8 @@ const ModalRecipe = (props) => {
                             favourite={props.favourite}
                             chosen={props.chosen}
                             chosenList={props.chosenList}
+                            chosenMode={props.chosenMode}
+                            chosenFinalRecipe={props.chosenFinalRecipe}
                         />
                     </div>
                 </div>

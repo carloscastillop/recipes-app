@@ -7,16 +7,18 @@ import 'animate.css';
 const RecipeCard = (props) => {
 
     const getRecipeHandler = (recipe) => {
-        props.getRecipe(recipe.id);
+        props.getRecipe(recipe.id, true);
         props.show('', true);
     }
+    const wrapper = React.createRef();
 
     return (
-        <div className={`${styles.card} ${styles.RecipeCard} ${styles.h100}`}>
+        <div ref={wrapper} className={`${styles.card} ${styles.RecipeCard} ${styles.h100}`}>
             <div className={`${styles.recipeImage}`}>
                 <LazyLoad
+                    key={props.recipe.id}
+                    once={true}
                     height={200}
-                    offset={100}
                 >
                     <img
                         src={`${constants.urlImages}/recipeImages/${props.recipe.id}-556x370.jpg`}
