@@ -12,11 +12,11 @@ const RecipePage = (props) => {
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
     useEffect(() => {
-        const apiKey = constants.apiKey;
+        const apiKey = constants.api.apiKey;
         const fetchRecipe = async () => {
             setLoading(true);
             setError(false);
-            let url = constants.url;
+            let url = constants.api.url;
             url = `${url}/recipes/${recipeId}/information?apiKey=${apiKey}`;
             try {
                 const result = await axios.get(`${url}`);

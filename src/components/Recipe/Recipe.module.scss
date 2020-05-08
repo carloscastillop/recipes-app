@@ -1,4 +1,7 @@
 @import '../../styles/bootstrap';
 .Recipe {
-  background-color: red;
+  .stepTitle {
+    font-size: 80%;
+    color: #333;
+  }
 }

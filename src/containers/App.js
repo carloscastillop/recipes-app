@@ -246,14 +246,14 @@ const App = () => {
     }
 
     const getRecipesByIngredients = (paginate = false) => {
-        let url = constants.url + '/recipes/search';
+        let url = constants.api.url + '/recipes/search';
         const selectedIngredients = ingredientsState.ingredients.filter(ingredient => ingredient.selected);
         let query = selectedIngredients.map(ingredient => {
             return ingredient.name;
         })
         const number = resultsState.paginator.number;
         const offset = resultsState.paginator.offset;
-        const apiKey = constants.apiKey;
+        const apiKey = constants.api.apiKey;
         const intolerances = intolerancesState.intolerances
             .filter(intolerance => intolerance.selected)
             .map(function (intolerance) {
@@ -308,8 +308,8 @@ const App = () => {
 
     const getRecipeById = (id, chosen = false) => {
         const chosenMode = (chosen) ? true : false;
-        let url = constants.url;
-        const apiKey = constants.apiKey;
+        let url = constants.api.url;
+        const apiKey = constants.api.apiKey;
         url = `${url}/recipes/${id}/information?apiKey=${apiKey}`
         setRecipeState({
             isLoading: true,

@@ -77,3 +77,6 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 running `npm run deploy` will deploy on:
 
 https://carloscastillop.github.io/recipes-app/
+
+### Plugins 
+https://github.com/nygardk/react-share
