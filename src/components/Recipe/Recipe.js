@@ -111,9 +111,9 @@ const Recipe = (props) => {
             {
                 extendedIngredients &&
                 <div className={`animated fadeIn ${styles.mb4}`}>
-                    <div className={`${styles.card}`}>
+                    <div className={`${styles.card} ${styles.textSecondary} ${styles.small}`}>
                         <div className={`${styles.cardBody}`}>
-                            <h5>Ingredients:</h5>
+                            <h6>Ingredients:</h6>
                             <ul>
                                 {extendedIngredients}
                             </ul>
@@ -124,7 +124,7 @@ const Recipe = (props) => {
             {
                 analyzedInstructions &&
                 <div className={`animated fadeIn`}>
-                    <h5>Instructions:</h5>
+                    <h6>Instructions:</h6>
                     {analyzedInstructions}
                 </div>
             }

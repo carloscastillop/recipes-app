@@ -21,7 +21,7 @@ const RecipeCard = (props) => {
                     height={200}
                 >
                     <img
-                        src={`${constants.urlImages}/recipeImages/${props.recipe.id}-556x370.jpg`}
+                        src={`${constants.api.urlImages}/recipeImages/${props.recipe.id}-556x370.jpg`}
                         className={styles.cardImgTop}
                         alt={props.recipe.title}
                         title={props.recipe.title}
