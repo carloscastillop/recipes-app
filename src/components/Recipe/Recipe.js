@@ -1,8 +1,7 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import styles from "./Recipe.module.scss";
 import LazyLoad from "react-lazyload";
 import RecipeLabels from "../RecipeList/RecipeCard/RecipeLabels/RecipeLabels";
-import ReactHtmlParser from "react-html-parser";
 import constants from "../../constants";
 
 import {
@@ -32,7 +31,7 @@ const Recipe = (props) => {
     }
     if (props.recipe.analyzedInstructions) {
         props.recipe.analyzedInstructions.map((instructions) => {
-            analyzedInstructions = instructions.steps.map((instruction, index) => {
+            return analyzedInstructions = instructions.steps.map((instruction, index) => {
                 return (
                     <div key={`step-${index}`}>
                         <p className={styles.mb1}>
