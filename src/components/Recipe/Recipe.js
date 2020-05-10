@@ -15,7 +15,6 @@ import {
 
 
 const Recipe = (props) => {
-    console.log({recipe: props.recipe})
     const shareUrl = constants.url;
     const SharedDisabled = true;
     let extendedIngredients = null;
@@ -56,7 +55,7 @@ const Recipe = (props) => {
 
 
     return (
-        <div className={`${styles.Recipe} ${styles.container}`}>
+        <div className={`${styles.Recipe}`}>
             <div className={`${styles.bgLight} ${styles.textCenter} ${styles.mb4} animated fadeInDown`}>
                 <LazyLoad
                     height={200}

@@ -21,7 +21,7 @@ const recipeList = (props) => {
         recipes = props.recipes.map((recipe, index) => {
             return (
                 <div
-                    className={`${styles.col6} ${styles.colSm4} ${styles.colLg3} ${styles.mb3}`}
+                    className={`${styles.col6} ${styles.colSm4} ${styles.colLg3} ${styles.mb3} ${styles.guttersSm}`}
                     key={`recipe-container-${recipe.id}-${index}`}
                 >
                     <RecipeCard
@@ -83,8 +83,8 @@ const recipeList = (props) => {
     }
 
     return (
-        <div>
-            <div className={`${styles.row} ${styles.noGutters} `}>
+        <div className={styles.RecipesList}>
+            <div className={`${styles.row} ${styles.noGutters}`}>
                 {recipes}
             </div>
             {showMore}

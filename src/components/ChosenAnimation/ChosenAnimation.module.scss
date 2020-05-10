@@ -1,0 +1,92 @@
+.ChosenAnimation {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 2000;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+
+  .hide {
+    display: none;
+  }
+
+  @function posOrNeg() {
+    @return random() * 2 - 1;
+  }
+
+  $fwSize: 5;
+  $totalFireworks: 20;
+  $totalPieces: 40;
+  $time: 3;
+
+  .wrap {
+    height: 100%;
+    transform-style: preserve-3d;
+    position: relative;
+  }
+
+  .firework {
+    position: absolute;
+    top: 105%;
+    left: 50%;
+    backface-visibilty: hidden;
+  }
+
+  .c {
+    background: white;
+    height: $fwSize+px;
+    width: $fwSize+px;
+    position: absolute;
+    border-radius: 50%;
+  }
+
+  @for $i from 1 through $totalFireworks {
+    $x: random(300) * posOrNeg()+px;
+    $y: -(random(30) + 60)+vh;
+
+    @keyframes shoot#{$i}{
+      0% {
+        transform: translate3d(0, 0, 0) scale(.1);
+      }
+      95% {
+        opacity: 1;
+      }
+      100% {
+        transform: translate3d($x, $y, 0) scale(1);
+        opacity: 0;
+      }
+    }
+    .firework:nth-child(#{$i}) {
+      animation: shoot#{$i} $time+s infinite;
+      animation-delay: ($time/$totalFireworks * $i)+s;
+    }
+
+    @for $x from 1 through $totalPieces {
+      .firework:nth-child(#{$i}) .c {
+        $hue: (360/$totalFireworks) * $i;
+        background: hsl($hue, 100%, 50%);
+        box-shadow: 0 0 3px 0px hsla($hue, 100%, 50%, .8);
+
+        &:nth-child(#{$x}) {
+          animation-delay: ($time/$totalFireworks * $i)+s;
+        }
+      }
+    }
+  }
+
+  @for $x from 1 through $totalPieces {
+    @keyframes explode#{$x} {
+      60% {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+      100% {
+        transform: translate3d(random(150) * posOrNeg()+px, random(150) * posOrNeg()+px, 0) scale(.1);
+      }
+    }
+    .c:nth-child(#{$x}) {
+      animation: explode#{$x} $time+s infinite linear;
+    }
+  }
+
+}

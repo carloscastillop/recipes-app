@@ -41,16 +41,6 @@ const RecipeCard = (props) => {
                     {props.recipe.title}
                 </h5>
             </div>
-            {/*<div className={`${styles.cardFooter} ${styles.borderTop0} ${styles.bgWhite}`}>*/}
-            {/*    <button*/}
-            {/*        className={`${styles.btn} ${styles.btnPrimary}`}*/}
-            {/*        onClick={e => {*/}
-            {/*            getRecipeHandler(props.recipe)*/}
-            {/*        }}*/}
-            {/*    >*/}
-            {/*        View*/}
-            {/*    </button>*/}
-            {/*</div>*/}
         </div>
     );
 }

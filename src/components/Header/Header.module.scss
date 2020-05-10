@@ -2,15 +2,15 @@
 
 .Header {
   .navbarBrand {
-    color: $appSecondaryColour;
+    //color: $appSecondaryColour;
 
     &:hover {
-      color: $appPrimaryColour;
+      //color: $appPrimaryColour;
     }
   }
 
   .logo {
-    color: $appPrimaryColour;
+    //color: $appPrimaryColour;
   }
 
   i {
@@ -29,7 +29,7 @@
     position: relative;
 
     i {
-      color: $appSecondaryColour;
+      color: white;
     }
   }
 
@@ -41,6 +41,3 @@
   }
 }
 
-.topHeader {
-  background-color: #9e9e9e;
-}

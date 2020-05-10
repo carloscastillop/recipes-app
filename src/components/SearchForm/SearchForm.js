@@ -150,9 +150,11 @@ const searchForm = (props) => {
     return (
         <div className={`${styles.SearchForm} ${styles.mb3}`}>
             <div className={styles.container}>
-                <div className={`${styles.card} ${styles.borderWhite} ${styles.shadowSm}`}>
+                <div className={`${styles.cardMain } ${styles.card} ${styles.borderWhite} ${styles.shadow}`}>
                     <div className={styles.cardBody}>
-                        <h3><i className="fas fa-utensils"></i> My pantry</h3>
+                        <h3 className={styles.my3}>
+                            <i className="fas fa-utensils"></i> My pantry
+                        </h3>
                         <p>Select some ingredients you have to find some recipe ideas.</p>
                         <div className={styles.mb3}>
                             {selectedIngredients}

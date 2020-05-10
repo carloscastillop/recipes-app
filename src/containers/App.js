@@ -2,8 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
-    Redirect
+    Route
 } from "react-router-dom";
 import axios from 'axios';
 import styles from './App.module.scss';
@@ -21,6 +20,7 @@ import Footer from "../components/Footer/Footer";
 import ChosenListBtn from '../components/ChosenListBtn/ChosenListBtn';
 import ChosenList from "../components/ChosenList/ChosenList";
 import RecipePage from "../components/RecipePage/RecipePage";
+import HeaderBanner from '../components/HeaderBanner/HeaderBanner';
 
 alertify.set('notifier', 'position', 'top-center');
 
@@ -299,7 +299,7 @@ const App = () => {
                     handleScrollToElement('recipesFound')
                 }
             }).catch(e => {
-            console.log({e})
+
             setResultsState({
                 inMaintenance: true
             });
@@ -430,8 +430,9 @@ const App = () => {
     }
 
     const chosenFinalRecipe = (recipe) => {
+        console.log('chosenFinalRecipe')
         const newRecipes = [];
-        newRecipes.push(recipe)
+        //newRecipes.push(recipe)
         //delete all chosen recipes except this
         localStorage.setItem('myChosen', JSON.stringify(newRecipes));
         //update states
@@ -440,13 +441,12 @@ const App = () => {
         })
         // do a selection animation
         //redirect to recipe page /recipe/:id
-        return <Redirect to={`/recipe/${recipe.id}`}/>
-
+        return window.location.replace(`/recipe/${recipe.id}?recipe=chosen`);
     }
 
     const handleScrollToElement = (myComponent) => {
         const element = document.getElementById(myComponent);
-        console.log({myComponent})
+
         element.scrollIntoView({
             top: 100,
             behavior: 'smooth'
@@ -469,6 +469,7 @@ const App = () => {
                         {
                             !resultsState.inMaintenance &&
                             <React.Fragment>
+                                <HeaderBanner/>
                                 <SearchForm
                                     ingredients={ingredientsState.ingredients}
                                     ingredientForm={ingredientFormState.formIngredient}
@@ -503,7 +504,7 @@ const App = () => {
                             <h3 className={`${styles.my4} animated fadeInUp`}>
                                 <i className="fas fa-heart"></i> My favourites recipes
                             </h3>
-                            <div className={`${styles.card} ${styles.borderWhite} ${styles.shadowSm}`}>
+                            <div className={``}>
                                 <div>
                                     <RecipeList
                                         show={modalHandler}
