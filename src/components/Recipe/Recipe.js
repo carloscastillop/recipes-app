@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./Recipe.module.scss";
-import LazyLoad from "react-lazyload";
 import RecipeLabels from "../RecipeList/RecipeCard/RecipeLabels/RecipeLabels";
 import constants from "../../constants";
 
@@ -22,9 +21,22 @@ const Recipe = (props) => {
     if (props.recipe.extendedIngredients) {
         extendedIngredients = props.recipe.extendedIngredients.map((ingredient, index) => {
             return (
-                <li key={`ingredient-${index}`}>
-                    {ingredient.original}
-                </li>
+                <p
+                    key={`recipe-ingredient-${ingredient.name}-${index}`}
+                    className={`${styles.recipeIngredientBadge}`}
+                >
+                    <span
+                        className={`${styles.badgeName} ${styles.badge} ${styles.badgePill} ${styles.badgePrimary} ${styles.mr1}`}
+                    >
+                        {ingredient.original}
+                    </span>
+
+                    <span
+                        className={`${styles.badgeAisle} ${styles.badge} ${styles.badgePill} ${styles.badgeLight}`}
+                    >
+                            <i className="fas fa-shopping-cart"></i> {ingredient.aisle}
+                        </span>
+                </p>
             )
         });
     }
@@ -57,16 +69,11 @@ const Recipe = (props) => {
     return (
         <div className={`${styles.Recipe}`}>
             <div className={`${styles.bgLight} ${styles.textCenter} ${styles.mb4} animated fadeInDown`}>
-                <LazyLoad
-                    height={200}
-                    offset={100}
-                >
-                    <img
-                        src={`https://spoonacular.com/recipeImages/${props.recipe.id}-480x360.jpg`}
-                        className={`${styles.imgFluid} ${styles.rounded}`}
-                        alt={props.recipe.title}
-                    />
-                </LazyLoad>
+                <img
+                    src={`https://spoonacular.com/recipeImages/${props.recipe.id}-480x360.jpg`}
+                    className={`${styles.imgFluid} ${styles.rounded}`}
+                    alt={props.recipe.title}
+                />
             </div>
             <h1 className={`${styles.h4} animated fadeInUp`}>
                 {props.recipe.title}
@@ -110,11 +117,11 @@ const Recipe = (props) => {
                 extendedIngredients &&
                 <div className={`animated fadeIn ${styles.mb4}`}>
                     <div className={`${styles.card} ${styles.textSecondary} ${styles.small}`}>
-                        <div className={`${styles.cardBody}`}>
+                        <div className={`${styles.cardBody} ${styles.cardBodyScrollX}`}>
                             <h6>Ingredients:</h6>
-                            <ul>
-                                {extendedIngredients}
-                            </ul>
+
+                            {extendedIngredients}
+
                         </div>
                     </div>
                 </div>

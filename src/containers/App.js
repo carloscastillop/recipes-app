@@ -2,8 +2,11 @@ import React, {useState, useEffect} from 'react';
 import {
     BrowserRouter as Router,
     Switch,
-    Route
+    Route,
+    HashRouter,
+    Redirect, Link
 } from "react-router-dom";
+
 import axios from 'axios';
 import styles from './App.module.scss';
 import Header from '../components/Header/Header';
@@ -21,6 +24,8 @@ import ChosenListBtn from '../components/ChosenListBtn/ChosenListBtn';
 import ChosenList from "../components/ChosenList/ChosenList";
 import RecipePage from "../components/RecipePage/RecipePage";
 import HeaderBanner from '../components/HeaderBanner/HeaderBanner';
+import ChosenAnimation from "../components/ChosenAnimation/ChosenAnimation";
+
 
 alertify.set('notifier', 'position', 'top-center');
 
@@ -105,6 +110,8 @@ const App = () => {
         edit: false
     });
 
+    const [showFireworks, setShowFireworks] = useState(false);
+
     const toogleFavouriteHandler = (recipe) => {
         const recipes = favouritesState.recipes;
 
@@ -114,12 +121,12 @@ const App = () => {
         if (!found) {
             recipes.push(recipe);
             newRecipes = recipes;
-            alertify.success('Added to my favourites');
+            alertify.success(`<i class="fas fa-heart"></i> Added to my favourites`);
         } else {
             newRecipes = recipes.filter(function (r) {
                 return r.id !== recipe.id;
             });
-            alertify.message('Removed from my favourites');
+            alertify.message(`<i class="fas fa-heart-broken"></i> Removed from my favourites`);
         }
 
         setFavouritesState({
@@ -143,12 +150,12 @@ const App = () => {
         if (!found) {
             recipes.push(recipe);
             newRecipes = recipes;
-            alertify.success('Added to my chosen');
+            alertify.success(`<i class="fas fa-clipboard-list"></i> Added to my chosen list`);
         } else {
             newRecipes = recipes.filter(function (r) {
                 return r.id !== recipe.id;
             });
-            alertify.message('Removed from my chosen');
+            alertify.message(`<i class="fas fa-clipboard-list"></i> Removed from my chosen list`);
         }
 
         setChosenState({
@@ -423,6 +430,13 @@ const App = () => {
             content: (content) ? content : modalState.content
         });
     }
+    const modalClose = () => {
+        console.log('modalClose');
+        setModalState({
+            show: false,
+            content: modalState.content
+        });
+    }
 
     const getNewId = () => {
         let date = new Date();
@@ -441,7 +455,10 @@ const App = () => {
         })
         // do a selection animation
         //redirect to recipe page /recipe/:id
-        return window.location.replace(`/recipe/${recipe.id}?recipe=chosen`);
+        const url = `/recipe/${recipe.id}/?recipe=chosen`;
+        return <Redirect push to={url}/>;
+
+
     }
 
     const handleScrollToElement = (myComponent) => {
@@ -453,13 +470,18 @@ const App = () => {
         });
     }
 
+    let fireWorks = null
+    if (showFireworks) {
+        fireWorks = (<ChosenAnimation seconds={10}/>);
+    }
     return (
-        <Router basename={`${process.env.REACT_APP_PUBLIC_URL}/`}>
+        <HashRouter basename='/'>
             <div className={styles.App}>
                 <Header
                     favourites={favouritesState.recipes}
                     chosen={chosenState.recipes}
                 />
+                {fireWorks}
                 <Switch>
                     <Route exact path={`/`}>
                         {
@@ -506,6 +528,29 @@ const App = () => {
                             </h3>
                             <div className={``}>
                                 <div>
+                                    {
+                                        (favouritesState.recipes.length === 0) &&
+                                        <div className={`${styles.container} ${styles.textCenter}`}>
+                                            <div className={`${styles.alert} ${styles.alertSecondary}`}>
+                                                You still don't have favorite recipes!
+                                                <div className={` ${styles.my3}`}>
+                                                    <h6 className={styles.h1}>
+                                                        <i className="far fa-heart animated tada delay-3s infinite"></i>
+                                                    </h6>
+                                                    <span className={styles.small}>
+                                                        Please add your favourite recipes by pressing the <strong>heart icon</strong> on a recipe page.
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <Link
+                                                to='/'
+                                                className={`${styles.btn} ${styles.btnPrimary}`}
+                                            >
+                                                Go to recipes
+                                            </Link>
+                                        </div>
+
+                                    }
                                     <RecipeList
                                         show={modalHandler}
                                         recipes={favouritesState.recipes}
@@ -521,14 +566,13 @@ const App = () => {
                             show={modalHandler}
                             recipes={chosenState.recipes}
                             getRecipe={getRecipeById}
+                            chosen={toogleChosenHandler}
                         />
                     </Route>
                     <Route
                         path={`/recipe/:recipeId`}
                         exact
-                        render={(props) => (
-                            <RecipePage {...props} />
-                        )}
+                        component={RecipePage}
                     />
 
                 </Switch>
@@ -538,7 +582,7 @@ const App = () => {
                 <Footer/>
                 <ModalRecipe
                     show={modalState.show}
-                    close={modalHandler}
+                    close={modalClose}
                     title={'A recipe'}
                     recipe={recipeState.recipe}
                     isLoading={recipeState.isLoading}
@@ -548,9 +592,10 @@ const App = () => {
                     chosen={toogleChosenHandler}
                     chosenMode={recipeState.chosenMode}
                     chosenFinalRecipe={chosenFinalRecipe}
+                    showFireworks={setShowFireworks}
                 />
             </div>
-        </Router>
+        </HashRouter>
     );
 }
 

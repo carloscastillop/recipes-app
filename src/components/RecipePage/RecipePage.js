@@ -1,20 +1,16 @@
 import React, {useState, useEffect} from "react";
 import styles from "./RecipePage.module.scss";
-import {Redirect} from 'react-router-dom'
 import constants from "../../constants";
 import axios from "axios";
 import Loading from "../Loading/Loading";
 import Recipe from "../Recipe/Recipe";
-import ChosenAnimation from "../ChosenAnimation/ChosenAnimation";
 
 const RecipePage = (props) => {
-    const recipeId = props.match.params.recipeId;
     const [recipe, setRecipe] = useState(null);
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
-    let testAnimation = null;
-    let chosenAnimation = props.location.search;
     useEffect(() => {
+        const recipeId = props.match.params.recipeId;
         const apiKey = constants.api.apiKey;
         const fetchRecipe = async () => {
             setLoading(true);
@@ -29,24 +25,16 @@ const RecipePage = (props) => {
             }
             setLoading(false);
         };
+        if (props.location.search) {
+            const url = "/recipes-app#/recipe/"+recipeId;
+            window.history.replaceState({}, document.title, url);
+        }
         fetchRecipe();
-    }, [recipeId]);
 
-    if (isNaN(recipeId)) {
-        return <Redirect to='/'/>
-    }
-
-    if (chosenAnimation === "?recipe=chosen") {
-        window.history.replaceState({}, document.title, "/recipe/"+recipeId);
-        testAnimation = (
-            <ChosenAnimation seconds={10}/>
-        );
-    }
-
+    }, [props.match.params.recipeId]);
 
     return (
         <div className={`${styles.container} ${styles.my2}`}>
-            {testAnimation}
             {loading && (
                 <Loading/>
             )}

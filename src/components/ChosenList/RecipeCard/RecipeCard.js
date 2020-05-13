@@ -1,5 +1,4 @@
 import React from "react";
-import LazyLoad from 'react-lazyload';
 import constants from "../../../constants";
 import styles from "./RecipeCard.module.scss";
 import 'animate.css';
@@ -15,21 +14,15 @@ const RecipeCard = (props) => {
     return (
         <div ref={wrapper} className={`${styles.card} ${styles.RecipeCard} ${styles.h100}`}>
             <div className={`${styles.recipeImage}`}>
-                <LazyLoad
-                    key={props.recipe.id}
-                    once={true}
-                    height={200}
-                >
-                    <img
-                        src={`${constants.api.urlImages}/recipeImages/${props.recipe.id}-556x370.jpg`}
-                        className={styles.cardImgTop}
-                        alt={props.recipe.title}
-                        title={props.recipe.title}
-                        onClick={e => {
-                            getRecipeHandler(props.recipe)
-                        }}
-                    />
-                </LazyLoad>
+                <img
+                    src={`${constants.api.urlImages}/recipeImages/${props.recipe.id}-556x370.jpg`}
+                    className={styles.cardImgTop}
+                    alt={props.recipe.title}
+                    title={props.recipe.title}
+                    onClick={e => {
+                        getRecipeHandler(props.recipe)
+                    }}
+                />
             </div>
             <div className={`${styles.cardTitleContainer} ${styles.cardBody} ${styles.pb0}`}>
                 <h5 className={`${styles.cardTitle} ${styles.h6}`}>
@@ -44,8 +37,11 @@ const RecipeCard = (props) => {
                     {props.recipe.servings}
                 </li>
                 <li className={`${styles.listGroupItem}`}>
+                    {props.recipe.extendedIngredients.length}
+                </li>
+                <li className={`${styles.listGroupItem}`}>
                     <span>
-                        { (props.recipe.veryHealthy)?
+                        {(props.recipe.veryHealthy) ?
                             (<i className={`fas fa-check ${styles.checked}`}></i>)
                             :
                             (<i className="fas fa-minus"></i>)
@@ -54,7 +50,7 @@ const RecipeCard = (props) => {
                 </li>
                 <li className={`${styles.listGroupItem}`}>
                     <span>
-                        { (props.recipe.vegetarian)?
+                        {(props.recipe.vegetarian) ?
                             (<i className={`fas fa-check ${styles.checked}`}></i>)
                             :
                             (<i className="fas fa-minus"></i>)
@@ -63,7 +59,7 @@ const RecipeCard = (props) => {
                 </li>
                 <li className={`${styles.listGroupItem}`}>
                     <span>
-                        { (props.recipe.vegan)?
+                        {(props.recipe.vegan) ?
                             (<i className={`fas fa-check ${styles.checked}`}></i>)
                             :
                             (<i className="fas fa-minus"></i>)
@@ -72,14 +68,13 @@ const RecipeCard = (props) => {
                 </li>
                 <li className={`${styles.listGroupItem}`}>
                     <span>
-                        { (props.recipe.glutenFree)?
+                        {(props.recipe.glutenFree) ?
                             (<i className={`fas fa-check ${styles.checked}`}></i>)
                             :
                             (<i className="fas fa-minus"></i>)
                         }
                     </span>
                 </li>
-
             </ul>
             <div className={`${styles.cardFooter} ${styles.borderTop0} ${styles.bgWhite} ${styles.textCenter}`}>
                 <button
@@ -91,6 +86,19 @@ const RecipeCard = (props) => {
                     View
                 </button>
             </div>
+            <div className={`${styles.cardFooter} ${styles.borderTop0} ${styles.bgWhite} ${styles.textCenter}`}>
+                <button
+                    type="button"
+                    className={`${styles.btn} ${styles.btnLink} ${styles.btnSm}`}
+                    onClick={e => {
+                        props.chosen(props.recipe)
+                    }}
+                    aria-label="Close"
+                >
+                    <i className="fas fa-times"></i>
+                </button>
+            </div>
+
         </div>
     );
 }

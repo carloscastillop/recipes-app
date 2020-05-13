@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 import styles from "../ModalRecipe.module.scss";
 
 const ModalFooter = (props) => {
@@ -6,7 +7,7 @@ const ModalFooter = (props) => {
     let favourite = (
         <i className={`far fa-heart fa-2x ${styles.heartOff}`}></i>
     );
-    if(props.favourites && props.recipe && props.favourites.find(r => r.id === props.recipe.id)){
+    if (props.favourites && props.recipe && props.favourites.find(r => r.id === props.recipe.id)) {
         favourite = (
             <i className={`fas fa-heart fa-2x ${styles.heartOn}`}></i>
         );
@@ -15,10 +16,19 @@ const ModalFooter = (props) => {
     let chosen = (
         <i className={`fas fa-clipboard-list fa-2x ${styles.listOff}`}></i>
     );
-    if(props.chosenList && props.recipe && props.chosenList.find(r => r.id === props.recipe.id)){
+    if (props.chosenList && props.recipe && props.chosenList.find(r => r.id === props.recipe.id)) {
         chosen = (
             <i className={`fas fa-clipboard-list fa-2x ${styles.listOn}`}></i>
         );
+    }
+
+    if(!props.recipe){
+        return null;
+    }
+
+    const animationHandler = () => {
+        props.close();
+        props.showFireworks(true);
     }
 
     return (
@@ -27,15 +37,14 @@ const ModalFooter = (props) => {
                 {
                     props.chosenMode &&
                     <div className={`${styles.col} ${styles.textCenter}`}>
-                        <button
+                        <Link
                             type="button"
                             className={`${styles.btn} ${styles.btnPrimary} ${styles.btnLg}`}
-                            onClick={e => {
-                                props.chosenFinalRecipe(props.recipe)
-                            }}
+                            to={`/recipe/${props.recipe.id}/?recipe=chosen`}
+                            onClick={ animationHandler }
                         >
                             <i className="fas fa-utensils"></i> Chose!
-                        </button>
+                        </Link>
                     </div>
                 }
                 {

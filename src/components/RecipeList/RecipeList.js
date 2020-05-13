@@ -2,18 +2,19 @@ import React from "react";
 import styles from './RecipesList.module.scss';
 import 'animate.css';
 import RecipeCard from "./RecipeCard/RecipeCard";
+import {Link} from "react-router-dom";
 
 const recipeList = (props) => {
     let recipes = null;
     let showMore = null;
 
-    if(!props.recipes){
+    if (!props.recipes) {
         return null;
     }
 
     let totalResults = props.recipes.length;
 
-    if(props.paginator && props.paginator.totalResults) {
+    if (props.paginator && props.paginator.totalResults) {
         totalResults = props.paginator.totalResults;
     }
 
@@ -72,7 +73,7 @@ const recipeList = (props) => {
             </div>
         );
     }
-    if ( props.paginator && props.paginator.totalResults === 0) {
+    if (props.paginator && props.paginator.totalResults === 0) {
         recipes = (
             <div className={styles.col}>
                 <p className={`${styles.textCenter}`}>

@@ -28,6 +28,11 @@ const RecipeCardHead = () => {
                     </span>
                 </li>
                 <li className={`${styles.listGroupItem}`}>
+                    <span className={`animated fadeInLeft`} title='Ingredients number'>
+                        <i className="fas fa-shopping-cart"></i> Ingredients
+                    </span>
+                </li>
+                <li className={`${styles.listGroupItem}`}>
                     <span className={`animated fadeInLeft`}>
                         <i className="fas fa-heartbeat"></i> Very healthy
                     </span>
