@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import {
-    BrowserRouter as Router,
     Switch,
     Route,
     HashRouter,
@@ -101,6 +100,10 @@ const App = () => {
         recipes: [],
     });
 
+    const [selectedRecipeState, setSelectedRecipeState] = useState({
+        recipes: [],
+    });
+
     const [modalState, setModalState] = useState({
         show: false,
         content: ('empty')
@@ -111,6 +114,8 @@ const App = () => {
     });
 
     const [showFireworks, setShowFireworks] = useState(false);
+
+    const [firstVisitor, setFirstVisitor] = useState(false);
 
     const toogleFavouriteHandler = (recipe) => {
         const recipes = favouritesState.recipes;
@@ -134,11 +139,6 @@ const App = () => {
         });
 
         localStorage.setItem('myFavourites', JSON.stringify(newRecipes));
-    }
-
-    const getFavouritesLocalStorage = () => {
-        const recipes = JSON.parse(localStorage.getItem('myFavourites'));
-        return (recipes) ? recipes : [];
     }
 
     const toogleChosenHandler = (recipe) => {
@@ -165,19 +165,29 @@ const App = () => {
         localStorage.setItem('myChosen', JSON.stringify(newRecipes));
     }
 
-    const getChosenLocalStorage = () => {
-        const recipes = JSON.parse(localStorage.getItem('myChosen'));
+    const getRecipesLocalStorage = (name) => {
+        const recipes = JSON.parse(localStorage.getItem(name));
         return (recipes) ? recipes : [];
     }
 
     useEffect(() => {
         addIngredientsToStates();
         setFavouritesState({
-            recipes: getFavouritesLocalStorage()
+            recipes: getRecipesLocalStorage('myFavourites')
         });
         setChosenState({
-            recipes: getChosenLocalStorage()
+            recipes: getRecipesLocalStorage('myChosen')
         });
+        setSelectedRecipeState({
+            recipes: getRecipesLocalStorage('mySelected')
+        });
+
+        if(!localStorage.getItem('firstVisitor')){
+            setFirstVisitor (true)
+            const utc = new Date().toJSON().slice(0,10).replace(/-/g,'/');
+            localStorage.setItem('firstVisitor', utc );
+        }
+
     }, []);
 
 
@@ -443,24 +453,6 @@ const App = () => {
         return date.getTime();
     }
 
-    const chosenFinalRecipe = (recipe) => {
-        console.log('chosenFinalRecipe')
-        const newRecipes = [];
-        //newRecipes.push(recipe)
-        //delete all chosen recipes except this
-        localStorage.setItem('myChosen', JSON.stringify(newRecipes));
-        //update states
-        setChosenState({
-            recipes: newRecipes
-        })
-        // do a selection animation
-        //redirect to recipe page /recipe/:id
-        const url = `/recipe/${recipe.id}/?recipe=chosen`;
-        return <Redirect push to={url}/>;
-
-
-    }
-
     const handleScrollToElement = (myComponent) => {
         const element = document.getElementById(myComponent);
 
@@ -470,9 +462,27 @@ const App = () => {
         });
     }
 
+    const selectedRecipe = (recipe) => {
+        const newRecipes = [];
+        localStorage.setItem('myChosen', JSON.stringify(newRecipes));
+        localStorage.setItem('mySelected', JSON.stringify(recipe));
+        //update states
+        setChosenState({
+            recipes: newRecipes
+        });
+        setSelectedRecipeState({
+            recipes: recipe
+        });
+    }
+
     let fireWorks = null
     if (showFireworks) {
-        fireWorks = (<ChosenAnimation seconds={10}/>);
+        const time = 10;
+        fireWorks = (<ChosenAnimation seconds={time}/>);
+        setTimeout(()=> {
+            setShowFireworks(false)
+        }, time*1000);
+
     }
     return (
         <HashRouter basename='/'>
@@ -518,6 +528,28 @@ const App = () => {
                                         getRecipe={getRecipeById}
                                     />
                                 </div>
+                                { firstVisitor &&
+                                    <div className={`${styles.container} ${styles.textCenter}`}>
+                                        <div className={`${styles.alert} ${styles.alertInfo} ${styles.shadow}`}>
+                                            How ist work?
+                                            <div className={` ${styles.my3}`}>
+                                                <h6 className={`${styles.h5} ${styles.mb1}`}>
+                                                    <i className="far fa-heart animated pulse delay-3s infinite"></i> My Favourites
+                                                </h6>
+                                                <span className={styles.small}>
+                                                    Save your favourite recipes for later to your device.
+                                                </span>
+                                                <hr/>
+                                                <h6 className={`${styles.h5} ${styles.mb1}`}>
+                                                    <i className="fas fa-clipboard-list animated tada delay-3s infinite"></i> My Chosen recipes
+                                                </h6>
+                                                <span className={styles.small}>
+                                                    Temporarily save recipes to then compare them and choose one for today.
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
                             </React.Fragment>
                         }
                     </Route>
@@ -591,8 +623,8 @@ const App = () => {
                     chosenList={chosenState.recipes}
                     chosen={toogleChosenHandler}
                     chosenMode={recipeState.chosenMode}
-                    chosenFinalRecipe={chosenFinalRecipe}
                     showFireworks={setShowFireworks}
+                    setSelectedRecipe={selectedRecipe}
                 />
             </div>
         </HashRouter>

@@ -2,7 +2,6 @@ import React from "react";
 import styles from './RecipesList.module.scss';
 import 'animate.css';
 import RecipeCard from "./RecipeCard/RecipeCard";
-import {Link} from "react-router-dom";
 
 const recipeList = (props) => {
     let recipes = null;

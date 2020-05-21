@@ -43,6 +43,7 @@ const ModalRecipe = (props) => {
                             chosenMode={props.chosenMode}
                             chosenFinalRecipe={props.chosenFinalRecipe}
                             showFireworks={props.showFireworks}
+                            setSelectedRecipe={props.setSelectedRecipe}
                         />
                     </div>
                 </div>

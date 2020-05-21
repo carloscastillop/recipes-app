@@ -7,7 +7,7 @@ const RecipeCard = (props) => {
 
     const getRecipeHandler = (recipe) => {
         props.getRecipe(recipe.id, true);
-        props.show('', true);
+        props.show(recipe, true);
     }
     const wrapper = React.createRef();
 

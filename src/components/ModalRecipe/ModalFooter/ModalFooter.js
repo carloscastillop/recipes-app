@@ -26,9 +26,10 @@ const ModalFooter = (props) => {
         return null;
     }
 
-    const animationHandler = () => {
+    const animationHandler = (recipe) => {
         props.close();
         props.showFireworks(true);
+        props.setSelectedRecipe(recipe)
     }
 
     return (
@@ -41,7 +42,9 @@ const ModalFooter = (props) => {
                             type="button"
                             className={`${styles.btn} ${styles.btnPrimary} ${styles.btnLg}`}
                             to={`/recipe/${props.recipe.id}/?recipe=chosen`}
-                            onClick={ animationHandler }
+                            onClick={ e => {
+                                animationHandler(props.recipe)
+                            }}
                         >
                             <i className="fas fa-utensils"></i> Chose!
                         </Link>

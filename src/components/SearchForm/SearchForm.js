@@ -30,6 +30,7 @@ const searchForm = (props) => {
     if (props.ingredients) {
         const notSelected = props.ingredients.filter(ingredient => !ingredient.selected);
         const selected = props.ingredients.filter(ingredient => ingredient.selected);
+        notSelected.sort((a, b) => (a.name > b.name) ? 1 : -1)
         ingredients = notSelected.map((ingredient, index) => {
             let deleteIngredientEdit = '';
             if (props.editStatus && ingredient.erasable) {
@@ -118,8 +119,8 @@ const searchForm = (props) => {
             </div>
         );
     }
-
-    const intolerances = props.intolerances.map((intolerance) => {
+    const intoleranceList = props.intolerances.sort((a, b) => (a.name > b.name) ? 1 : -1)
+    const intolerances = intoleranceList.map((intolerance) => {
         return (
             <div
                 key={`intolerance-${intolerance.id}`}
